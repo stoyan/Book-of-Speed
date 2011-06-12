@@ -1,0 +1,199 @@
+html, body, .title {margin:0;padding:0;}
+body {
+  color: #433f3e; 
+  font: 16px Helvetica, Arial, sans-serif;
+}
+a {color: #095A5E;}
+a:hover, .footlinks a:hover{
+  color: #83a1ab; 
+  text-decoration: none;
+}
+h1 {
+  font-size: 32px;
+  letter-spacing: -1px;
+  margin-bottom: 66px;
+}
+h2 {font-size: 28px;}
+h3 {font-size: 24px; color: #095a5e;}
+h4 {font-size: 20px; margin: 3px 0;}
+code {
+  border: 1px solid #83a1ab;
+  padding: 0 0.2em;
+  background: #eef0f0;
+}
+pre {
+  padding: 10px;
+  background: #eef0f0;
+  
+}
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+.pad {
+  margin: 0 50px 50px;
+}
+.text {
+  padding-left: 22px;
+  border-left: 34px #f2f2f2 solid;
+  line-height: 24px;
+}
+.text p {margin-bottom: 30px;}
+.chapter-title {
+  background: #095a5e;
+  text-transform: uppercase;
+  color: white;
+  font-size: 28px;
+  padding: 10px 10px 4px 50px;
+
+}
+.chapter-title i {
+  font-size: 20px;
+  position: relative;
+  top: -2px;
+}
+.caption {
+  font-size: 14px;
+}
+.sidebar {
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  background: #f2f2f2;
+}
+.sidebar p {
+  margin-bottom: 0;
+}
+.footer {
+  background: #095a5e;
+  color: white;
+  padding: 20px 50px;
+}
+
+.boat {float: left;}
+.ship {float: right;}
+#foo {
+  padding-left: 30px; 
+  font-weight: bold;
+}
+.row {overflow: hidden;}
+
+.subtitle, .author {
+  color: #aeaeae; 
+  text-align: right;
+  font-weight: bold;
+  font-size: 19px;
+  padding-right: 165px;
+  letter-spacing: -0.3px;
+  margin: 10px 0;
+}
+.author {
+  text-transform: uppercase;
+  margin: 0;
+}
+.title {
+  color: #095a5e;
+  font-size: 90px;
+  font-weight: bold;
+  letter-spacing: -4px;
+  text-transform: uppercase;
+  text-align: right;
+  display: block;
+  text-decoration: none;
+}
+.title img {
+  position: relative;
+  top: 7px;
+}
+a.title:hover {color: #095a5e;}
+a:hover img {
+  opacity: 0.8;  
+}
+a:active img {
+  -moz-transform: translate(400px, 0) scale(0);
+  -moz-transition: all 1s ease-in-out;
+  -webkit-transform: translate(400px, 0) scale(0);
+  -webkit-transition: all 1s ease-in-out;
+  -o-transform: translate(400px, 0) scale(0);
+  -o-transition: all 1s ease-in-out;
+  
+}
+.gently {
+  margin: 50px;
+}
+.footlinks {
+  list-style: none;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: normal;
+  padding: 0;
+  letter-spacing: 0.3px;
+}
+.footlinks a {
+  color: white;
+  text-decoration: none;
+}
+.toc {
+  list-style: none;
+  padding: 0;
+}
+
+
+/* hiliteme.com  */
+.hl-default {
+    color: Black;
+}
+.hl-code {
+    color: Gray;
+}
+.hl-brackets {
+    color: Olive;
+}
+.hl-comment {
+    color: Orange;
+}
+.hl-quotes {
+    color: Darkred;
+}
+.hl-string {
+    color: Red;
+}
+.hl-identifier {
+    color: Blue;
+}
+.hl-builtin {
+    color: Teal;
+}
+.hl-reserved {
+    color: Green;
+}
+.hl-inlinedoc {
+    color: Blue;
+}
+.hl-var {
+    color: Darkblue;
+}
+.hl-url {
+    color: Blue;
+}
+.hl-special {
+    color: Navy;
+}
+.hl-number {
+    color: Maroon;
+}
+.hl-inlinetags {
+    color: Blue;
+}
+.hl-main { 
+    background-color: White;
+}
+.hl-gutter {
+    background-color: #999999;
+    color: White
+}
+.hl-table {
+    font-family: courier;
+    font-size: 12px;
+    border: solid 1px Lightgrey;
+}

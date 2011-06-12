@@ -1,0 +1,374 @@
+<h1>Smaller Components</h1>
+
+<p>After removing as many HTTP requests as possible from your waterfall, it's time to take a look at what's left. The next step is to make sure that the components you do send over the network are as small as they can be. This not only makes your pages load faster, but also lowers your bandwidth bill (as well as the user's). The ways to put your components on a file-size diet include:
+
+<ul>
+  <li>Compression and minification of text-based files such as scripts and styles
+  <li>Recompression of certain types of downloadable files
+  <li>Using zero-body components
+</ul>
+
+<p>In this chapter we'll look at reducing sizes of common file types used on the web, with the exception of images. Images are discussed in detail in the next chapter. 
+
+<h2>Compressing Text Components</h2>
+
+<p>The easiest and at the same time quite effective performance optimization is to enable compression for all plain text components. It's almost a crime if you don't do it. It doesn't cost any development time, because you're not changing even a single line of code. It's just a simple flip of a switch in your server configuration with surprisingly good results. Let's take a look at how this magic works.
+
+<p>Virtually all browsers in use today support compression. Instead of sending the HTML code for a page as-is, you can tell the server to compress it first and send it in the much smaller compressed form over the network. The browser receives the compressed file, decompresses it and renders it on the screen. It may look like extra work, but it's well worth it. The time it takes to compress on the server and decompress on the client is negligible compared to the time saved by having fewer bytes travel across the wire.
+
+<p>On average, compression will save you a staggering 70% of the file size across all text-based components.
+
+<h3>Gzipping</h3>
+
+<p>Later in the book as well as in other books and blogs you'll encounter the terms gzip or gzipping as synonyms for compression. That's because gzip (pronounced gee-zyp) is the most popular compression algorithm used in HTTP file transfers.
+
+<h3>What to compress?</h3>
+
+<p>It's best to compress any text-based file, meaning any component that you can open in a text editor and read its contents. That includes:
+
+<ul>
+  <li>HTML
+  <li>CSS
+  <li>JavaScript
+  <li>Any XML file including RSS and Atom feeds, SVG graphics, IE's .htc files, DTD (Document Type Definition) and basically anything else that ends in *ML
+  <li>Font files - .ttf, .otf. Some font files in .eot format may be already compressed but that's rare, so enable compression them too. The only font file exception is .woff; it's a compressed format and there's no need to enable server compression or it.
+  <li>Icon (.ico) files - you can't read these in a text editor but they do compress well. The .ico (just like .bmp) is an uncompressed image format.
+  <li>JSON responses from web service or Ajax calls
+  <li>Plain text (.txt) files
+  <li>... and pretty much any file that's not binary
+</ul>
+
+<p>Files that shouldn't be compressed by the server are those that are already in compressed formats such as JPEG and PNG images, SWF files, PDF documents, Zip file downloads and so on.
+
+<div class="sidebar"><h4>When in doubt</h4>
+
+<p>If you're wondering if a specific file type uses compression, just try to zip it locally on your computer using, for example, WinZip or Control+click &gt; Compress on Mac. If the resulting zip file is smaller by at least 20-30%, you should be using server compression to send files of this type over the network.</p>
+
+</div>
+
+<h3>How to turn on compression?</h3>
+
+<p>In order to enable compression you don't have to do anything to the files manually. You let your server do it for you. The most popular web server is Apache and that's probably what you're using. Even if you don't have full control over your server configuration, most hosting providers will offer you the ability to tweak configuration via <code>.htaccess</code> files. 
+
+<p class="sidebar">The file <code>.htaccess</code> is just a specially named file that sits in the directory for which you want to override the Apache configuration. In our case the <code>.htaccess</code> will sit in the root web directory and therefore apply to all the sub-directories, meaning to the whole web site.</p>
+
+<p>In the previous chapter we talked about adding <code>Expires</code> headers to an <code>.htaccess</code> file. Now let's add some more instructions. You need to list the component types of the files you want Apache to compress for you:
+
+  <div class="hl-main"><pre><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">html</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">plain</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">xml</span><span class="hl-code">
+  </span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">css</span><span class="hl-code"> 
+  </span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">javascript</span><span class="hl-code">
+  </span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">x</span><span class="hl-code">-</span><span class="hl-identifier">javascript</span><span class="hl-code">
+  </span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">javascript</span><span class="hl-code">
+  </span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">json</span></pre></div>
+
+<p>Another way to specify which files the server should compress is to list file extensions, like so:</p>
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">FilesMatch</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">\.(js|css|ttf|eot|otf|svg)$</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+SetOutputFilter DEFLATE
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">FilesMatch</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>And you can mix and match the two ways.
+
+<p>If you're not sure about the content type of an element, you can simply peek into the HTTP response headers. For example OTF font files are often served with <code>text/plain</code> content type. But on <b>Figure 4.1.</b> you can see a screenshot of Firebug's Net panel showing how an .otf file on the popular blog snook.ca is served with a not so straightforward content type. If this is your server, you can enable compression for .otf files using:
+
+<div class="hl-main"><pre><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">vnd</span><span class="hl-code">.</span><span class="hl-identifier">oasis</span><span class="hl-code">.</span><span class="hl-identifier">opendocument</span><span class="hl-code">.</span><span class="hl-identifier">formula</span><span class="hl-code">-</span><span class="hl-identifier">template</span></pre></div>
+
+<p>
+  <img src="../images/04.01.snook.ca.png">
+  <div class="caption"><em>Figure 4.1.</em> Less-than-ordinary content type for OTF font files</div>
+</p>
+
+<p>If your site is running on Apache before version 2 or your unfriendly host doesn't allow any access to configuration, not all is lost. You can make PHP (or another server-side language) do the gzipping for you. It's not ideal, because (architecturally speaking) you'll have your application layer handle the task of the server layer, but the gzip benefits are so pronounced that it's worth the try. 
+
+<h3>Did it work?</h3>
+
+<p>After you setup your server configuration, how can you tell if it worked? The easiest way is to simply take note of the file sizes of the HTML, CSS or JavaScript. If these components are suddenly much lighter, than it worked. To make sure, you can open Firebug's Net panel or load the page in WebPageTest and check the HTTP headers.
+
+<p>
+  <img src="../images/04.02.gzip.png">
+  <div class="caption"><em>Figure 4.2.</em> Headers for a compressed component as seen in Firebug's Net Panel</div>
+</p>
+
+<b>Figure 4.2.</b> shows a view of Net panel showing a properly compressed stylesheet. You can notice that in the <em>request</em> there is the header:
+
+<div class="hl-main"><pre><span class="hl-code">Accept-Encoding: </span><span class="hl-identifier">gzip</span><span class="hl-code">, </span><span class="hl-identifier">deflate</span></pre></div>
+
+<p>With this header the browser informs the server that it (the browser) can handle encoded files that use either deflate or gzip encoding.
+
+<p>Then the server sends the CSS together with the <em>response</em> header:
+
+<div class="hl-main"><pre><span class="hl-code">Content-Encoding: </span><span class="hl-identifier">gzip</span></pre></div>
+
+<p>That's as if the server is saying, "Here's your file and by the way, it's compressed with gzip".
+
+<p>If the <code>Content-Encoding</code> is in the response headers coming from your server, that means you set it up properly. If you think you did everything right and it still doesn't work, the first thing to do is check if the browser is indeed sending the <code>Accept-Encoding</code> header. Sometimes, albeit rarely, your browser may be at fault.
+
+<p>Another response header to look for is the <code>Vary</code> header. It should look like so:
+
+<div class="hl-main"><pre><span class="hl-code">Vary: </span><span class="hl-identifier">Accept-Encoding</span></pre></div>
+
+<p>Its role is to instruct proxy servers that sit between the server and the browser (such as the client's ISP) to cache and serve the version of the page depending on the <code>Accept-Encoding</code> header. Otherwise a browser that doesn't support gzip may receive the cached response from the request made by another client of the ISP, which supports gzip. Apache will add the <code>Vary</code> header for you automatically, but if it doesn't, you can do it yourself using the following line in your <code>.htaccess</code>:
+
+<div class="hl-main"><pre><span class="hl-identifier">Header</span><span class="hl-code"> </span><span class="hl-identifier">append</span><span class="hl-code"> </span><span class="hl-identifier">Vary</span><span class="hl-code"> </span><span class="hl-identifier">Accept-Encoding</span></pre></div>
+
+<p>Keep in mind that very small files will not be compressed. "Small" according to Apache's default settings means fewer than 500 bytes. The reason is that the overhead of the compression is not worth the benefit. Really tiny files may even end up larger after compression. So when debugging your setup make sure you're looking at a file that is big enough. 
+
+<h3>Drawbacks and browser quirks</h3>
+
+<p>As you can imagine there are certain costs associated with the server compressing the response and the browser uncompressing it. But the costs are negligible compared to the benefits you get. Sometimes under heavy traffic you may see your server stop gzipping for a while although it's properly configured to do so. Apache will stop compressing automatically in order to save processor time under heavy load.
+
+<p>There are also some browser quirks. IE6 service pack 1 has problems with decompression although it claims that it can handle it. This was fixed quickly with service pack 2 and you can ignore this edge case. But if you're extra paranoid you can disable gzip for this user agent; Apache allows configuration based on sniffing the <code>User-Agent</code> request header.
+
+<h2>Rezipping Downloadable Files</h2>
+
+<p>There's also a potential for file size reduction for common downloadable files, which are actually zip files with different file extensions. Some examples include:
+
+<ul>
+  <li>Newer MS Office documents - DOCX, XLSX, PPTX
+  <li>Open Office documents - ODT, ODP, ODS
+  <li>JARs (Java ARchives)
+  <li>XPI Firefox extensions
+  <li>XAP - Silverlight applications
+</ul>
+
+<p>These ZIP files in disguise are usually not compressed with the maximum compression in order to make the file saving operations faster. For example if you're writing a document in Word, the constant auto-save will not use a good compression level in order to make the auto-saves faster and not interfere with your work. But if you allow such downloads from your website, you can consider <em>recompressing</em> them with maximum compression.
+
+<p>For example if you take a Word .docx file and unzip it using a command line tool (or add a .zip extension to it and unzip with a GUI tool) you'll see that it contains a few directories with some XML and other files. Then you can zip again all the files you unzipped but this time using the maximum compression.
+
+<p>If you're using the command-line utilities zip and unzip you can do the following:
+
+<ol>
+  <li>Unzip the Word document into a new <code>tmp/</code> directory:
+
+<pre>unzip source.docx -d tmp/</pre></li>
+
+<li>Navigate to <code>/tmp</code> and zip all the files in it
+
+<pre>cd tmp/
+zip -9 -r ../result.docx tmp/</pre></li>
+</ol>
+
+
+<p>The results could be anywhere between 1 and 30% size reduction. It's definitely worth the try, especially since it's just a one-time operation you perform before the document goes live on your site. You could also automate the process, since it can be done by a command-line script. 
+
+<p>You can also consider a utility that provides even better compression than the popular zip and unzip, such as 7-zip.
+
+<h2>Minification</h2>
+
+<p>In addition to compression you can also <em>minify</em> certain component types such as scripts and stylesheets.
+
+<p>Minification means striping extra code from your programs that is not essential for the program's execution. The code you can safely strip is mainly comments and whitespace. Another part of minification is using the shortest possible syntax when there are several options. And, when safe to do so, minifiers can rename variables by using shorter names.
+
+<p>Minification is best done by a tool, because it's nearly impossible to do it properly by hand. Luckily there are quite a few tools available and most are free and open source.
+
+<h3>Minifying JavaScript</h3>
+
+<p>Some of the tools to minify JavaScript include:
+
+<ul>
+  <li>YUICompressor
+  <li>Google's Closure compiler
+  <li>Dojo ShrinkSafe
+  <li>Packer
+  <li>JSMin
+</ul>
+
+<p>All of these tools have web-based UI versions available so you can use the tools without installing them.
+
+<p>How much size reduction can you expect from minification? Running the popular jQuery library through all the tools mentioned above shows that savings are between 40% and 60% depending on the tool.
+
+<p>You should still gzip the minified JavaScript files before sending them to the server. Gzipping alone gives you about 70% savings and minification alone cuts script sizes with more than half. Both combined (minifying then gzipping) can make your scripts 85% leaner. 
+
+<p>So the recommendation is: do it. The concrete tool you use doesn't matter all that much, pick anything you're comfortable with and it will still give you the significant approximate 85% savings of gzipping and minification combined. 
+
+<p>The best part is that running the JavaScript code is not affected at all by minification, so you don't need to retest everything.
+
+<p class="sidebar">Google Closure compiler in "advanced" minification mode can actually break your JavaScript code because it optimizes the code very aggressively. A little deeper knowledge of the tool is required in order to benefit from the advanced minification. Otherwise you can safely use it in its default "simple" mode. </p>
+
+<h3>Minifying CSS</h3>
+
+<p>Another performance optimization you should do is to minify CSS, just like JavaScript. In addition to the usual stripping of comments and whitespaces, there are some slightly more advanced CSS minifications that could be done by your tool of choice. 
+
+<p>The minifier can use shorter syntax when applicable, for example stripping units of measure (e.g. px) when the value is 0 or using shorthands.</p>
+
+<div class="hl-main"><pre><span class="hl-comment">/*</span><span class="hl-comment"> before </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.test</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+</span><span class="hl-comment">/*</span><span class="hl-comment"> after </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.test</span><span class="hl-brackets">{</span><span class="hl-reserved">padding:</span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-brackets">}</span></pre></div>
+
+<p>Another task for the minifier is to use the shortest color syntax.</p>
+
+<div class="hl-main"><pre><span class="hl-comment">/*</span><span class="hl-comment"> before </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.module</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-reserved">background:</span><span class="hl-code"> </span><span class="hl-var">#ff00ff</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+</span><span class="hl-comment">/*</span><span class="hl-comment"> after </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.module</span><span class="hl-brackets">{</span><span class="hl-reserved">background:</span><span class="hl-var">#f0f</span><span class="hl-reserved"></span><span class="hl-brackets">}</span></pre></div>
+
+<p>The CSS minifiers are more restricted in what they can do compared to JavaScript minifiers. A CSS minifier cannot rename properties for example, so there's no way to make <code>text-decoration: underline</code> any shorter.
+
+<p>Some CSS minification tools include:
+
+<ul>
+  <li>YUI compressor - the same tool that does JavaScript minification also has a simple CSS minifier
+  <li>CSSTidy - a parser and an optimizer, it's more advanced because it parses and understands the structure of the stylesheets, allowing it to better use shorthand properties for example
+</ul>
+
+<p>In order to get an average figure of the potential benefits of CSS minification, I ran these tools on all stylesheets from csszengarden.com. The average savings were a little under 40%, so CSS minification is not as good as JavaScript minification. Gzip savings are still around 70% and the combined savings of gzipping the minified CSS result in 80% savings on average.
+
+<p>An important note here is that in CSS we deal with a lot of hacks. Since the browsers have parsing issues (which is what hacks often exploit), that makes the minifier's task even more complicated. Not only does it have to properly handle the CSS syntax (better than some browsers) but it must also understand and preserve the hacks that resolve browser bugs. Both YUICompressor and CSSTidy tolerate a lot of hacks, but probably not all, especially some of the more exotic ones, so approach CSS minification with care. Before trusting the minifier test it to make sure it supports the hacks you're likely to use.
+
+<div class="sidebar"><h4>Minifying inline code</h4><p>
+
+<p>An optimization that is easy to miss is minifying inline CSS and JavaScript code. That's usually not as easy as just running a tool on a static file, because the inline code is often generated by a server-side script. Still, if at all possible, try to do it, because the benefits are the same as with external code. Additionally the inline code is probably never cached because it's a part of a dynamic page. That makes it even more important to make sure the size is as small as it could be.</p></div>
+
+<h3>Minifying HTML</h3>
+
+<p>Minifying HTML is not as simple as minifying CSS and JavaScript. Whitespace sometimes affects display in certain browsers. Comments may have a special meaning (e.g. conditional comments). Still there are sites that minify the HTML, for example Google search and Yahoo! Search.
+
+<p>Due to the challenges of minifying HTML, it's usually not safe to let a tool do it for you automatically. Additionally, most of the pages on the web are not static but are dynamically generated by a server-side scripts. One simple way to do HTML minification is to just make sure you're not creating white space when producing HTML in your server scripts. That, of course, makes HTML harder to read, but with modern DOM inspectors such as Firebug, "View Source" is rarely used, so unreadable HTML will not often be an issue.
+
+<p>Not creating whitespace and comments is the easiest HTML minification and often has the biggest benefit. But if you are really determined to produce the lightest HTML possible, there are more options. 
+
+<div class="sidebar"><h4>Don't try this at home</h4>
+
+<p>Before we dive into low-level HTML minification, a word of warning: these are micro-optimizations, they are high risk and low benefit. Try one of your pages in a minification tool to see the potential benefits from optimizing one page. Only if you see you have a lot to gain should you heavily invest in minifying whole sites.</p></div>
+
+<p>Let's see some options for producing minimal HTML code.
+
+<h4>HTML5 doctype</h4>
+
+<p>The HTML5 doctype is much shorter than previous HTML and XHMTL versions. It's simply:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">doctype</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<h4>Stripping optional closing tags</h4>
+
+<p>There are a number of HTML tags, which the standard allows to be left unclosed. Care needs to be taken, but you can often omit many closing tags such as:
+
+<ul>
+  <li>Structure tags: 
+    <div class="hl-main"><pre><span class="hl-brackets">&lt;/</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span></pre></div></li>
+  <li>Lists: 
+    <div class="hl-main"><pre><span class="hl-brackets">&lt;/</span><span class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dd</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">dt</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">option</span><span class="hl-brackets">&gt;</span></pre></div></li>
+  <li>Paragraph: 
+    <div class="hl-main"><pre><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></pre></div></li>
+  <li>Table tags: <div class="hl-main"><pre><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span class="hl-brackets">&gt;</span><span class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span class="hl-brackets">&gt;</span></pre></div></li>
+</ul>
+
+<h4>Using relative links</h4>
+
+<p>There's no reason to repeat the domain in all internal links. This tag:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">http://example.org/page.html</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>...is shorter when written as:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">a</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">/page.html</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<h4>Attribute quotes</h4>
+
+<p>Quotes around attributes are optional when there's no white space in the attribute values. Therefore this tag:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">intro body</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">myp</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>... can be written as:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">intro body</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-var">myp</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>Additionally, when you do have a quote, the space after it is optional:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">intro body</span><span class="hl-quotes">&quot;</span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-var">myp</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<h4>Boolean values</h4>
+
+<p>Boolean values that are required in XHTML can be skipped in HTML, e.g.
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">disabled</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">disabled</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>... could be:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">disabled</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>Also
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">selected</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">selected</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>... could be:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">option</span><span class="hl-code"> </span><span class="hl-var">selected</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<h4>Default attributes</h4>
+
+<p>Some attributes have default values and don't need to be specified again. Examples:</p>
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-code"> </span><span class="hl-var">method</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">get</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">language</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">javascript</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>These can simply become:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>As you can see, most of these HTML minification techniques would require you to edit static pages, server-side code or code in templates and are not easy to do safely. Combined with the relatively small benefits, these techniques should be used carefully, if at all.
+
+<h3>Minifying XML and Feeds</h3>
+
+<p>Minifying RSS feeds and other XML documents is much safer than minifying HTML, as it's OK to strip all unneeded white space in XML. Since these documents are usually generated by a script and not written by hand, you don't need to use a minifier tool. You can simply make sure that there are no white spaces produced by your XML-generating scripts. 
+
+<h3>15% uncompressed traffic</h3>
+
+<p>If minification only adds a minor benefit compared to the benefits of serving compressed content, you may wonder if it's worthwhile. While even small savings do add up, a stronger reason is that as many as 15% of all users will never receive compressed content.  
+
+<p>There are various reasons for the lack of gzip support:
+
+<ul>
+  <li>IE6 behind a proxy switches to HTTP1.0 and doesn't send the <code>Accept-Encoding</code> header at all
+  <li>Other more ancient browsers don't support gzip, although their number is negligible
+  <li>A number of firewalls and anti-virus software choose not to deal with compression when monitoring your network traffic. That's why they hack the outgoing requests from the browser and modify the <code>Accept-Encoding</code> to make it invalid, e.g.
+</ul>
+<pre>
+Accept-Encoding: <b>xxxx</b>, defl<b>xxx</b>
+Accept-En<b>X</b>oding: gzip, deflate</pre>
+
+<p>Without a valid indication that the browser supports compression, the server sends the response in plain test. That's why a significant number of users never get a compressed response, although their browsers are often perfectly capable of supporting it.
+
+<p>In conclusion: minification helps. Not only because compressing minified responses makes even smaller files, but also because in 15% of all page views there is no compression support, despite your best efforts.
+
+<h2>204 No Content</h2>
+
+<p>When talking about reducing the size of components, the smallest component you can ever have is the one that has no body, only headers. This is known as a <code>204 No Content</code> response and is mainly useful for logging, tracking, or any other type of request where you need to send something to the server, but don't really need a response.
+
+<p>Often people use 1x1 GIFs for logging and tracking, but that means still sending around a hundred bytes for no reason. 
+
+<p>The way to send a 204 response from PHP is simply:</p>
+
+<div class="hl-main"><pre><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
+</span><span class="hl-identifier">header</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">HTTP/1.0 204 No Content</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-comment">//</span><span class="hl-comment"> the rest of the logging logic...</span><span class="hl-comment"></span><span class="hl-code">
+</span><span class="hl-inlinetags">?&gt;</span></pre></div>
+
+<p>For an example in the wild, see <b>Figure 4.3</b>, which shows how Google search uses 204 responses for logging purposes. Note also the <code>Content-Length</code> header, which contains the size of the component's body in bytes. In the case of 204 responses it has the value of 0.
+
+<p>
+  <img src="../images/04.03.no content.png">
+  <div class="caption"><em>Figure 4.3.</em> Two requests on Google search returning <code>204 No Content</code> responses.</div>
+</p>
+
+<h2>Summary</h2>
+
+<p>In this chapter you learned about:
+
+<ul>
+  <li>Server-side compression - instructing your server to gzip plain text responses before sending them. Enabling compression gives an average of 70% size reduction and should be done for JavaScripts, Stylesheets, HTML, XML and any other file types that are not already compressed
+  <li>Recompression - some downloadable files such as Word DOCX are actually ZIP files with a different extension. They are usually not compressed at the best compression levels, so you can save up to 30% by recompressing them with highest compression.
+  <li>Code minification - using widely available tools that strip whitespace, comments and choose the shortest syntax possible gives you 50-60% savings with JavaScript code and up to 40% for CSS.	
+  <li><code>204 No Content</code> - the world's smallest component with a body of 0 bytes can be used for logging and other purposes for which developers usually use a 1x1 GIF
+</ul>
+
+<p>While recompression and <code>204 No Content</code> may not be applicable to all sites, there's no excuse for not using compression and minification. Turning on compression is just a flip of a switch in Apache configuration. Minification is a one-off operation done by specialized tools, right before your site goes live. Both compression and minification will reduce components size as much as 85% (JavaScript) or 80% (CSS).
+

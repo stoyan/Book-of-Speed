@@ -1,0 +1,127 @@
+<h1>The Performance Business Case</h1>
+
+<p>No one likes to wait and we all hate slow pages. These are obvious, easily observable facts that don't need any proof. And, as you'll see later in Chapter 9, which discusses psychology of time and speed, waiting affects users in negative ways not only psychologically (they distrust the site, perceive it as lower quality) but also physiologically (they get irritable, their blood pressure increases). At the end, all the negative effects of slow web sites add up to loss of users, loss of revenue and brand damage.</p>
+
+<p>This chapter gives you practical industry examples and studies, which expose the effects of performance on the bottom line. If you're not convinced that speed means money, read on. If you're convinced but your boss or client needs a proof, this chapter gives you the tools to "sell" performance and demonstrate that <em>speed</em>, indeed, <em>matters</em>.</p>
+
+<h2>The Negative Effects of Slowing Down</h2>
+
+<p>Determining the relationship between page load speed and business objectives has been a long-standing task for many performance professionals. The way to demonstrate this relationship would be to use the technique called <em>spilt-testing</em> (also known as <em>A/B testing</em> or <em>bucket testing</em>). You serve a page to a portion (a bucket) of your users, while at the same time serve a version of the page which looks exactly the same but is optimized for speed (or intentionally slower) to a different bucket of users. Then you measure the results - revenue, number of new users, subscriptions, conversions, or whatever the specific goal of the site may be - in each of the buckets. Turns out it's not so easy to make such experiments in practice. Not because is technically challenging, but because no one wants to penalize the users by slowing down their experience or intentionally not implementing a speed improvement for all users. </p>
+
+<p>Luckily, some big names such as Google, Yahoo! and Microsoft have performed experiments and shared the data that shows the negative effects of slowing down pages.</p>
+
+<h3>A Study at Bing</h3>
+
+<p>Microsoft's live.com was just about to relaunch as the redesigned and rebranded bing.com. Since the old site was going away, Microsoft's researchers took the opportunity to perform an experiment. The experiment was slowing down the search result pages artificially before they ware sent to the user.</p>
+
+<p>They slowed down the page by 50, then 200 milliseconds and so on all the way to 2 seconds. The results showed a clear negative impact of the slower experience on all measured metrics - revenue, time to click, user satisfaction and others (<b>Figure 1.1.</b>)</p>
+
+<p>
+  <img src="../images/01.01.bing.png">
+  <div class="caption"><em>Figure 1.1.</em> Microsoft's artificial delay experiment. Dashes (-) mean no measurable changes.</div>
+</p>
+
+<p>In Microsoft's tests, the negative impact was changing roughly linearly to the amount of delay: the slower the page, the worse it got. They also noted that the "Time to Click" measurement was roughly double the artificial delay. That means that if your page is 1 second slower than it could be, your users will wait 2 more second before they interact with that page. During this time they might get distracted by other tasks or a phone ring for example and never complete the task you would like them to.</p>
+
+<p>And finally, talking about money, Microsoft's experiment showed that one-second delay meant about 3% less revenue and two seconds reduced the revenue by over 4%.</p>
+
+<h3>Google's Case</h3>
+
+<p>Similar experiments were done at Google and Yahoo! Search where the search results pages were artificially delayed. These experiments showed similar results. </p>
+
+<p>Google's experiment in particular highlighted two additional points:</p>
+
+<ol>
+  <li>The negative effect on business metrics <em>gets worse with time</em>. The users may tolerate the slower page during first few visits but will then search increasingly less and even abandon the site.</li>
+  <li>The second point is that even after removing the delay and ending the experiment, things didn't just immediately get back to normal. There was an <em>after-effect</em> of the experiment. Some of the users left the site for good, they moved to the competition and didn't return. This is why improving performance is important and also why testing with artificial delays it tricky and not recommended for longer periods of time.</li>
+</ol>
+
+<h3>Yahoo!'s Case</h3>
+
+<p>While the previous studies were only search-related, the negative impact of slow pages applies to most other types of pages and sites.</p> 
+
+<p>Another experiment was done at Yahoo! with a portal type of page. As soon as the page was delayed with 0.4 seconds, there was a <em>drop in the full-page traffic</em> by anywhere between 5 and 9% (depending on browser and user's connection speed). Drop in full-page traffic means that users were leaving the page before it's loaded completely (before the <code>onload</code> event fires). Users were either hitting the <strong>Back</strong> button or clicking away from the page refusing to wait for it to load.</p>
+
+<h3>AOL's Study</h3>
+
+<p>At AOL, the performance researchers performed another study: this time not using artificial delays, but simply plotting the relation between the speed of a page and the amount of traffic it gets.</p>
+
+<p>The results, shown on <b>Figure 1.2.</b>, show that there's a clear connection: the slower the page, the less views it gets during a user's visit.</p>
+
+<p>
+  <img src="../images/01.02.aol.png">
+  <div class="caption"><em>Figure 1.2.</em> AOL's study of the relation between page load time and traffic</div>
+</p>
+
+<p><b>Figure 1.2.</b> shows the results for one of AOL's properties called Moviefone, but similar results were observed across the other measured properties: AOL Money and Finance, AOL Sports, AOL Shopping.</p>
+
+<h2>The Positive Effects of Speeding Up</h2>
+
+<p>While the previous examples demonstrated the devastating effects of slowing down pages, it's even more interesting to see what happens when you successfully improve the page loading times.</p>
+
+<h3>60 Million More Downloads a Year</h3>
+
+<p>Mozilla's website has several dedicated <em>landing pages</em> for users interested in downloading Firefox. One of the most popular is a page designed for Internet Explorer users to download Firefox. This is a good case where one might think that page loading speed doesn't matter all that much. After all, if you end up on a download page, you're most likely already decided to download. Turns out it's not the case.</p>
+
+<p>Developers at Mozilla succeeded in speeding up the page with an average of 2.2 seconds, then used A/B testing and measured the two versions of the same page served to different users. The results were staggering: on the faster page <strong>conversions increased by 15.4%</strong>. That translates to over 10 million more downloads a year. After performing similar optimizations on the other top landing pages, Mozilla estimates 60 million more downloads per year, just because of improved page loading speed and no other changes to the page's design or functionality. </p>
+
+<h3>Shopzilla</h3>
+
+<p>The e-commerce site shopzilla.com also reported impressive benefits from speeding up their web site. After they rebuilt their site focusing on performance, the page loading times went from around 6 seconds down to 1.2 seconds. As a result a number of important metrics improved:</p>
+
+<ul>
+  <li>Conversion rates increased by 7 to 12%</li>
+  <li>Page views increased by 25%</li>
+  <li>The paid search traffic (from Search Engine Marketing) increased with 8% in US and 120% in UK</li>
+</ul>
+
+<p>At the same time, as a side effect of the performance improvements, they were able to reduce their costs of operation. The required infrastructure to support the site was cut in half and the estimated cost for each release dropped from thousands down to $80. </p>
+
+<p>In other words they saved money while at the same time making more money.</p>
+
+<h3>Speed and SEO</h3>
+
+<p>In April 2010 Google announced that the page speed becomes one of the ranking factors in the order of displaying search results. Since Google's aim is to serve the best results to the user, in this case they act as advocates to the user. Given two pages that offer the same level of matches to the user's query string, Google will display the faster one higher in the list of results, because this is actually the page that the user would prefer to see if given a choice.</p>
+
+<p>This means that performance is now an essential part of any SEO (Search Engine Optimization) effort. And everything you've read about the importance of SEO also applies to performance optimization.</p>
+
+<div class="sidebar">
+  <h4>SEM</h4>
+  <p>SEM (Search Engine Marketing) is a catch-all term encompassing both optimizing the site for the placement in the "organic" (unpaid) search results as well as placement in the sponsored listings which are usually on the top, bottom and right-hand side of search results (<b>Figure 1.3.</b>). As mentioned already, page speed affects Google's organic results since April 2010. But even before that, since 2008, the page speed has been a factor in Google's sponsored listings (AdWords). If the landing page after clicking on AdWords link loads faster, it's graded higher and it will be displayed further up in the list of sponsored links. The Shopzilla study is a proof of the SEM improvement in action.</p>
+</div>
+
+<p>
+  <img src="../images/01.03.semseo.png">
+  <div class="caption"><em>Figure 1.3.</em> Organic versus sponsored listings on Google's search results page</div>
+</p>
+
+<h2>Speed is a Feature</h2>
+
+<p>Page loading times affect the bottom line, the user satisfaction and happiness, SEO and many other factors of the success of a web site. It is therefore critical to no longer consider performance as an after-thought, a nice-to-have or a part of the post-launch activities. </p>
+
+<p>The best strategy is to consider speed as a feature just like one of the other features and cool widgets on your site.</p>
+
+<h3>A Requirement</h3>
+
+<p>Fred Wilson is a well-known VC (venture capitalist) and investor in companies such as Twitter, del.icio.us and Zynga. When he gives advice to startups, he puts speed as the number one in his "10 Golden Principles of Successful Web Apps". The companies in his portfolio are being monitored for loading speed and checked on a weekly basis. VC's have noticed that if a company's web site slows down, that usually coincides with slowing down the growth of the company's business.</p>
+
+<p>In his own words at Future of Web Apps conference in 2010: "There is real empirical evidence that substantiates the fact that speed is more than a feature. It's a requirement."</p>
+
+<h3>Google's #1 Feature</h3>
+
+<p>The reason Google includes page-loading time in search rankings, both paid and sponsored, is because they've noticed the effects of speed while building their own web sites. They claim that speed has been a differentiator since the very beginning of Google search. They've noticed the negative effects of slowing down, the positive effects of speeding up and have reportedly established speed as the most important feature of any product they build.</p>
+
+<p>Consider these two quotes that illustrate Google's position on building sites and applications optimized for speed:</p>
+
+<ul>
+  <li><em>"As a product manager you should know that speed is product feature number one."</em><br>
+      Larry Page, founder of Google, quoted by Urs H&#246;lzle at Velocity conference 2010</li>
+  <li><em>"Never underestimate the importance of fast"</em><br>
+      CEO Eric Schmidt announcing Google Instant in September 2010</li>
+</ul>
+
+<h3>Summary</h3>
+
+<p>This chapter provided you with data and quotes you may need to convince and train bosses, co-workers and clients about the importance of performance.</p>
+
+<p>As an additional tool, you can <a href="#">download a PowerPoint version of this chapter</a>. The presentation is unstyled so that it's easier to brand it with your own company template and present to anyone not yet convinced that speed matters.</p>

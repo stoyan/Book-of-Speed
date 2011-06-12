@@ -1,0 +1,94 @@
+<h1>The Life of Page 2.0</h1>
+
+<p>In its infancy, the Web was a document retrieval system, initially meant to serve static pages linked to each other. When you follow a link or type in the address bar of the browser, a new page is retrieved from the server and displayed. But in the world of Web 2.0 and post-Web 2.0 the user experience is often much different. With the addition of JavaScript, CSS and Ajax (<code>XMLHttpRequest</code>) pages are now much more like applications, rather than static documents.</p>
+
+<p>This chapter draws a parallel between the human life and the life of the contemporary web page (or web application), which we'll call Page 2.0. After considering the stages of Page 2.0's life, the chapter outlines the opportunities for speed optimizations in each stage. Further chapters dig into the details of how exactly to implement these optimizations and create web apps built for speed.</p>
+
+<h2>The Lifetime</h2>
+
+<p>Let's take a look at the different stages of the life of Page 2.0 as illustrated in <b>Figure 2.1.</b>  Plotted on the timeline you can see the key moments of the life of a page and how they correspond to the human life.</p>
+
+<p>
+  <img src="../images/02.01.life-of.png">
+  <div class="caption"><em>Figure 2.1.</em> The life of Page 2.0</div>
+</p>
+
+<h3>The Request</h3>
+
+<p>It all starts with the page <em>request</em>. Someone types in a URL or clicks a link. This is the moment of page's <em>conception</em>. We'll take a detailed look at what exactly are the requests and how they work in the next Chapter 3.</p>
+
+<h3>Generating HTML Document</h3>
+
+<p>Next follows the server's "pregnancy" with the page. In the beginning of the Web this phase simply consisted of server software looking for the requested static document (HTML file) on the hard drive and reading its contents. But things are more complicated now when most of the web sites use server-side programming language, such as PHP, Ruby, Python, Perl, to assemble the resulting document dynamically.</p>
+
+<p>The server-side program (often called a <em>server-side script</em>) first fetches data from somewhere, usually from a database or from web service calls to other servers. Then it crunches that data stitching together a string of HTML code, which is the new dynamically generated document.</p>
+
+<p>In this book we'll not worry about optimizing this part because, as we'll see, this is not where most of the time is usually spent.</p>
+
+<h3>The Response</h3>
+
+<p>Luckily if there are no complications, such as abortions or 404 Not Found pages, the pregnancy is over, and the <em>HTML document is sent</em> to the browser with the so-called HTTP response.</p>
+
+<p>The Page 2.0 is officially <em>born</em>.</p> 
+
+<h3>Waterfall</h3>
+
+<p>Then comes the <em>waterfall</em> phase when the browser downloads all the extra page components required by the page - images, scripts, styles... This phase ends with the onload event which the browsers fire after all components referred to in the HTML document are downloaded. This phase roughly corresponds to the <em>childhood</em> and teen years of our little human, which eventually <em>graduates</em> and becomes Ms. Page. The waterfall is the most important phase with regards to speed optimization. A major part of the book, starting with Chapter 3 is dedicated to optimizing this phase.</p>
+
+<h3>Settling Down</h3>
+
+<p>Right after <code>onload</code> comes a phase of <em>settling down</em> when the young Ms. Page is still search for her true self and identity. In technical terms this is the phase when JavaScript kicks in and starts performing some initialization work such as attaching event handlers to DOM elements, progressive enhancements, and maybe fetching a few more components or getting some additional data via Ajax calls.</p>
+
+<p>The page then eventually settles down. The status bar stops showing URLs that are being downloaded, browser indicators stop spinning, the cursor is no longer showing busy icon and the user gets the full interaction experience. You might say that the young adult is back from backpacking across Western Europe and Tibet and ready to get married, find a stable job and even own a barbecue grill.</p>
+
+<h3>User Interactions</h3>
+
+<p>Then life goes on, user interacts with the page. Some pages are mostly static and quite uneventful, for example a news article or a blog post, where the most exciting thing that happens is the occasional ad rotation. Others (think a webmail inbox) are full of ups and downs (uploads/downloads), always getting more data, updating and self-improving, always on the move.</p>
+
+<h3>Next Request</h3>
+
+<p>Sooner or later along comes the next request to end it all. The user clicks away from the page, making a new request and our Page is laid to rest after the browser has fired the <code>onunload</code> event.</p>
+
+<h2>When Is a Page Done?</h2>
+
+<p>While onload is a concrete event which should signify when the page is ready, it's not always that simple. Just like in real life is not quite clear when someone has reached maturity, if ever. The "user onload" is an undefined point in time that could happen before the <code>onload</code> and way after (<b>Figure 2.2</b>). It all depends on the type of page or application and also on the user.</p>
+
+<p>
+  <img src="../images/02.02.user-onload.png">
+  <div class="caption"><em>Figure 2.2.</em> "user onload" varies from one page to the next and from one user to the next  </div>
+</p>
+
+<p>An article page could be considered ready when the article title and content are ready. The user can read and therefore interact with the page, while images and ads are still being downloaded. Other times the onload may happen relatively quickly, but the actual page content is still being retrieved and the page is far from usable, hardly anything more than a splash screen shown (probably with the word "Loading..." accompanied by a spinning wheel animation) while the actual content is still to come.</p>
+
+<p>It also depends on the type of user, because some users will wait for the page to stop moving and shifting, and stand completely still. Others will scroll almost immediately, as soon as something shows up, which is a reflex in an answer to the fact that the top of the page often contains a banner ad or is simply the site's static header containing logo and navigation.</p>
+
+<p>It's up to you to figure out when is the "user onload" for your type of page and your type of user. In the lack of a better definition of user onload, the page <code>onload</code> event or the <code>DOMContentLoaded</code> are often a good approximation for performance measurement purposes.</p>
+
+<h2>The Road Ahead</h2>
+
+<p>Now that we've identified the most important phases of a page's lifetime, let's explore, at a high level, what can we do speed up each of those phases.</p>
+
+<p>Probably the first and most important place for optimization for most pages is the waterfall stage because that's where usually the time is spent. However, you can optimize the page in any of the other stages too. It's important to identify where the bottlenecks of a specific page are, then prioritize and focus on the areas where you'll see the greatest benefit.</p>
+
+<p>Below is a summary of the main optimization activities in each stage. Don't worry if some of these sound like a foreign language, they are described in details throughout the rest of the book.</p>
+
+<ul>
+  <li>Optimizations at <em>request time</em>, which include for example reducing the size of the requests by sending requests with fewer cookies or no cookies at all for static page components, such as images.</li>
+  <li>Optimizing the <em>waterfall</em> which can be divided into the following categories:</li>
+  <ul>
+    <li><strong>Fewer page components</strong>: it's obvious that your waterfall will be shorter when there are fewer items in it. In Chapter 3 you'll read about reducing the number of HTTP requests, merging components, using CSS sprites, using data URIs and MHTML, caching and implementing "never expires" policy to improve repeat visits, removing duplicates, near duplicates, and plain old 404 Page Not Found errors. In order to reduce the number of components you can also remove the ones that you don't need immediately and load them at the next stage of life - after onload (this is a technique known as lazy-loading)</li>
+    <li><strong>Smaller components</strong>: once you've removed or merged components, the ones that are left should be as small as they can be.  This means using compression, minification, zero body 204 components (these techniques are described in Chapter 4) and optimizing images (Chapter 5)</li>
+    <li><strong>Move out of the way</strong>: some components in the waterfall harm more than others and not everything happens in parallel. Loading components in parallel is good because more components are downloaded at the same time and the waterfall finishes earlier. Chapter 6 discusses non-blocking JavaScripts and CSS, as well as reducing the number of DNS lookups redirects.</li>
+    <li>If the waterfalls <strong>start early</strong> they will finish early. Chapter 9 describes flushing and HTTP chinked encoding to start the waterfall even before the page is born. (If you know it's going to be a baby girl, you can start hoarding the stuff in the pink color scheme)</li>
+  </ul>
+  <li>Optimizing the after-<code>onload</code> phase: you can help here too. For example, you can start some of the JavaScript initialization work after the  <code>DOMContentLoaded</code> event fires, you don't always need to wait for <code>onload</code>.</li>
+  <li>The <em>interactive</em> phase (the adult life phase) optimizations include tweaking CSS and JavaScript performance to make sure your user interactions are smoother, more pleasant, and the UI is responsive (Chapters 7 and 8)</li>
+  <li>Towards the <em>end-of-life</em> you can help too. The old tired page can leave a good inheritance by preloading some of the components that the children and grandchildren pages may need and speeding them up in advance.</li>
+</ul>
+
+<h2>Let's Do It</h2>
+
+<p>This chapter described the main parts stages of life in the contemporary average Page 2.0 together with the roadmap for improving the page speed at each stage.</p>
+
+<p>Now let's dive into the details.</p>
+
