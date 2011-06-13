@@ -193,7 +193,7 @@ a:active img {
     color: White
 }
 .hl-table {
-    font-family: courier;
+    font-family: courier, monospace;
     font-size: 12px;
     border: solid 1px lightgray;
 }
