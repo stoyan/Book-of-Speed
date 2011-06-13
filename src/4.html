@@ -337,7 +337,10 @@ Accept-En<b>X</b>oding: gzip, deflate</pre>
 
 <p>Without a valid indication that the browser supports compression, the server sends the response in plain test. That's why a significant number of users never get a compressed response, although their browsers are often perfectly capable of supporting it.
 
-<p>In conclusion: minification helps. Not only because compressing minified responses makes even smaller files, but also because in 15% of all page views there is no compression support, despite your best efforts.
+<p>In conclusion: minification helps. Not only because compressing minified responses makes even smaller files, but also because in 15% of all page views there is no compression support, despite your best efforts.</p>
+
+<div class="sidebar"><h4>Forcing Compression</h4>
+If you want to help these users that really <em>do</em> support compression but aren't telling you so, you can get a bit fancy and <a href="http://www.stevesouders.com/blog/2010/07/12/velocity-forcing-gzip-compression/">send them compressed content anyway</a>.  If you are careful and you check to make sure that the user's browser really <em>can</em> handle compression as described in Andy Martone's <a href="http://velocityconf.com/velocity2010/public/schedule/detail/14334">talk</a>, you can safely give gzipped content back to a number of these people.</div>
 
 <h2>204 No Content</h2>
 
