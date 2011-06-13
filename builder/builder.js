@@ -30,7 +30,7 @@ if (arguments[0] === 'chapter') {
   chap = '<ul class="toc">';
   headings.forEach(function(h) {
     h = h.split("\n");
-    num = h[0].match(/\d/)
+    num = h[0].match(/\d/);
     head = h[1].replace(/<h1>|<\/h1>/g, '');
     chap += '<li><a href="chapter' + num + '.html">Chapter ' + num + ': ' + head + '</a></li>';
   });
