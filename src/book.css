@@ -149,6 +149,9 @@ a:active img {
   color: white;
   text-decoration: none;
 }
+ #foo a {
+   color: white;
+ }
 .toc {
   list-style: none;
   padding: 0;
