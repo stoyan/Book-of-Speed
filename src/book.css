@@ -1,4 +1,4 @@
-html, body, .title {margin:0;padding:0;}
+html, body, .title, .bio h3 {margin:0;padding:0;}
 body {
   color: #433f3e; 
   font: 16px Helvetica, Arial, sans-serif;
@@ -26,6 +26,12 @@ pre {
   background: #eef0f0;
   
 }
+img {
+  border: 0;
+}
+.row {overflow: hidden;}
+.boat {float: left;}
+.ship {float: right;}
 .content {
   margin-left: auto;
   margin-right: auto;
@@ -64,30 +70,41 @@ pre {
 .sidebar p {
   margin-bottom: 0;
 }
+.header {
+  padding-top: 35px;
+  padding-left: 10px;
+}
 .footer {
   background: #095a5e;
   color: white;
   padding: 20px 50px;
 }
-
-.boat {float: left;}
-.ship {float: right;}
 #foo {
   padding-left: 30px; 
   font-weight: bold;
 }
-.row {overflow: hidden;}
 
+.bio {
+  width: 400px;
+  font-size: 12px;
+}
+.bio h3 {
+  color: #433F3E;
+  font-size: 16px;
+}
+.profile {
+  padding-right: 20px;
+}
 .subtitle, .author {
   color: #aeaeae; 
-  text-align: right;
   font-weight: bold;
   font-size: 19px;
-  padding-right: 165px;
-  letter-spacing: -0.3px;
+  padding-left: 7px;
   margin: 10px 0;
 }
 .author {
+  padding-right: 165px;
+  text-align: right;
   text-transform: uppercase;
   margin: 0;
 }
@@ -97,7 +114,6 @@ pre {
   font-weight: bold;
   letter-spacing: -4px;
   text-transform: uppercase;
-  text-align: right;
   display: block;
   text-decoration: none;
 }
@@ -119,7 +135,7 @@ a:active img {
   
 }
 .gently {
-  margin: 50px;
+  margin: 20px 50px 40px;
 }
 .footlinks {
   list-style: none;

@@ -63,6 +63,6 @@ function getTemplate(t, css, num, title, content) {
     ).
     replace(
       /==GIMMECHAPTER==/,
-      content.replace(/<img src="..\/images/g, '<img src="images')
-    );
+      content
+    ).replace(/<img src="..\/images/g, '<img src="images');
 }
