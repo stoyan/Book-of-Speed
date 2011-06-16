@@ -427,30 +427,11 @@ CSS filter called AlphaImageLoader.
 the underscore CSS hack to target only IE6, unset the background and provide the
 filter declaration:</p>
 
-<div class="hl-main"><pre><span class="hl-identifier">.classname</span><span
-class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
-  </span><span class="hl-reserved">background:</span><span class="hl-code">
-  </span><span class="hl-code">url</span><span class="hl-code">(</span><span
-  class="hl-code">image</span><span class="hl-code">.</span><span
-  class="hl-code">png</span><span class="hl-code">)</span><span
-  class="hl-reserved"></span><span class="hl-code">; _</span><span
-  class="hl-reserved">background:</span><span class="hl-code"> </span><span
-  class="hl-string">none</span><span class="hl-reserved"></span><span
-  class="hl-code">; _</span><span class="hl-reserved">filter:</span><span
-  class="hl-code">progid</span><span class="hl-code">:</span><span
-  class="hl-code">DXImageTransform</span><span class="hl-code">.</span><span
-  class="hl-code">Microsoft</span><span class="hl-code">.</span><span
-  class="hl-code">AlphaImageLoader</span><span class="hl-code">
-			  (</span><span class="hl-code">src</span><span
-			  class="hl-code">='</span><span
-			  class="hl-code">image</span><span
-			  class="hl-code">.</span><span
-			  class="hl-code">png</span><span class="hl-code">',
-			  </span><span class="hl-code">sizingMethod</span><span
-			  class="hl-code">='</span><span
-			  class="hl-string">crop</span><span
-			  class="hl-code">')</span><span
-			  class="hl-reserved"></span><span class="hl-code">;
+<div class="hl-main"><pre><span class="hl-identifier">.classname</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">background:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">image</span><span class="hl-code">.</span><span class="hl-code">png</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+  _</span><span class="hl-reserved">background:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-reserved"></span><span class="hl-code">;
+  _</span><span class="hl-reserved">filter:</span><span class="hl-code">progid</span><span class="hl-code">:</span><span class="hl-code">DXImageTransform</span><span class="hl-code">.</span><span class="hl-code">Microsoft</span><span class="hl-code">.</span><span class="hl-code">AlphaImageLoader</span><span class="hl-code">
+                          (</span><span class="hl-code">src</span><span class="hl-code">='</span><span class="hl-code">image</span><span class="hl-code">.</span><span class="hl-code">png</span><span class="hl-code">', </span><span class="hl-code">sizingMethod</span><span class="hl-code">='</span><span class="hl-string">crop</span><span class="hl-code">')</span><span class="hl-reserved"></span><span class="hl-code">;
 </span><span class="hl-brackets">}</span></pre></div>
 
 <p>Another solution to the problem involves the use of VML (Vector Markup
@@ -608,114 +589,30 @@ transparent, while the bottom 500px is fully transparent.
 
 <p>The HTML:</p>
 
-<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
-class="hl-reserved">p</span><span class="hl-code"> </span><span
-class="hl-var">class</span><span class="hl-code">=</span><span
-class="hl-quotes">&quot;</span><span class="hl-string">button</span><span
-class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span
-class="hl-code">button1</span><span class="hl-brackets">&lt;/</span><span
-class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span
-class="hl-code"> </span><span class="hl-brackets">&lt;</span><span
-class="hl-reserved">p</span><span class="hl-code"> </span><span
-class="hl-var">class</span><span class="hl-code">=</span><span
-class="hl-quotes">&quot;</span><span class="hl-string">button
-button2</span><span class="hl-quotes">&quot;</span><span
-class="hl-brackets">&gt;</span><span class="hl-code">button2</span><span
-class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span
-class="hl-brackets">&gt;</span><span class="hl-code"> </span><span
-class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span
-class="hl-code"> </span><span class="hl-var">class</span><span
-class="hl-code">=</span><span class="hl-quotes">&quot;</span><span
-class="hl-string">button button3</span><span
-class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span
-class="hl-code">button3</span><span class="hl-brackets">&lt;/</span><span
-class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span
-class="hl-code"> </span><span class="hl-brackets">&lt;</span><span
-class="hl-reserved">p</span><span class="hl-code"> </span><span
-class="hl-var">class</span><span class="hl-code">=</span><span
-class="hl-quotes">&quot;</span><span class="hl-string">button
-button4</span><span class="hl-quotes">&quot;</span><span
-class="hl-brackets">&gt;</span><span class="hl-code">button4</span><span
-class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span
-class="hl-brackets">&gt;</span><span class="hl-code"> </span><span
-class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span
-class="hl-code"> </span><span class="hl-var">class</span><span
-class="hl-code">=</span><span class="hl-quotes">&quot;</span><span
-class="hl-string">button button5</span><span
-class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span
-class="hl-code">button5</span><span class="hl-brackets">&lt;/</span><span
-class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span
-class="hl-code"> </span><span class="hl-brackets">&lt;</span><span
-class="hl-reserved">p</span><span class="hl-code"> </span><span
-class="hl-var">class</span><span class="hl-code">=</span><span
-class="hl-quotes">&quot;</span><span class="hl-string">button
-button6</span><span class="hl-quotes">&quot;</span><span
-class="hl-brackets">&gt;</span><span class="hl-code">button6</span><span
-class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span
-class="hl-brackets">&gt;</span></pre></div>
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button button2</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button2</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button button3</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button button4</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button4</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button button5</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button5</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button button6</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button6</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></pre></div>
 
 <p>The CSS:</p>
 
-<div class="hl-main"><pre><span class="hl-identifier">.button</span><span
-class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
-  </span><span class="hl-reserved">background-image:</span><span
-  class="hl-code"> </span><span class="hl-code">url</span><span
-  class="hl-code">(</span><span class="hl-code">mask</span><span
-  class="hl-code">.</span><span class="hl-code">png</span><span
-  class="hl-code">)</span><span class="hl-reserved"></span><span
-  class="hl-code">; </span><span
-  class="hl-reserved">background-position:</span><span class="hl-code">
-  </span><span class="hl-string">center</span><span
-  class="hl-reserved"></span><span class="hl-code">; </span><span
-  class="hl-reserved">color:</span><span class="hl-code"> </span><span
-  class="hl-var">white</span><span class="hl-reserved"></span><span
-  class="hl-code">; -</span><span
-  class="hl-reserved">moz-border-radius:</span><span class="hl-code">
-  </span><span class="hl-number">10</span><span class="hl-string">px</span><span
-  class="hl-reserved"></span><span class="hl-code">; -</span><span
-  class="hl-reserved">webkit-border-radius:</span><span class="hl-code">
-  </span><span class="hl-number">10</span><span class="hl-string">px</span><span
-  class="hl-reserved"></span><span class="hl-code">; </span><span
-  class="hl-reserved">border-radius:</span><span class="hl-code"> </span><span
-  class="hl-number">10</span><span class="hl-string">px</span><span
-  class="hl-reserved"></span><span class="hl-code">;
+<div class="hl-main"><pre><span class="hl-identifier">.button</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">background-image:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">mask</span><span class="hl-code">.</span><span class="hl-code">png</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+  </span><span class="hl-reserved">background-position:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-reserved"></span><span class="hl-code">;
+  </span><span class="hl-reserved">color:</span><span class="hl-code"> </span><span class="hl-var">white</span><span class="hl-reserved"></span><span class="hl-code">;
+  -</span><span class="hl-reserved">moz-border-radius:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">; 
+  -</span><span class="hl-reserved">webkit-border-radius:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">; 
+  </span><span class="hl-reserved">border-radius:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
-
-</span><span class="hl-identifier">.button</span><span
-class="hl-special">:hover</span><span class="hl-code"> </span><span
-class="hl-brackets">{</span><span
-class="hl-reserved">background-color:</span><span class="hl-code"> </span><span
-class="hl-var">#f29222</span><span class="hl-reserved"></span><span
-class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-identifier">.button2</span><span class="hl-code">
-</span><span class="hl-brackets">{</span><span
-class="hl-reserved">background-color:</span><span class="hl-code"> </span><span
-class="hl-var">#a41d1c</span><span class="hl-reserved"></span><span
-class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-identifier">.button3</span><span class="hl-code">
-</span><span class="hl-brackets">{</span><span
-class="hl-reserved">background-color:</span><span class="hl-code"> </span><span
-class="hl-var">#0f6406</span><span class="hl-reserved"></span><span
-class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-identifier">.button4</span><span class="hl-code">
-</span><span class="hl-brackets">{</span><span
-class="hl-reserved">background-color:</span><span class="hl-code"> </span><span
-class="hl-var">#333f79</span><span class="hl-reserved"></span><span
-class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-identifier">.button5</span><span class="hl-code">
-</span><span class="hl-brackets">{</span><span
-class="hl-reserved">background-color:</span><span class="hl-code"> </span><span
-class="hl-var">black</span><span class="hl-reserved"></span><span
-class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-identifier">.button6</span><span class="hl-code">
-</span><span class="hl-brackets">{</span><span
-class="hl-reserved">background-color:</span><span class="hl-code"> </span><span
-class="hl-code">orange</span><span class="hl-reserved"></span><span
-class="hl-code">; </span><span class="hl-reserved">color:</span><span
-class="hl-code"> </span><span class="hl-var">black</span><span
-class="hl-reserved"></span><span class="hl-code">;</span><span
-class="hl-brackets">}</span></pre></div>
-
+ 
+</span><span class="hl-identifier">.button</span><span class="hl-special">:hover</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#f29222</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.button2</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#a41d1c</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.button3</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#0f6406</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.button4</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#333f79</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.button5</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.button6</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-code">orange</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-reserved">color:</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span></pre></div>
 
 <p>As you can see, you can reuse the same image and create any number of
 colorful buttons. This can be especially useful for themes and social profile

@@ -94,53 +94,20 @@ to an <code>.htaccess</code> file. Now let's add some more instructions. You
 need to list the component types of the files you want Apache to compress for
 you:
 
-  <div class="hl-main"><pre><span
-  class="hl-identifier">AddOutputFilterByType</span><span class="hl-code">
-  </span><span class="hl-identifier">DEFLATE</span><span class="hl-code">
-  </span><span class="hl-identifier">text</span><span
-  class="hl-code">/</span><span class="hl-identifier">html</span><span
-  class="hl-code"> </span><span class="hl-identifier">text</span><span
-  class="hl-code">/</span><span class="hl-identifier">plain</span><span
-  class="hl-code"> </span><span class="hl-identifier">text</span><span
-  class="hl-code">/</span><span class="hl-identifier">xml</span><span
-  class="hl-code"> </span><span
-  class="hl-identifier">AddOutputFilterByType</span><span class="hl-code">
-  </span><span class="hl-identifier">DEFLATE</span><span class="hl-code">
-  </span><span class="hl-identifier">text</span><span
-  class="hl-code">/</span><span class="hl-identifier">css</span><span
-  class="hl-code"> </span><span
-  class="hl-identifier">AddOutputFilterByType</span><span class="hl-code">
-  </span><span class="hl-identifier">DEFLATE</span><span class="hl-code">
-  </span><span class="hl-identifier">application</span><span
-  class="hl-code">/</span><span class="hl-identifier">javascript</span><span
-  class="hl-code"> </span><span
-  class="hl-identifier">AddOutputFilterByType</span><span class="hl-code">
-  </span><span class="hl-identifier">DEFLATE</span><span class="hl-code">
-  </span><span class="hl-identifier">application</span><span
-  class="hl-code">/</span><span class="hl-identifier">x</span><span
-  class="hl-code">-</span><span class="hl-identifier">javascript</span><span
-  class="hl-code"> </span><span
-  class="hl-identifier">AddOutputFilterByType</span><span class="hl-code">
-  </span><span class="hl-identifier">DEFLATE</span><span class="hl-code">
-  </span><span class="hl-identifier">text</span><span
-  class="hl-code">/</span><span class="hl-identifier">javascript</span><span
-  class="hl-code"> </span><span
-  class="hl-identifier">AddOutputFilterByType</span><span class="hl-code">
-  </span><span class="hl-identifier">DEFLATE</span><span class="hl-code">
-  </span><span class="hl-identifier">application</span><span
-  class="hl-code">/</span><span class="hl-identifier">json</span></pre></div>
+<div class="hl-main"><pre><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">html</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">plain</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">xml</span><span class="hl-code">
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">css</span><span class="hl-code"> 
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">javascript</span><span class="hl-code">
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">x</span><span class="hl-code">-</span><span class="hl-identifier">javascript</span><span class="hl-code">
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">javascript</span><span class="hl-code">
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">json</span></pre></div>
+
 
 <p>Another way to specify which files the server should compress is to list file
 extensions, like so:</p>
 
-<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
-class="hl-reserved">FilesMatch</span><span class="hl-code"> </span><span
-class="hl-quotes">&quot;</span><span
-class="hl-string">\.(js|css|ttf|eot|otf|svg)$</span><span
-class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span
-class="hl-code"> SetOutputFilter DEFLATE </span><span
-class="hl-brackets">&lt;/</span><span class="hl-reserved">FilesMatch</span><span
-class="hl-brackets">&gt;</span></pre></div>
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">FilesMatch</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">\.(js|css|ttf|eot|otf|svg)$</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+SetOutputFilter DEFLATE
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">FilesMatch</span><span class="hl-brackets">&gt;</span></pre></div>
 
 <p>And you can mix and match the two ways.
 
@@ -151,15 +118,7 @@ screenshot of Firebug's Net panel showing how an .otf file on the popular blog
 snook.ca is served with a not so straightforward content type. If this is your
 server, you can enable compression for .otf files using:
 
-<div class="hl-main"><pre><span
-class="hl-identifier">AddOutputFilterByType</span><span class="hl-code">
-</span><span class="hl-identifier">DEFLATE</span><span class="hl-code">
-</span><span class="hl-identifier">application</span><span
-class="hl-code">/</span><span class="hl-identifier">vnd</span><span
-class="hl-code">.</span><span class="hl-identifier">oasis</span><span
-class="hl-code">.</span><span class="hl-identifier">opendocument</span><span
-class="hl-code">.</span><span class="hl-identifier">formula</span><span
-class="hl-code">-</span><span class="hl-identifier">template</span></pre></div>
+<div class="hl-main"><pre><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">vnd</span><span class="hl-code">.</span><span class="hl-identifier">oasis</span><span class="hl-code">.</span><span class="hl-identifier">opendocument</span><span class="hl-code">.</span><span class="hl-identifier">formula</span><span class="hl-code">-</span><span class="hl-identifier">template</span></pre></div>
 
 <p>
   <img src="../images/04.01.snook.ca.png"> <div class="caption"><em>Figure
@@ -189,17 +148,14 @@ check the HTTP headers.
 <b>Figure 4.2.</b> shows a view of Net panel showing a properly compressed
 stylesheet. You can notice that in the <em>request</em> there is the header:
 
-<div class="hl-main"><pre><span class="hl-code">Accept-Encoding: </span><span
-class="hl-identifier">gzip</span><span class="hl-code">, </span><span
-class="hl-identifier">deflate</span></pre></div>
+<div class="hl-main"><pre><span class="hl-code">Accept-Encoding: </span><span class="hl-identifier">gzip</span><span class="hl-code">, </span><span class="hl-identifier">deflate</span></pre></div>
 
 <p>With this header the browser informs the server that it (the browser) can
 handle encoded files that use either deflate or gzip encoding.
 
 <p>Then the server sends the CSS together with the <em>response</em> header:
 
-<div class="hl-main"><pre><span class="hl-code">Content-Encoding: </span><span
-class="hl-identifier">gzip</span></pre></div>
+<div class="hl-main"><pre><span class="hl-code">Content-Encoding: </span><span class="hl-identifier">gzip</span></pre></div>
 
 <p>That's as if the server is saying, "Here's your file and by the way, it's
 compressed with gzip".
@@ -213,8 +169,7 @@ rarely, your browser may be at fault.
 <p>Another response header to look for is the <code>Vary</code> header. It
 should look like so:
 
-<div class="hl-main"><pre><span class="hl-code">Vary: </span><span
-class="hl-identifier">Accept-Encoding</span></pre></div>
+<div class="hl-main"><pre><span class="hl-code">Vary: </span><span class="hl-identifier">Accept-Encoding</span></pre></div>
 
 <p>Its role is to instruct proxy servers that sit between the server and the
 browser (such as the client's ISP) to cache and serve the version of the page
@@ -224,11 +179,7 @@ another client of the ISP, which supports gzip. Apache will add the
 <code>Vary</code> header for you automatically, but if it doesn't, you can do it
 yourself using the following line in your <code>.htaccess</code>:
 
-<div class="hl-main"><pre><span class="hl-identifier">Header</span><span
-class="hl-code"> </span><span class="hl-identifier">append</span><span
-class="hl-code"> </span><span class="hl-identifier">Vary</span><span
-class="hl-code"> </span><span
-class="hl-identifier">Accept-Encoding</span></pre></div>
+<div class="hl-main"><pre><span class="hl-identifier">Header</span><span class="hl-code"> </span><span class="hl-identifier">append</span><span class="hl-code"> </span><span class="hl-identifier">Vary</span><span class="hl-code"> </span><span class="hl-identifier">Accept-Encoding</span></pre></div>
 
 <p>Keep in mind that very small files will not be compressed. "Small" according
 to Apache's default settings means fewer than 500 bytes. The reason is that the
@@ -355,42 +306,22 @@ your tool of choice.
 <p>The minifier can use shorter syntax when applicable, for example stripping
 units of measure (e.g. px) when the value is 0 or using shorthands.</p>
 
-<div class="hl-main"><pre><span class="hl-comment">/*</span><span
-class="hl-comment"> before </span><span class="hl-comment">*/</span><span
-class="hl-code"> </span><span class="hl-identifier">.test</span><span
-class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
-  </span><span class="hl-reserved">padding:</span><span class="hl-code">
-  </span><span class="hl-number">0</span><span class="hl-string">px</span><span
-  class="hl-code"> </span><span class="hl-number">0</span><span
-  class="hl-string">px</span><span class="hl-code"> </span><span
-  class="hl-number">0</span><span class="hl-string">px</span><span
-  class="hl-code"> </span><span class="hl-number">0</span><span
-  class="hl-string">px</span><span class="hl-reserved"></span><span
-  class="hl-code">;
+<div class="hl-main"><pre><span class="hl-comment">/*</span><span class="hl-comment"> before </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.test</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
-
-</span><span class="hl-comment">/*</span><span class="hl-comment"> after
-</span><span class="hl-comment">*/</span><span class="hl-code"> </span><span
-class="hl-identifier">.test</span><span class="hl-brackets">{</span><span
-class="hl-reserved">padding:</span><span class="hl-number">0</span><span
-class="hl-reserved"></span><span class="hl-brackets">}</span></pre></div>
+ 
+</span><span class="hl-comment">/*</span><span class="hl-comment"> after </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.test</span><span class="hl-brackets">{</span><span class="hl-reserved">padding:</span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-brackets">}</span></pre></div>
 
 <p>Another task for the minifier is to use the shortest color syntax.</p>
 
-<div class="hl-main"><pre><span class="hl-comment">/*</span><span
-class="hl-comment"> before </span><span class="hl-comment">*/</span><span
-class="hl-code"> </span><span class="hl-identifier">.module</span><span
-class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
-</span><span class="hl-reserved">background:</span><span class="hl-code">
-</span><span class="hl-var">#ff00ff</span><span class="hl-reserved"></span><span
-class="hl-code">; </span><span class="hl-brackets">}</span><span
-class="hl-code">
+<div class="hl-main"><pre><span class="hl-comment">/*</span><span class="hl-comment"> before </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.module</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-reserved">background:</span><span class="hl-code"> </span><span class="hl-var">#ff00ff</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+</span><span class="hl-comment">/*</span><span class="hl-comment"> after </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.module</span><span class="hl-brackets">{</span><span class="hl-reserved">background:</span><span class="hl-var">#f0f</span><span class="hl-reserved"></span><span class="hl-brackets">}</span></pre></div>
 
-</span><span class="hl-comment">/*</span><span class="hl-comment"> after
-</span><span class="hl-comment">*/</span><span class="hl-code"> </span><span
-class="hl-identifier">.module</span><span class="hl-brackets">{</span><span
-class="hl-reserved">background:</span><span class="hl-var">#f0f</span><span
-class="hl-reserved"></span><span class="hl-brackets">}</span></pre></div>
 
 <p>The CSS minifiers are more restricted in what they can do compared to
 JavaScript minifiers. A CSS minifier cannot rename properties for example, so
@@ -464,10 +395,7 @@ whole sites.</p></div>
 <p>The HTML5 doctype is much shorter than previous HTML and XHMTL versions. It's
 simply:
 
-<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
-class="hl-code">!</span><span class="hl-var">doctype</span><span
-class="hl-code"> </span><span class="hl-var">html</span><span
-class="hl-brackets">&gt;</span></pre></div>
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">doctype</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span></pre></div>
 
 <h4>Stripping optional closing tags</h4>
 
@@ -604,12 +532,14 @@ class="hl-reserved">form</span><span class="hl-code"> </span><span
 class="hl-var">method</span><span class="hl-code">=</span><span
 class="hl-quotes">&quot;</span><span class="hl-string">get</span><span
 class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span
-class="hl-code"> </span><span class="hl-brackets">&lt;</span><span
+class="hl-code"> </span>
+<span class="hl-brackets">&lt;</span><span
 class="hl-reserved">input</span><span class="hl-code"> </span><span
 class="hl-var">type</span><span class="hl-code">=</span><span
 class="hl-quotes">&quot;</span><span class="hl-string">text</span><span
 class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span
-class="hl-code"> </span><span class="hl-brackets">&lt;</span><span
+class="hl-code"> </span>
+<span class="hl-brackets">&lt;</span><span
 class="hl-reserved">script</span><span class="hl-code"> </span><span
 class="hl-var">language</span><span class="hl-code">=</span><span
 class="hl-quotes">&quot;</span><span class="hl-string">javascript</span><span
@@ -619,9 +549,11 @@ class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
 
 <div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
 class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span
-class="hl-code"> </span><span class="hl-brackets">&lt;</span><span
+class="hl-code"> </span>
+<span class="hl-brackets">&lt;</span><span
 class="hl-reserved">input</span><span class="hl-brackets">&gt;</span><span
-class="hl-code"> </span><span class="hl-brackets">&lt;</span><span
+class="hl-code"> </span>
+<span class="hl-brackets">&lt;</span><span
 class="hl-reserved">script</span><span
 class="hl-brackets">&gt;</span></pre></div>
 
@@ -655,8 +587,10 @@ receive compressed content.
   monitoring your network traffic. That's why they hack the outgoing requests
   from the browser and modify the <code>Accept-Encoding</code> to make it
   invalid, e.g.
-</ul> <pre> Accept-Encoding: <b>xxxx</b>, defl<b>xxx</b> Accept-En<b>X</b>oding:
-gzip, deflate</pre>
+</ul> 
+<pre>
+Accept-Encoding: <b>xxxx</b>, defl<b>xxx</b> 
+Accept-En<b>X</b>oding: gzip, deflate</pre>
 
 <p>Without a valid indication that the browser supports compression, the server
 sends the response in plain test. That's why a significant number of users never
@@ -690,14 +624,16 @@ sending around a hundred bytes for no reason.
 
 <p>The way to send a 204 response from PHP is simply:</p>
 
-<div class="hl-main"><pre><span class="hl-inlinetags">&lt;?php</span><span
-class="hl-code"> </span><span class="hl-identifier">header</span><span
+<div class="hl-main"><pre><span class="hl-inlinetags">&lt;?php</span>
+<span class="hl-identifier">header</span><span
 class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span
 class="hl-string">HTTP/1.0 204 No Content</span><span
 class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span
-class="hl-code">; </span><span class="hl-comment">//</span><span
+class="hl-code">;</span>
+<span class="hl-comment">//</span><span
 class="hl-comment"> the rest of the logging logic...</span><span
-class="hl-comment"></span><span class="hl-code"> </span><span
+class="hl-comment"></span><span class="hl-code"> </span>
+<span
 class="hl-inlinetags">?&gt;</span></pre></div>
 
 <p>For an example in the wild, see <b>Figure 4.3</b>, which shows how Google
