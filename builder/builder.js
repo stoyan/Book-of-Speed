@@ -47,7 +47,30 @@ print(getTemplate(
 ));
 
 function getTemplate(t, css, num, title, content) {
+  var numba = parseInt(num.match(/\d/), 10);
   load('builder/cssmin.js');
+
+  // paging jazz
+  if (num === 'TOC') {
+    t = t.replace(/==PREVCLASS==/, 'begone').
+          replace(/==NEXTHTML==/, 'chapter1.html').
+          replace(/"index.html" ==CURRENT==/, '"index.html" class="current"');
+  } else {
+    if (numba === 1) {
+      t = t.
+        replace(/==PREVHTML==/, 'index.html');
+    }
+    if (numba === 9) {
+      t = t.replace(/==NEXTCLASS==/, 'begone');
+    }
+    t = t .
+      replace(/==NEXTHTML==/, 'chapter' + (numba + 1) + '.html').
+      replace(/==PREVHTML==/, 'chapter' + (numba - 1) + '.html').
+      replace('"chapter' + numba + '.html" ==CURRENT==', '"chapter' + numba + '.html" class="current"');;
+  }
+  t = t.replace(/ ==PREVCLASS==| ==NEXTCLASS==| ==CURRENT==/g, '');
+  
+  // content
   return t.
     replace(
       /<link rel="stylesheet" href="book.css">/, 

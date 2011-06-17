@@ -52,7 +52,9 @@ img {
   color: white;
   font-size: 28px;
   padding: 10px 10px 4px 50px;
-
+  display: inline;
+  margin-right: 15px;
+  position: relative;
 }
 .chapter-title i {
   font-size: 20px;
@@ -79,8 +81,8 @@ img {
   color: white;
   padding: 20px 50px;
 }
-#foo {
-  padding-left: 30px; 
+.foo {
+  padding-right: 80px; 
   font-weight: bold;
 }
 
@@ -145,18 +147,79 @@ a:active img {
   padding: 0;
   letter-spacing: 0.3px;
 }
-.footlinks a {
+.footlinks a, .prevnext a {
   color: white;
   text-decoration: none;
 }
- #foo a {
-   color: white;
- }
 .toc {
   list-style: none;
   padding: 0;
 }
-
+.nav {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.nav li {
+  list-style: none;
+  display: inline;
+}
+.nav ul {
+  padding: 5px 0 0;
+  margin: 0;
+}
+.paging {
+  text-align: center;
+  font-size: 22px;
+  width: 400px;
+}
+.paging a {
+  color: #444;
+  text-decoration: none;
+  padding: 5px;
+}
+.paging a:hover, a.current {
+  background: #095A5E;
+  padding: 5px;
+  color: white;
+}
+.prevnext {
+  border-radius: 7px;
+  background: #095A5E;
+  font-size: 20px;
+  padding: 6px 7px 3px;
+  width: 210px;
+  text-align: center;
+}
+.begone {
+  visibility: hidden;
+}
+.menu {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  background: white;
+  border: 1px solid #095A5E;
+}
+.menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu a {
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  padding: 10px 20px;
+}
+.menu a:hover {
+  background: #efefef;
+  color: #095A5E;
+}
+.chapter-title:hover .menu,
+.menu:hover {
+  display: block;
+}
 
 /* hiliteme.com  */
 .hl-default {

@@ -21,7 +21,7 @@
       </div>
       <div class="ship">
         <iframe width="60" height="65"
-          src="http://platform.twitter.com/widgets/tweet_button.html?text=Book%20of%20Speed%20www.bookofspeed.com&amp;url=www.bookofspeed.com&amp;count=vertical&amp;via=stoyanstefanov"
+          src="http://platform.twitter.com/widgets/tweet_button.html?text=Book%20of%20Speed%20http://www.bookofspeed.com&amp;url=www.bookofspeed.com&amp;count=vertical&amp;via=stoyanstefanov"
           scrolling="no" frameborder="0" style="border:none; overflow:hidden;"
         ></iframe>
       </div>
@@ -39,48 +39,70 @@
     <p class="author">by Stoyan Stefanov</p>
   </div>
 
-  <h1><span class="chapter-title">==GIMMENUMBER== <i>&#9660;</i></span> ==GIMMETITLE==</h1>
+  <h1><div class="chapter-title">==GIMMENUMBER== <i>&#9660;</i>
+    <div class="menu">
+      <ul>
+      <li><a href="index.html" title="table of contents">TOC</a></li>
+      <li><a href="chapter1.html">chapter 1</a></li>
+      <li><a href="chapter2.html">chapter 2</a></li>
+      <li><a href="chapter3.html">chapter 3</a></li>
+      <li><a href="chapter4.html">chapter 4</a></li>
+      <li><a href="chapter5.html">chapter 5</a></li>
+      <li><a href="chapter6.html">chapter 6</a></li>
+      <li><a href="chapter7.html">chapter 7</a></li>
+      <li><a href="chapter8.html">chapter 8</a></li>
+      <li><a href="chapter9.html">chapter 9</a></li>
+      </ul>
+    </div>
+    </div> ==GIMMETITLE==</h1>
   <div class="text pad">
     ==GIMMECHAPTER==
   </div>
 </div>
 
-<!--div class="content">
+<div class="content">
   <div class="nav row pad">
-    <div class="boat"><a href="#">previous chapter</a></div>
-    <div class="boat">
+    <div class="boat prevnext ==PREVCLASS=="><a href="==PREVHTML==">previous chapter</a></div>
+    <div class="paging boat"><div>
       <ul>
-      <li><a href="#" title="table of contents">TOC</a></li>
-      <li><a href="#" title="intro">0</a></li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">6</a></li>
-      <li><a href="#">7</a></li>
-      <li><a href="#">8</a></li>
-      <li><a href="#">9</a></li>
+      <li><a href="index.html" ==CURRENT== title="table of contents">TOC</a></li>
+      <li><a href="chapter1.html" ==CURRENT==>1</a></li>
+      <li><a href="chapter2.html" ==CURRENT==>2</a></li>
+      <li><a href="chapter3.html" ==CURRENT==>3</a></li>
+      <li><a href="chapter4.html" ==CURRENT==>4</a></li>
+      <li><a href="chapter5.html" ==CURRENT==>5</a></li>
+      <li><a href="chapter6.html" ==CURRENT==>6</a></li>
+      <li><a href="chapter7.html" ==CURRENT==>7</a></li>
+      <li><a href="chapter8.html" ==CURRENT==>8</a></li>
+      <li><a href="chapter9.html" ==CURRENT==>9</a></li>
       </ul>
-    </div>
-    <div class="ship"><a href="#">next chapter</a></div>
+    </div></div>
+    <div class="ship prevnext ==NEXTCLASS=="><a href="==NEXTHTML==">next chapter</a></div>
   </div>
-</div-->
+</div>
 
 <div class="footer row">
   <div class="content">
     <div class="boat pad"><a href="index.html"><img src="../images/deco/cover.png" alt="cover"></a></div>
-    <div class="boat" id="foo">Written by Stoyan Stefanov. License: public domain. <a href="https://github.com/stoyan/Book-of-Speed/">Contribute via GitHub</a>.
+    <div class="boat foo">
+      <p>About the book</p>
       <ul class="footlinks">
-        <li><a href="http://phpied.com">phpied.com blog</a></li>
-        <li><a href="http://jspatterns.com">JavaScript patterns</a></li>
-        <li><a href="http://www.last.fm/music/Stoyan+Stefanov">Music on last.fm</a></li>
-        <li><a href="http://youtube.com/user/stoyanify">Videos</a></li>
-        <li><a href="http://givepngachance.com/">Give PNG a Chance</a></li>
-        <li><a href="http://perfplanet.com">Planet "Performance"</a></li>
-        <li><a href="http://blog.stoyanstefanov.com">personal blog</a></li>
+        <li>Public domain license</li>
+        <li><a href="https://github.com/stoyan/Book-of-Speed/">Contribute via GitHub</a></li>
+        <li><a href="http://phpied.com/book-of-speed">About, history, announcement</a></li>
       </ul>
     </div>
+    <div class="boat foo">
+      <p>More from Stoyan</p>
+      <ul class="footlinks">
+        <li><a href="http://www.perfplanet.com">Planet "Performance"</a></li>
+        <li><a href="http://www.sultansofspeed.com">Sultans of Speed</a></li>
+        <li><a href="http://givepngachance.com/">Give PNG a Chance</a></li>
+        <li><a href="http://phpied.com">phpied.com blog</a></li>
+        <li><a href="http://jspatterns.com">JavaScript patterns blog</a></li>
+        <li><a href="http://www.amazon.com/Stoyan-Stefanov/e/B002BLXYIG/">Amazon page</a></li>
+      </ul>
+    </div>    
   </div>
 </div>
 </body>
