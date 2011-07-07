@@ -9,7 +9,7 @@ images, scripts and styles, the page becomes lighter and therefore it should
 load faster. However having fewer components doesn't necessarily mean stripping
 features from the page. In this chapter (and the book) the assumption is that
 you have a page that needs to be optimized to load faster while keeping the
-exact same looks and the exact same features.
+exact same look and the exact same features.
 
 <p>In an effort to provide a deeper understanding of the art and science of
 performance optimization, this chapter goes into some technical details such as
@@ -24,7 +24,7 @@ and what could potentially be slowing it down. If you don't know that you'll be
 shooting in the dark and there's always the risk of wasting time and effort
 optimizing the parts that are already relatively fine.
 
-<p>It's also helpful to know how does the page loading process work in general -
+<p>It's also helpful to know how the page loading process works in general -
 from typing a URL into the browser to rendering a completely loaded page.
 
 <p>To help you visualize what's going on behind the scenes as the page loads,
@@ -142,7 +142,7 @@ help when it comes to the blue bars.
 
 <p>You've probably heard the humorous term "intertubes" used to describe the
 Internet infrastructure as series of tubes. This is incorrect, but it can still
-be used as a way to visualize of bandwidth. If you think of the dial-up modem
+be used as a way to visualize bandwidth. If you think of the dial-up modem
 connection as a regular pipe, then the broadband connection will be a <em>fat
 pipe</em> with a bigger diameter.
 
@@ -287,7 +287,7 @@ one would assume that the users almost always will be coming with a full cache.
 Turns out that that's not the case. About half the users will visit the site
 today and come back tomorrow with an empty cache.
 
-<p>Why so much empty cache experiences? It's due to various reasons: people
+<p>Why so many empty cache experiences? It's due to various reasons: people
 clear their caches, sometimes automatically on browser shutdown, or sometimes
 anti-virus programs do it too. Or the cache fills up and is partially flushed
 between visits. Most browsers have about 50Mb maximum cache space, which is not
@@ -330,7 +330,7 @@ contents of all other files, you end up with just one script tag:
 
 <p>And just like that you save three additional HTTP requests and make the page
 load faster. Chapter 6 has more details on optimizing JavaScript and will
-demonstrate that scripts files suffer from an additional browser behavior - they
+demonstrate that script files suffer from an additional browser behavior - they
 are all downloaded in sequence, slowing down the waterfall. Therefore it's
 especially important to make sure that the page requires as few script files as
 possible.
@@ -723,7 +723,7 @@ content. Now we talk about HTTP headers. Let's take a moment to see how it all
 fits together.
 
 <p>When a server needs to send a file, e.g. an image, to the browser, it finds
-the image on the disc, ads some meta information in the form of headers and
+the image on the disc, adds some meta information in the form of headers and
 creates an HTTP response that needs to reach the browser. This HTTP response is
 given to the TCP subsystem, which is also part of the server software. The TCP
 is responsible for splitting this HTTP response into packets and using the IP
@@ -781,7 +781,7 @@ book, starting right now with the Expires header.
 
 <h3>Expires Headers</h3>
 
-<p>The Expires header is one of the important HTP headers when it comes to
+<p>The Expires header is one of the important HTTP headers when it comes to
 performance. It instructs the browsers how long a page or a page component could
 be stored in the cache (e.g. "burn after reading" or "keep for 7 years").
 
