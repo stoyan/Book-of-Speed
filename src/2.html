@@ -38,7 +38,7 @@ Chapter 3.</p>
 <p>Next follows the server's "pregnancy" with the page. In the beginning of the
 Web this phase simply consisted of server software looking for the requested
 static document (HTML file) on the hard drive and reading its contents. But
-things are more complicated now when most of the web sites use server-side
+things are more complicated now when most of the web sites use a server-side
 programming language, such as PHP, Ruby, Python, Perl, to assemble the resulting
 document dynamically.</p>
 
@@ -72,15 +72,15 @@ with Chapter 3 is dedicated to optimizing this phase.</p>
 <h3>Settling Down</h3>
 
 <p>Right after <code>onload</code> comes a phase of <em>settling down</em> when
-the young Ms. Page is still search for her true self and identity. In technical
-terms this is the phase when JavaScript kicks in and starts performing some
-initialization work such as attaching event handlers to DOM elements,
+the young Ms. Page is still in search for her true self and identity. In
+technical terms this is the phase when JavaScript kicks in and starts performing
+some initialization work such as attaching event handlers to DOM elements,
 progressive enhancements, and maybe fetching a few more components or getting
 some additional data via Ajax calls.</p>
 
 <p>The page then eventually settles down. The status bar stops showing URLs that
 are being downloaded, browser indicators stop spinning, the cursor is no longer
-showing busy icon and the user gets the full interaction experience. You might
+showing a busy icon and the user gets the full interaction experience. You might
 say that the young adult is back from backpacking across Western Europe and
 Tibet and ready to get married, find a stable job and even own a barbecue
 grill.</p>
@@ -102,9 +102,9 @@ browser has fired the <code>onunload</code> event.</p>
 <h2>When Is a Page Done?</h2>
 
 <p>While onload is a concrete event which should signify when the page is ready,
-it's not always that simple. Just like in real life is not quite clear when
+it's not always that simple. Just like in real life it is not quite clear when
 someone has reached maturity, if ever. The "user onload" is an undefined point
-in time that could happen before the <code>onload</code> and way after
+in time that could happen before the <code>onload</code> or way after
 (<b>Figure 2.2</b>). It all depends on the type of page or application and also
 on the user.</p>
 
@@ -136,7 +136,7 @@ good approximation for performance measurement purposes.</p>
 <h2>The Road Ahead</h2>
 
 <p>Now that we've identified the most important phases of a page's lifetime,
-let's explore, at a high level, what can we do speed up each of those
+let's explore, at a high level, what we can do to speed up each of those
 phases.</p>
 
 <p>Probably the first and most important place for optimization for most pages
@@ -175,7 +175,7 @@ details throughout the rest of the book.</p>
       Chapter 6 discusses non-blocking JavaScripts and CSS, as well as reducing
       the number of DNS lookups redirects.</li> <li>If the waterfalls
       <strong>start early</strong> they will finish early. Chapter 9 describes
-      flushing and HTTP chinked encoding to start the waterfall even before the
+      flushing and HTTP chunked encoding to start the waterfall even before the
       page is born. (If you know it's going to be a baby girl, you can start
       hoarding the stuff in the pink color scheme)</li>
     </ul>
@@ -193,7 +193,7 @@ details throughout the rest of the book.</p>
 
 <h2>Let's Do It</h2>
 
-<p>This chapter described the main parts stages of life in the contemporary
+<p>This chapter described the main stages of life in the contemporary
 average Page 2.0 together with the roadmap for improving the page speed at each
 stage.</p>
 
