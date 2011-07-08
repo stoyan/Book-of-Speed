@@ -11,8 +11,8 @@ You'll also learn about the two major types of PNG: palette (PNG8) and truecolor
 <p>Images are an important part of most web pages. Even though we now see
 increasingly more JavaScript-heavy fat-client web applications, the weight of
 the images still contributes 40-50% of the total page weight on average. This
-means that reducing image file sizes helps significantly towards the goal of
-serving fast pages.
+means that reducing image file sizes helps significantly towards achieving the
+goal of serving fast pages.
 
 <h2>Lossless Optimization</h2>
 
@@ -46,8 +46,8 @@ exactly the same as the originals.
 The PNG format also comes in two main variations - PNG8 (a.k.a. <em>palette</em>
 or <em>indexed</em> PNG) and PNG24 (a.k.a. <em>truecolor</em> or
 <em>PNG32</em>). PNG8 has all of the features of GIF plus more (and minus
-animation) and it almost always yields smaller file size. There is no reason to
-use GIF anymore; you should convert all non-animated GIFs to PNG8 and benefit
+animation) and it almost always yields a smaller file size. There is no reason
+to use GIF anymore; you should convert all non-animated GIFs to PNG8 and benefit
 from the file size savings.
 
 <p>Let's take a look at the tools available for losslessly optimizing each of
@@ -108,7 +108,7 @@ below).</p></div>
 
 <p>You should convert all GIFs to PNG except for the animated GIFs. Although
 there are PNG options for animations, most notably the APNG format, they are not
-yet widely supported. So for simple "loading…" and other animations, you can
+yet widely supported. So for simple "loading..." and other animations, you can
 keep the GIFs, but optimize them.
 
 <p>A tool called GIFSicle is a free option. You run it on the command line like:
@@ -143,13 +143,13 @@ JPEGTran.
 
 <p>The image meta data contains information such as the author of the photo,
 copyrights, date, time, geolocation the photo was taken and so on. You can see
-how some of this information may be useful and even required. But in many such,
-just for the purposes of viewing the image in a browser as part of a web page,
-much of that data is not needed. Additionally there's a lot of extra data that
-your users have no use for, data you didn't even intend to include, such as
-image software internal data, thumbnails of the actual image within the image
-and even audio. Why send all these extra bytes and slow down the user
-experience, when this information will never be used?
+how some of this information may be useful and even required. But for the
+purposes of viewing the image in a browser as part of a web page, much of that
+data is not needed. Additionally there's a lot of extra data that your users
+have no use for, data you didn't even intend to include, such as image software
+internal data, thumbnails of the actual image within the image and even audio.
+Why send all these extra bytes and slow down the user experience, when this
+information will never be used?
 
 <p>With JPEGTran you can strip all the meta information from an image. Other
 software, such as EXIFTool offer fine-grained control over the specific meta
@@ -510,7 +510,7 @@ software that does offer you to use alpha transparency in PNG8.</p>
 
 <p>Let's see a recipe of using Photopshop to create a truecolor alpha
 transparent PNG24 in a way that will allow you to convert it to a progressively
-enhanced PNG8 using the command lime tool PNGQuant. The end result is the image
+enhanced PNG8 using the command line tool PNGQuant. The end result is the image
 shown on <b>Figure 5.6.</b>
 
 <p>First, you create a button-like rounded corner rectangle using Photoshop's
@@ -657,8 +657,8 @@ technically, they are not part of the page. When you forget them, the browsers
 will still request them and your server will reply with a 404 Not Found page.
 Sites often have complex 404 pages, which query data and try to guess what the
 person might have had in mind when they came across the dead page. In case of
-missing favicons, all that work to create a 404 page is a waste, since it's ever
-displayed or used. So keep in mind to always have a favicon.
+missing favicons, all that work to create a 404 page is a waste, since it's
+never displayed or used. So keep in mind to always have a favicon.
 
 <p>
   <img src="../images/05.13.ysearch.png"> <div class="caption"><em>Figure

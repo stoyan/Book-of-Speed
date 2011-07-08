@@ -52,9 +52,9 @@ open in a text editor and read its contents. That includes:
   <li>HTML <li>CSS <li>JavaScript <li>Any XML file including RSS and Atom feeds,
   SVG graphics, IE's .htc files, DTD (Document Type Definition) and basically
   anything else that ends in *ML <li>Font files - .ttf, .otf. Some font files in
-  .eot format may be already compressed but that's rare, so enable compression
+  .eot format may be already compressed but that's rare, so enable compression for
   them too. The only font file exception is .woff; it's a compressed format and
-  there's no need to enable server compression or it.  <li>Icon (.ico) files -
+  there's no need to enable server compression for it.  <li>Icon (.ico) files -
   you can't read these in a text editor but they do compress well. The .ico
   (just like .bmp) is an uncompressed image format.  <li>JSON responses from web
   service or Ajax calls <li>Plain text (.txt) files <li>... and pretty much any
@@ -239,7 +239,7 @@ following:
 <pre>cd tmp/ zip -9 -r ../result.docx tmp/</pre></li> </ol>
 
 
-<p>The results could be anywhere between 1 and 30% size reduction. It's
+<p>The results could be anywhere between a 1 and 30% size reduction. It's
 definitely worth the try, especially since it's just a one-time operation you
 perform before the document goes live on your site. You could also automate the
 process, since it can be done by a command-line script.
@@ -658,7 +658,7 @@ body in bytes. In the case of 204 responses it has the value of 0.
   any other file types that are not already compressed <li>Recompression - some
   downloadable files such as Word DOCX are actually ZIP files with a different
   extension. They are usually not compressed at the best compression levels, so
-  you can save up to 30% by recompressing them with highest compression.
+  you can save up to 30% by recompressing them with the highest compression.
   <li>Code minification - using widely available tools that strip whitespace,
   comments and choose the shortest syntax possible gives you 50-60% savings with
   JavaScript code and up to 40% for CSS.  <li><code>204 No Content</code> - the
