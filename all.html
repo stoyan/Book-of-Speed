@@ -1,0 +1,2752 @@
+<!doctype html>
+<html>
+<head>
+ <title>Book of Speed</title>
+ <meta charset="UTF-8">
+ <style>html,body,.title,.bio h3{margin:0;padding:0}body{color:#433f3e;font:16px Helvetica,Arial,sans-serif}a{color:#095a5e}a:hover,.footlinks a:hover{color:#83a1ab;text-decoration:none}h1{font-size:32px;letter-spacing:-1px;margin-bottom:66px}h2{font-size:28px}h3{font-size:24px;color:#095a5e}h4{font-size:20px;margin:3px 0}code{border:1px solid #83a1ab;padding:0 .2em;background:#eef0f0}pre{padding:10px;background:#eef0f0}img{border:0}.row{overflow:hidden}.boat{float:left}.ship{float:right}.content{margin-left:auto;margin-right:auto;width:960px}.pad{margin:0 50px 50px}.text{padding-left:22px;border-left:34px #f2f2f2 solid;line-height:24px}.text p{margin-bottom:30px}.chapter-title{background:#095a5e;text-transform:uppercase;color:white;font-size:28px;padding:10px 10px 4px 50px;display:inline;margin-right:15px;position:relative}.chapter-title i{font-size:20px;position:relative;top:-2px}.caption{font-size:14px}.sidebar{border:1px solid #ddd;padding:10px 20px;background:#f2f2f2}.sidebar p{margin-bottom:0}.header{padding-top:35px;padding-left:10px}.footer{background:#095a5e;color:white;padding:20px 50px}.foo{padding-right:80px;font-weight:bold}.bio{width:400px;font-size:12px}.bio h3{color:#433f3e;font-size:16px}.profile{padding-right:20px}.subtitle,.author{color:#aeaeae;font-weight:bold;font-size:19px;padding-left:7px;margin:10px 0}.author{padding-right:165px;text-align:right;text-transform:uppercase;margin:0}.title{color:#095a5e;font-size:90px;font-weight:bold;letter-spacing:-4px;text-transform:uppercase;display:block;text-decoration:none}.title img{position:relative;top:7px}a.title:hover{color:#095a5e}a:hover img{opacity:.8}a:active img{-moz-transform:translate(400px,0) scale(0);-moz-transition:all 1s ease-in-out;-webkit-transform:translate(400px,0) scale(0);-webkit-transition:all 1s ease-in-out;-o-transform:translate(400px,0) scale(0);-o-transition:all 1s ease-in-out}.gently{margin:20px 50px 40px}.footlinks{list-style:none;font-size:14px;line-height:18px;font-weight:normal;padding:0;letter-spacing:.3px}.footlinks a,.prevnext a{color:white;text-decoration:none}.toc{list-style:none;padding:0}.nav{text-transform:uppercase;font-weight:bold}.nav li{list-style:none;display:inline}.nav ul{padding:5px 0 0;margin:0}.paging{text-align:center;font-size:22px;width:400px}.paging a{color:#444;text-decoration:none;padding:5px}.paging a:hover,a.current{background:#095a5e;padding:5px;color:white}.prevnext{border-radius:7px;background:#095a5e;font-size:20px;padding:6px 7px 3px;width:210px;text-align:center}.begone{visibility:hidden}.menu{display:none;position:absolute;z-index:2;width:100%;background:white;border:1px solid #095a5e}.menu ul{margin:0;padding:0;list-style:none}.menu a{text-decoration:none;font-size:20px;display:block;padding:10px 20px}.menu a:hover{background:#efefef;color:#095a5e}.chapter-title:hover .menu,.menu:hover{display:block}.hl-default{color:Black}.hl-code{color:Gray}.hl-brackets{color:Olive}.hl-comment{color:Orange}.hl-quotes{color:Darkred}.hl-string{color:Red}.hl-identifier{color:Blue}.hl-builtin{color:Teal}.hl-reserved{color:Green}.hl-inlinedoc{color:Blue}.hl-var{color:Darkblue}.hl-url{color:Blue}.hl-special{color:Navy}.hl-number{color:Maroon}.hl-inlinetags{color:Blue}.hl-main{background-color:White}.hl-gutter{background-color:#999;color:White}.hl-table{font-family:courier,monospace;font-size:12px;border:solid 1px lightgray}</style>
+</head>
+<body>
+
+<div class="content">
+  <div class="gently">
+    <p class="subtitle">The business, psychology and technology of high-performance web apps</p>
+    <a class="title" href="index.html">Book of Speed <img src="images/deco/turtle.png" alt="turtle"></a>
+    <p class="author">by Stoyan Stefanov</p>
+  </div>
+</div>
+  <h1 id="Chapter1" class="chapter-title">Chapter1 - The Performance Business Case</h1>
+  <div class="text pad">
+    
+<p>No one likes to wait and we all hate slow pages. These are obvious, easily
+observable facts that don't need any proof. And, as you'll see later in Chapter
+9, which discusses the psychology of time and speed, waiting affects users in
+negative ways not only psychologically (they distrust the site, perceive it as
+lower quality) but also physiologically (they get irritable, their blood
+pressure increases). In the end, all the negative effects of slow web sites add
+up to a loss of users, loss of revenue and brand damage.</p>
+
+<p>This chapter gives you practical industry examples and studies which expose
+the effects of performance on the bottom line. If you're not convinced that
+speed means money, read on. If you <em>are</em> convinced but your boss or
+client needs proof, this chapter gives you the tools to "sell" performance and
+demonstrate that <em>speed</em>, indeed, <em>matters</em>.</p>
+
+<h2>The Negative Effects of Slowing Down</h2>
+
+<p>Determining the relationship between page load time and business objectives
+has been a long-standing task for many performance professionals. The way to
+demonstrate this relationship would be to use the technique called
+<em>split-testing</em> (also known as <em>A/B testing</em> or <em>bucket
+testing</em>). You serve a page to a portion (a bucket) of your users, while at
+the same time serve a version of the page which looks exactly the same but is
+optimized for speed (or intentionally slower) to a different bucket of users.
+Then you measure the results - revenue, number of new users, subscriptions,
+conversions, or whatever the specific goal of the site may be - in each of the
+buckets. Turns out it's not so easy to conduct such experiments in practice. Not
+because it is technically challenging, but because no one wants to penalize the
+users by slowing down their experience or intentionally not implementing a speed
+improvement for all users. </p>
+
+<p>Luckily, some big names such as Google, Yahoo! and Microsoft have performed
+experiments and shared the data that shows the negative effects of slowing down
+pages.</p>
+
+<h3>A Study at Bing</h3>
+
+<p>Microsoft's live.com was just about to relaunch as the redesigned and
+rebranded bing.com. Since the old site was going away, Microsoft's researchers
+took the opportunity to perform an experiment. The experiment was slowing down
+the search result pages artificially before they were sent to the user.</p>
+
+<p>They slowed down the page by various amounts from 50 milliseconds all the way
+to 2 seconds. The results showed a clear negative impact of the slower
+experience on all measured metrics - revenue, time to click, user satisfaction
+and others (<b>Figure 1.1.</b>)</p>
+
+<p>
+  <img src="images/01.01.bing.png"> <div class="caption"><em>Figure 1.1.</em>
+  Microsoft's artificial delay experiment. Dashes (-) mean no measurable
+  changes.</div>
+</p>
+
+<p>In Microsoft's tests, the negative impact was changing roughly linearly to
+the amount of delay: the slower the page, the worse it got. They also noted that
+the "Time to Click" measurement was roughly double the artificial delay. That
+means that if your page is 1 second slower than it could be, your users will
+wait 2 more seconds before they interact with that page. During this time they
+might get distracted by other tasks or a phone ringing for example and never
+complete the task you would like them to.</p>
+
+<p>And finally, talking about money, Microsoft's experiment showed that a
+one-second delay meant about 3% less revenue, while a two second delay reduced
+revenue by over 4%.</p>
+
+<h3>Google's Case</h3>
+
+<p>Similar experiments were done at Google and Yahoo! Search where the search
+results pages were artificially delayed. These experiments showed similar
+results. </p>
+
+<p>Google's experiment in particular highlighted two additional points:</p>
+
+<ol>
+  <li>The negative effect on business metrics <em>gets worse with time</em>. The
+  users may tolerate the slower page during first few visits but will then
+  search increasingly less and even abandon the site.</li> <li>The second point
+  is that even after removing the delay and ending the experiment, things didn't
+  just immediately get back to normal. There was an <em>after-effect</em> of the
+  experiment. Some of the users left the site for good, they moved to the
+  competition and didn't return. This is why improving performance is important
+  and also why testing with artificial delays is tricky and not recommended for
+  longer periods of time.</li>
+</ol>
+
+<h3>Yahoo!'s Case</h3>
+
+<p>While the previous studies were only search-related, the negative impact of
+slow pages applies to most other types of pages and sites.</p>
+
+<p>Another experiment was done at Yahoo! with a portal type of page. As soon as
+the page was delayed by 0.4 seconds, there was a <em>drop in the full-page
+traffic</em> of anywhere between 5% and 9% (depending on browser and user's
+connection speed). A drop in full-page traffic means that users were leaving the
+page before it loaded completely (before the <code>onload</code> event fires).
+Users were either hitting the <strong>Back</strong> button or clicking away from
+the page refusing to wait for it to load.</p>
+
+<h3>AOL's Study</h3>
+
+<p>At AOL, the performance researchers performed another study: this time not
+using artificial delays, but simply plotting the relation between the speed of a
+page and the amount of traffic it gets.</p>
+
+<p>The results, shown on <b>Figure 1.2.</b>, show that there's a clear
+connection: the slower the page, the fewer views it gets during a user's
+visit.</p>
+
+<p>
+  <img src="images/01.02.aol.png"> <div class="caption"><em>Figure 1.2.</em>
+  AOL's study of the relation between page load time and traffic</div>
+</p>
+
+<p><b>Figure 1.2.</b> shows the results for one of AOL's properties called
+Moviefone, but similar results were observed across the other measured
+properties: AOL Money and Finance, AOL Sports, and AOL Shopping.</p>
+
+<h2>The Positive Effects of Speeding Up</h2>
+
+<p>While the previous examples demonstrated the devastating effects of slowing
+down pages, it's even more interesting to see what happens when you successfully
+improve page load times.</p>
+
+<h3>60 Million More Downloads a Year</h3>
+
+<p>Mozilla's website has several dedicated <em>landing pages</em> for users
+interested in downloading Firefox. One of the most popular is a page designed
+for Internet Explorer users to download Firefox. This is a good case where one
+might think that page load time doesn't matter all that much. After all, if you
+end up on a download page, you've most likely already decided to download. Turns
+out this is not the case.</p>
+
+<p>Developers at Mozilla succeeded in speeding up the page by an average of 2.2
+seconds, then used A/B testing and measured the two versions of the same page
+served to different users. The results were staggering: on the faster page
+<strong>conversions increased by 15.4%</strong>. That translates to over 10
+million more downloads a year. After performing similar optimizations on the
+other top landing pages, Mozilla estimates 60 million more downloads per year,
+just because of improved page loading speed - with no other changes to the
+page's design or functionality. </p>
+
+<h3>Shopzilla</h3>
+
+<p>The e-commerce site shopzilla.com also reported impressive benefits from
+speeding up their web site. After they rebuilt their site focusing on
+performance, the page loading times went from around 6 seconds down to 1.2
+seconds. As a result a number of important metrics improved:</p>
+
+<ul>
+  <li>Conversion rates increased by 7 to 12%</li> <li>Page views increased by
+  25%</li> <li>The paid search traffic (from Search Engine Marketing) increased
+  by 8% in the US and 120% in the UK</li>
+</ul>
+
+<p>At the same time, as a side effect of the performance improvements, they were
+able to reduce their costs of operation. The required infrastructure to support
+the site was cut in half and the estimated cost for each release dropped from
+thousands of dollars down to $80. </p>
+
+<p>In other words they saved money while at the same time making more money.</p>
+
+<h3>Speed and SEO</h3>
+
+<p>In April 2010 Google announced that page speed has become one of the ranking
+factors in the order of displaying search results. Since Google's aim is to
+serve the best results to the user, in this case they act as advocates to the
+user. Given two pages that offer the same quality of matches to the user's query
+string, Google will display the faster one higher in the list of results,
+because this is actually the page that the user would prefer to see if given a
+choice.</p>
+
+<p>This means that performance is now an essential part of any SEO (Search
+Engine Optimization) effort. And everything you've read about the importance of
+SEO also applies to performance optimization.</p>
+
+<div class="sidebar">
+  <h4>SEM</h4> <p>SEM (Search Engine Marketing) is a catch-all term encompassing
+  both optimizing the site for placement in the "organic" (unpaid) search
+  results as well as placement in the sponsored listings which are usually on
+  the top, bottom and right-hand side of search results (<b>Figure 1.3.</b>). As
+  mentioned already, page speed affects Google's organic results since April
+  2010. But even before that, since 2008, page speed has been a factor in
+  Google's sponsored listings (AdWords). If the landing page after clicking on
+  an AdWords link loads faster, it is graded higher and it will be displayed
+  further up in the list of sponsored links. The Shopzilla study is a proof of
+  the SEM improvement in action.</p>
+</div>
+
+<p>
+  <img src="images/01.03.semseo.png"> <div class="caption"><em>Figure
+  1.3.</em> Organic versus sponsored listings on Google's search results
+  page</div>
+</p>
+
+<h2>Speed is a Feature</h2>
+
+<p>Page loading times affect the bottom line, the user satisfaction and
+happiness, SEO and many other factors for the success of a web site. It is
+therefore critical to no longer consider performance as an afterthought, a
+nice-to-have or a part of the post-launch activities. </p>
+
+<p>The best strategy is to consider speed as a feature just like one of the
+other features and cool widgets on your site.</p>
+
+<h3>A Requirement</h3>
+
+<p>Fred Wilson is a well-known VC (venture capitalist) and investor in companies
+such as Twitter, del.icio.us and Zynga. When he gives advice to startups, he
+puts speed as the number one in his "10 Golden Principles of Successful Web
+Apps". The companies in his portfolio are being monitored for loading speed and
+are checked on a weekly basis. VC's have noticed that if a company's web site
+slows down, that usually coincides with slowing down the growth of the company's
+business.</p>
+
+<p>In his own words at the "Future of Web Apps" conference in 2010: "There is
+real empirical evidence that substantiates the fact that speed is more than a
+feature. It's a requirement."</p>
+
+<h3>Google's #1 Feature</h3>
+
+<p>The reason Google includes page loading time in search rankings, both paid
+and unpaid, is because they've noticed the effects of speed while building their
+own web sites. They claim that speed has been a differentiator since the very
+beginning of Google search. They've noticed the negative effects of slowing
+down, the positive effects of speeding up, and have reportedly established speed
+as the most important feature of any product they build.</p>
+
+<p>Consider these two quotes that illustrate Google's position on building sites
+and applications optimized for speed:</p>
+
+<ul>
+  <li><em>"As a product manager you should know that speed is product feature
+  number one."</em><br>
+      Larry Page, founder of Google, quoted by Urs H&#246;lzle at Velocity
+      conference 2010</li>
+  <li><em>"Never underestimate the importance of fast"</em><br>
+      CEO Eric Schmidt announcing Google Instant in September 2010</li>
+</ul>
+
+<h3>Summary</h3>
+
+<p>This chapter provided you with data and quotes you may need to convince and
+train bosses, co-workers and clients about the importance of performance.</p>
+
+<p>As an additional tool, you can <a href="#">download a PowerPoint version of
+this chapter</a>. The presentation is unstyled so that it's easier to brand with
+your own company template and present to anyone not yet convinced that speed
+matters.</p>
+  </div>
+  <h1 id="Chapter2" class="chapter-title">Chapter2 - The Life of Page 2.0</h1>
+  <div class="text pad">
+    
+<p>In its infancy, the Web was a document retrieval system, initially meant to
+serve static pages linked to each other. When you follow a link or type in the
+address bar of the browser, a new page is retrieved from the server and
+displayed. But in the world of Web 2.0 and post-Web 2.0 the user experience is
+often much different. With the addition of JavaScript, CSS and Ajax
+(<code>XMLHttpRequest</code>) pages are now much more like applications, rather
+than static documents.</p>
+
+<p>This chapter draws a parallel between the human life and the life of the
+contemporary web page (or web application), which we'll call Page 2.0. After
+considering the stages of Page 2.0's life, the chapter outlines the
+opportunities for speed optimizations in each stage. Further chapters dig into
+the details of how exactly to implement these optimizations and create web apps
+built for speed.</p>
+
+<h2>The Lifetime</h2>
+
+<p>Let's take a look at the different stages of the life of Page 2.0 as
+illustrated in <b>Figure 2.1.</b>  Plotted on the timeline you can see the key
+moments of the life of a page and how they correspond to the human life.</p>
+
+<p>
+  <img src="images/02.01.life-of.png"> <div class="caption"><em>Figure
+  2.1.</em> The life of Page 2.0</div>
+</p>
+
+<h3>The Request</h3>
+
+<p>It all starts with the page <em>request</em>. Someone types in a URL or
+clicks a link. This is the moment of page's <em>conception</em>. We'll take a
+detailed look at what exactly are the requests and how they work in the next
+Chapter 3.</p>
+
+<h3>Generating HTML Document</h3>
+
+<p>Next follows the server's "pregnancy" with the page. In the beginning of the
+Web this phase simply consisted of server software looking for the requested
+static document (HTML file) on the hard drive and reading its contents. But
+things are more complicated now when most of the web sites use a server-side
+programming language, such as PHP, Ruby, Python, Perl, to assemble the resulting
+document dynamically.</p>
+
+<p>The server-side program (often called a <em>server-side script</em>) first
+fetches data from somewhere, usually from a database or from web service calls
+to other servers. Then it crunches that data stitching together a string of HTML
+code, which is the new dynamically generated document.</p>
+
+<p>In this book we'll not worry about optimizing this part because, as we'll
+see, this is not where most of the time is usually spent.</p>
+
+<h3>The Response</h3>
+
+<p>Luckily if there are no complications, such as abortions or 404 Not Found
+pages, the pregnancy is over, and the <em>HTML document is sent</em> to the
+browser with the so-called HTTP response.</p>
+
+<p>The Page 2.0 is officially <em>born</em>.</p>
+
+<h3>Waterfall</h3>
+
+<p>Then comes the <em>waterfall</em> phase when the browser downloads all the
+extra page components required by the page - images, scripts, styles... This
+phase ends with the onload event which the browsers fire after all components
+referred to in the HTML document are downloaded. This phase roughly corresponds
+to the <em>childhood</em> and teen years of our little human, which eventually
+<em>graduates</em> and becomes Ms. Page. The waterfall is the most important
+phase with regards to speed optimization. A major part of the book, starting
+with Chapter 3 is dedicated to optimizing this phase.</p>
+
+<h3>Settling Down</h3>
+
+<p>Right after <code>onload</code> comes a phase of <em>settling down</em> when
+the young Ms. Page is still in search for her true self and identity. In
+technical terms this is the phase when JavaScript kicks in and starts performing
+some initialization work such as attaching event handlers to DOM elements,
+progressive enhancements, and maybe fetching a few more components or getting
+some additional data via Ajax calls.</p>
+
+<p>The page then eventually settles down. The status bar stops showing URLs that
+are being downloaded, browser indicators stop spinning, the cursor is no longer
+showing a busy icon and the user gets the full interaction experience. You might
+say that the young adult is back from backpacking across Western Europe and
+Tibet and ready to get married, find a stable job and even own a barbecue
+grill.</p>
+
+<h3>User Interactions</h3>
+
+<p>Then life goes on, user interacts with the page. Some pages are mostly static
+and quite uneventful, for example a news article or a blog post, where the most
+exciting thing that happens is the occasional ad rotation. Others (think a
+webmail inbox) are full of ups and downs (uploads/downloads), always getting
+more data, updating and self-improving, always on the move.</p>
+
+<h3>Next Request</h3>
+
+<p>Sooner or later along comes the next request to end it all. The user clicks
+away from the page, making a new request and our Page is laid to rest after the
+browser has fired the <code>onunload</code> event.</p>
+
+<h2>When Is a Page Done?</h2>
+
+<p>While onload is a concrete event which should signify when the page is ready,
+it's not always that simple. Just like in real life it is not quite clear when
+someone has reached maturity, if ever. The "user onload" is an undefined point
+in time that could happen before the <code>onload</code> or way after
+(<b>Figure 2.2</b>). It all depends on the type of page or application and also
+on the user.</p>
+
+<p>
+  <img src="images/02.02.user-onload.png"> <div class="caption"><em>Figure
+  2.2.</em> "user onload" varies from one page to the next and from one user to
+  the next  </div>
+</p>
+
+<p>An article page could be considered ready when the article title and content
+are ready. The user can read and therefore interact with the page, while images
+and ads are still being downloaded. Other times the onload may happen relatively
+quickly, but the actual page content is still being retrieved and the page is
+far from usable, hardly anything more than a splash screen shown (probably with
+the word "Loading..." accompanied by a spinning wheel animation) while the
+actual content is still to come.</p>
+
+<p>It also depends on the type of user, because some users will wait for the
+page to stop moving and shifting, and stand completely still. Others will scroll
+almost immediately, as soon as something shows up, which is a reflex in an
+answer to the fact that the top of the page often contains a banner ad or is
+simply the site's static header containing logo and navigation.</p>
+
+<p>It's up to you to figure out when is the "user onload" for your type of page
+and your type of user. In the lack of a better definition of user onload, the
+page <code>onload</code> event or the <code>DOMContentLoaded</code> are often a
+good approximation for performance measurement purposes.</p>
+
+<h2>The Road Ahead</h2>
+
+<p>Now that we've identified the most important phases of a page's lifetime,
+let's explore, at a high level, what we can do to speed up each of those
+phases.</p>
+
+<p>Probably the first and most important place for optimization for most pages
+is the waterfall stage because that's where usually the time is spent. However,
+you can optimize the page in any of the other stages too. It's important to
+identify where the bottlenecks of a specific page are, then prioritize and focus
+on the areas where you'll see the greatest benefit.</p>
+
+<p>Below is a summary of the main optimization activities in each stage. Don't
+worry if some of these sound like a foreign language, they are described in
+details throughout the rest of the book.</p>
+
+<ul>
+  <li>Optimizations at <em>request time</em>, which include for example reducing
+  the size of the requests by sending requests with fewer cookies or no cookies
+  at all for static page components, such as images.</li> <li>Optimizing the
+  <em>waterfall</em> which can be divided into the following categories:
+    <ul>
+      <li><strong>Fewer page components</strong>: it's obvious that your
+      waterfall will be shorter when there are fewer items in it. In Chapter 3
+      you'll read about reducing the number of HTTP requests, merging
+      components, using CSS sprites, using data URIs and MHTML, caching and
+      implementing "never expires" policy to improve repeat visits, removing
+      duplicates, near duplicates, and plain old 404 Page Not Found errors. In
+      order to reduce the number of components you can also remove the ones that
+      you don't need immediately and load them at the next stage of life - after
+      onload (this is a technique known as lazy-loading)</li>
+      <li><strong>Smaller components</strong>: once you've removed or merged
+      components, the ones that are left should be as small as they can be.
+      This means using compression, minification, zero body 204 components
+      (these techniques are described in Chapter 4) and optimizing images
+      (Chapter 5)</li> <li><strong>Move out of the way</strong>: some components
+      in the waterfall harm more than others and not everything happens in
+      parallel. Loading components in parallel is good because more components
+      are downloaded at the same time and the waterfall finishes earlier.
+      Chapter 6 discusses non-blocking JavaScripts and CSS, as well as reducing
+      the number of DNS lookups redirects.</li> <li>If the waterfalls
+      <strong>start early</strong> they will finish early. Chapter 9 describes
+      flushing and HTTP chunked encoding to start the waterfall even before the
+      page is born. (If you know it's going to be a baby girl, you can start
+      hoarding the stuff in the pink color scheme)</li>
+    </ul>
+  </li> <li>Optimizing the after-<code>onload</code> phase: you can help here
+  too. For example, you can start some of the JavaScript initialization work
+  after the  <code>DOMContentLoaded</code> event fires, you don't always need to
+  wait for <code>onload</code>.</li> <li>The <em>interactive</em> phase (the
+  adult life phase) optimizations include tweaking CSS and JavaScript
+  performance to make sure your user interactions are smoother, more pleasant,
+  and the UI is responsive (Chapters 7 and 8)</li> <li>Towards the
+  <em>end-of-life</em> you can help too. The old tired page can leave a good
+  inheritance by preloading some of the components that the children and
+  grandchildren pages may need and speeding them up in advance.</li>
+</ul>
+
+<h2>Let's Do It</h2>
+
+<p>This chapter described the main stages of life in the contemporary
+average Page 2.0 together with the roadmap for improving the page speed at each
+stage.</p>
+
+<p>Now let's dive into the details.</p>
+  </div>
+  <h1 id="Chapter3" class="chapter-title">Chapter3 - Fewer Page Components</h1>
+  <div class="text pad">
+    
+<p>Reducing the number of page components is the performance golden rule, the
+single most important thing when it comes to building faster pages. If you have
+time for only one performance optimization, focus on this one.
+
+<p>Having fewer page components sounds like common sense - when you have fewer
+images, scripts and styles, the page becomes lighter and therefore it should
+load faster. However having fewer components doesn't necessarily mean stripping
+features from the page. In this chapter (and the book) the assumption is that
+you have a page that needs to be optimized to load faster while keeping the
+exact same look and the exact same features.
+
+<p>In an effort to provide a deeper understanding of the art and science of
+performance optimization, this chapter goes into some technical details such as
+how HTTP and TCP/IP work. If these topics are new to you and you feel a little
+overwhelmed, don't be alarmed; just give them some time to sink in.
+
+<h2>Waterfalls</h2>
+
+<p>In order to optimize page loading times you need to have an idea of what's
+going on with that page - how exactly does the page get loaded in the browser
+and what could potentially be slowing it down. If you don't know that you'll be
+shooting in the dark and there's always the risk of wasting time and effort
+optimizing the parts that are already relatively fine.
+
+<p>It's also helpful to know how the page loading process works in general -
+from typing a URL into the browser to rendering a completely loaded page.
+
+<p>To help you visualize what's going on behind the scenes as the page loads,
+there are the so-called <em>waterfall views</em> provided by a number of
+developer tools. To mention just two examples:
+
+<ul>
+  <li>In Firefox you can inspect the waterfall in Firebug's Net panel (<b>Figure
+  3.1.</b>) <li>For an insight into Internet Explorer, you can use the online
+  tool WebPageTest.org (<b>Figure 3.2.</b>) and look at the waterfalls without
+  installing any new software
+</ul>
+
+
+<p>
+  <img src="images/03.01.net panel.png"> <div class="caption"><em>Figure
+  3.1.</em> Waterfall view in Firebug's Net panel</div>
+</p>
+
+<p>
+  <img src="images/03.02.waterfall.png"> <div class="caption"><em>Figure
+  3.2.</em> Waterfall view of twitter.com in WebPageTest</div>
+</p>
+
+<p><b>Figure 3.2.</b> shows the waterfall chart produced by WebPageTest when
+loading twitter.com in IE7. You see that the HTML page is downloaded first,
+followed by the other individual components (scripts, styles, images) linked to
+from the page or from the other components (e.g. background images linked from
+CSS). You may notice that the components are not downloaded all at the same
+time. In fact this figure is a partial screenshot; the list of components
+continues until all of them are downloaded. The view of the components getting
+downloaded forms a picture that indeed looks like a waterfall.
+
+<p>You can see on this screenshot that twitter.com's HTML page is loaded in
+under a second while the page plus all the components take over four seconds. In
+this case, as with most sites out there, the venerable 80/20 rule applies. The
+page itself takes only about 20% of the total time while most of the time is
+spent fetching components. So when you plan an optimization, it makes sense to
+focus on where you can achieve the best results. Saving half of 80% will be a
+significant and noticeable gain, while cutting 20% down in half - not so much.
+
+<h2>The HTTP Request</h2>
+
+<p>You can see in the waterfall chart that each component has a bar with
+different color-coded information. Each of these bars represents an <em>HTTP
+request</em> and the colors in the bars represent a specific activity. The
+length of a bar or a piece of it corresponds to the time taken by each of the
+activities. Let's examine these colors closer, taking the first bar - Twitter's
+HTML page - as an example (<b>Figure 3.3.</b>).
+
+<p>
+  <img src="images/03.03.http-request.png"> <div class="caption"><em>Figure
+  3.3.</em> An HTTP request</div>
+</p>
+
+<ul>
+  <li><p>Dark green represents the time taken to perform a <em>DNS lookup</em>.
+  DNS (Domain Name Service) lookup is the process of matching the friendly
+  domain name twitter.com to an IP address (such as 128.242.240.20), which the
+  browser needs in order to know how to get in touch with the server. Think of
+  the DNS lookup as being like a phone book: your browser knows the name
+  (twitter.com) but needs the number (the IP address).</p>
+      <p>You can see on the waterfall chart on <b>Figure 3.2.</b> that a
+      separate DNS lookup needs to be done for every domain (twitter.com,
+      a1.twimg.com, a3.twimg.com, s.twimg.com) because sub-domains may live on a
+      different server with a different IP address.</p></li>
+  <li>Orange is the time to establish a <em>connection</em> between the server
+  and the browser. We'll talk about this some more in just a bit.</li> <li>Light
+  green is the <em>time-to-first byte</em> (TTFB) when the browser waits for the
+  very first piece of information to be sent by the server. In the case of
+  dynamic HTML pages this is the time spent to assemble the whole page on the
+  server. If you're busy optimizing databases and server-side code, you'll
+  actually be optimizing the TTFB of the page. As you can see, in the grand
+  scheme of things, this is not where you should be focusing because it has
+  relatively low impact (unless, of course, there's something seriously wrong on
+  the server-side)</li> <li>Blue is the time spent actually <em>downloading</em>
+  the component</li>
+</ul>
+
+<p>[[ Is it possible use the same colors from the graphic to highlight the
+italics part of the text? For example use dark green to style DNS lookup in the
+first number point]]
+
+<p>If you look at the overall waterfall picture you'll notice that there's not a
+lot of blue bars. This means that significant time is being spent not
+downloading files.
+
+<h2>The Myth About Broadband</h2>
+
+<p>You may often hear lines such as "everybody has broadband these days" or "our
+target audience is 30-something professionals and they all have fast
+connections." These are excuses not to invest in speeding up a site and are, in
+fact, a disservice to the user. There are several things wrong with such
+"broadband" statements.
+
+<p>First of all, there are many users with slow connections - both in and
+outside the US. Some users are still on modem connections but many more are
+surfing the web using smart phones, which are particularly prone to having
+problematic connections. Other users are sharing a WiFi connection either at a
+caf&eacute; or at home. It doesn't take much to slow down a shared WiFi
+connection - having someone next to you on a video chat or even having your
+microwave oven on are just two examples of things that can interfere with your
+downloads.
+
+<p>Additionally, a little-known fact is that the <em>upstream</em> bandwidth is
+usually just 20% of the total bandwidth advertised by the Internet Service
+Provider (ISP) and this matters not only for big file uploads but for requesting
+regular page components too.
+
+<p>And finally, as you can see in the waterfall diagrams, a significant amount
+of time is spent in activities other than downloading files. Broadband can only
+help when it comes to the blue bars.
+
+<h3>The tubes</h3>
+
+<p>You've probably heard the humorous term "intertubes" used to describe the
+Internet infrastructure as series of tubes. This is incorrect, but it can still
+be used as a way to visualize bandwidth. If you think of the dial-up modem
+connection as a regular pipe, then the broadband connection will be a <em>fat
+pipe</em> with a bigger diameter.
+
+<p>What travels inside those pipes are packets. Every file is sent in a series
+of small packets. The packets travel pretty fast, in the best case at around 2/3
+of the speed of light and that is great, there isn't much room for improvement
+there. A fat broadband pipe means that more and bigger packets can travel in
+parallel, while a narrow pipe can handle fewer and smaller packets, mainly in
+sequence one after the other, which slows down the transfers.
+
+<p>The problem is that the fat tube is often not utilized to its potential. You
+can either accept that as a fact and skip the next section of the chapter, or
+brace yourself for some low-level details.
+
+<h3>File Transfers</h3>
+
+<p>In order to initiate a file transfer, the browser and the server need to
+establish a connection between the two of them. The time it takes to establish a
+connection is represented by the orange parts of the bars in the waterfall
+graph.
+
+<div class="sidebar"><h4>TCP/IP</h4>
+  <p>Internet Protocol (IP) handles the delivery of messages (also know as
+  packets) from one computer to another over a network. Transmission Control
+  Protocol (TCP) abstracts the details of IP and makes sure these packets are
+  properly constructed on one end and also make sense on the other end. TCP uses
+  some metadata headers to describe what travels in each packet. SYN and ACK are
+  types of metadata that comes with the packets. SYN (sequence number) is used
+  to identify packets so they can be reassembled, because the network is a
+  strange place with traffic jams and sometimes packets may arrive out of order,
+  if at all. ACK means "Acknowledged" and is a way for one of the computes to
+  say "OK, got that" to the other.</p></div>
+
+<p>A new connection (<b>Figure 3.4.</b>) is established by performing a
+<em>three-way handshake</em>:
+
+<p>
+  <img src="images/03.04.three-way handshake.png"> <div
+  class="caption"><em>Figure 3.4.</em> The three-way handshake</div>
+</p>
+
+<ul>
+  <li>The browser sends a SYN, which is a new sequence ID</li> <li>The server
+  acknowledges with an ACK and also sends a SYN</li> <li>The browser
+  acknowledges with ACK and at this point the two have been properly introduced
+  and are ready to start talking</li>
+</ul>
+
+<p>These handshake packets are small and regardless of the available bandwidth,
+they travel at the same speed. A user may have a fast connection, but at this
+stage it will not be used.
+
+<p>Once a connection is established, then the actual transfer of a file (say, an
+image) can start. The file is usually sent in several packets, depending on its
+size. The server sends one packet and waits for acknowledgement ACK from the
+browser. The ACK may additionally say something like "hey, I can handle bigger
+packets", so the server sends a bigger packet. This repeats several times until
+the connection is "saturated" with the right size packets. This process is known
+as <em>TCP slow start</em> and is another reason why broadband is less important
+than we might think. A fast connection definitely helps for downloading bigger
+files, but for a series of small files spread across different domains (each
+requiring a DNS lookup, a connection and a slow start), it's not all that
+helpful.
+
+<p>When it comes to network transfers, you can say it's a jungle out there. The
+browser and client don't actually talk directly to each other; there are ISPs
+and all kinds of proxies between them. Many bad things may happen in the network
+jungle that prevent proper fast downloads. Sometimes a packet is lost, or it's
+dropped somewhere along the way. In this case the server has to resend it, if
+the server doesn't receive an [ACK] after a timeout. Sometimes the client is
+overwhelmed by too many packets (imagine a mobile device with limited memory)
+and cannot ACK anymore. That's also the reason for the existence of the TCP slow
+start process - the server cannot know in advance what type of client is on the
+other end and therefore takes baby steps in order to determine that.
+
+<p>There's a tool called NetMon, which gives an overwhelming amount of details
+of the network activity on Windows at the packet level. Another tool from
+Microsoft works on top of NetMon and is called VRTA (Visual RoundTrip Analyzer);
+it gives a much friendlier view of the data. You can see an example request on
+<b>Figure 3.5.</b> which shows visually the TCP slow start effect. The little
+blue bars represent the gradual opening of the TCP window size. You can also see
+a pink line, which shows when the connection is established and a grey line,
+which shows the TTFB. <b>Figure 3.6.</b> shows what you see when you mouse over
+a request in VRTA; you can probably recognize the first three lines in the list
+of packets showing the three-way handshake.
+
+<p>
+  <img src="images/03.05.VRTA request.png"> <div class="caption"><em>Figure
+  3.5.</em> A request in VRTA visualizing the TCP slow start</div>
+</p>
+
+<p>
+  <img src="images/03.06.VRTA packets.png"> <div class="caption"><em>Figure
+  3.6.</em> List of packets in VRTA</div>
+</p>
+
+<p>One last nail in the broadband myth's coffin - most browsers only establish
+two connections per domain name. This means that only two files can be
+downloaded at the same time, which results in underutilizing the fat pipe. This
+behavior is in the HTTP standard, so we cannot blame browsers for following the
+standard. The problem is that the standard was created a long time ago. Luckily,
+there's light at the end of the tunnel - new browsers (Firefox 3+, Safari 4+,
+Chrome, Opera 10+, IE8+) offer 6 to 8 connections. But legacy browsers with
+large market share such as IE6 and IE7 only use 2 parallel connections.
+
+<h3>Take Home</h3>
+
+<p>Let's summarize why having many HTTP requests (many page components) is bad
+and why broadband is not the answer to all performance problems:
+
+<ul>
+  <li>Every HTTP request comes with overhead</li> <li>The time spent downloading
+  a file is just a fraction of the total time needed to transfer the file</li>
+  <li>Broadband helps download time, especially for large files</li>
+  <li>Broadband doesn't help much in the other activities - DNS lookup,
+  establishing a connection, TTFB</li> <li>The fat pipe of the broadband
+  connection is often not used to its potential</li> <li>Browsers limit the
+  number of connections per host</li> <li>Lots of users (think mobile) don't
+  have broadband connections </li>
+</ul>
+
+<h2>The Myth About Cache</h2>
+
+<p>You may think that this whole TCP stuff is all fascinating (albeit a bit
+dry), but you wonder whether it really matters? When it comes to page components
+such as images and stylesheets, aren't they all in the cache after the first
+page view?
+
+<p>The truth is that "it's all in the cache" is another common myth. For various
+reasons a surprising amount of visitors will always come to your site with an
+empty cache.
+
+<p>An experiment done with the Yahoo! front-page revealed that:
+
+<ul>
+  <li>40-60% of the daily visitors come with empty cache</li> <li>20% of all the
+  <em>page view</em>s are always empty cache views</li>
+</ul>
+
+<p>Since yahoo.com is a very popular destination and a home page for many users,
+one would assume that the users almost always will be coming with a full cache.
+Turns out that that's not the case. About half the users will visit the site
+today and come back tomorrow with an empty cache.
+
+<p>Why so many empty cache experiences? It's due to various reasons: people
+clear their caches, sometimes automatically on browser shutdown, or sometimes
+anti-virus programs do it too. Or the cache fills up and is partially flushed
+between visits. Most browsers have about 50Mb maximum cache space, which is not
+all that much when you think about it, given today's rich web sites and people's
+browsing habits (we do much more online these days than just a few years ago).
+
+<p>So it's important to keep that in mind and keep optimizing for the empty
+cache experience. Towards the end of the chapter you'll see some more details on
+how to help caching.
+
+<h2>Script and Style Bundles</h2>
+
+<p>By now you should realize that the more HTTP requests your page requires, the
+more overhead you'll have and therefore the slower the page will be. Reducing
+the number of HTTP request is the best thing you can to speed up a page.
+
+<p>Let's take a look at how you go about reducing the components in practice. Of
+course, the easiest way is to simply remove features from the page. But we want
+to keep the same design while making the page faster. So the reduction of page
+components will mean merging existing components together into bundles.
+
+<p>Often developers have several JavaScripts and stylesheets on the same page.
+This is convenient during development but when it comes to publishing the live
+site, you should combine all JavaScript files into one file and all CSS into one
+stylesheet.
+
+<p>Let's say you're working on a page that uses jQuery and two plugins for it.
+There's also has some custom non-library code, written specifically for the
+page. This page is likely to have a piece of code that looks like so:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">js/jquery.js</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text/javascript</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">js/jquery.form.js</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text/javascript</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">js/jquery.lightbox.js</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text/javascript</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">js/myapplication.js</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text/javascript</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>When you create a new file <code>all.js</code>  and paste into it the
+contents of all other files, you end up with just one script tag:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">js/all.js</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text/javascript</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>And just like that you save three additional HTTP requests and make the page
+load faster. Chapter 6 has more details on optimizing JavaScript and will
+demonstrate that script files suffer from an additional browser behavior - they
+are all downloaded in sequence, slowing down the waterfall. Therefore it's
+especially important to make sure that the page requires as few script files as
+possible.
+
+<p>After bundling all scripts, then you repeat the same process and bundle all
+the stylesheets. You'll end up with a single CSS file:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">link</span><span class="hl-code"> </span><span class="hl-var">href</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">all.css</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text/css</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-var">rel</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">stylesheet</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span></pre></div>
+
+<p>Pages often have separate print media stylesheets. These are not an exception
+and should also go into the bundle, wrapped in a <code>@media print {...}
+</code>declaration. Chapter 8 provides more details on how to optimize CSS for
+faster rendering and will demonstrate that, curiously enough, the page will not
+render on the <em>screen</em>, until the <em>print</em> stylesheets arrive.
+
+<p>An additional positive side effect of combining several files into one is
+that the result bundle often has smaller file size than the sum of the separate
+parts. This is due to the compression, a topic discussed in the next chapter.
+
+<h3>Drawbacks and solutions</h3>
+
+<p>Many performance optimizations have their drawbacks. Most often the main
+drawback is <em>inconvenience</em>. Imagine the end of a long working day, you
+can barely finish fixing a layout bug in IE6 and now you have to also combine
+the file you were working on together with all other files, create a bundle and
+"push" it live. Creating a bundle is an extra step but it can be made less of a
+chore with a simple script that does it for you and even copies it to the live
+site. Another option is to have a server-side script (usually called a
+<em>combo</em> script) that combines the files on demand. A combo script also
+makes sense when you have too many little pieces, which are dynamically combined
+depending on some factors. For example, the Yahoo! User Interface (YUI) library
+uses a combo script to combine dynamically only the pieces of the library that
+you may need. The result is URLs that look like the following:
+
+<p><code>http://yui.yahooapis.com/combo?3.0.0/build/yui/yui-min.js&amp;3.0.0/build/oop/oop-min.js&amp;3.0.0/build/event-custom/event-custom-min.js</code>
+
+<div class="sidebar"><h4>Expires</h4>
+  <p>It's important to remember to properly set the Expires HTTP header in the
+  combo script in order to promote better caching. Otherwise scripts are usually
+  never cached. More details on Expires header to follow, but here's an example
+  of how you could set proper expiration if your combo script was written in
+  PHP:
+    <div class="hl-main"><pre><span class="hl-var">$expiration</span><span class="hl-code"> = </span><span class="hl-identifier">mktime</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> + </span><span class="hl-number">60</span><span class="hl-code"> * </span><span class="hl-number">60</span><span class="hl-code"> * </span><span class="hl-number">24</span><span class="hl-code"> * </span><span class="hl-number">365</span><span class="hl-code"> * </span><span class="hl-number">10</span><span class="hl-code">; </span><span class="hl-comment">//</span><span class="hl-comment"> now plus 10 years</span><span class="hl-comment"></span><span class="hl-code"></span>
+<span class="hl-identifier">header</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">Expires: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">gmdate</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">D, d M Y h:m:s</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-var">$expiration</span><span class="hl-brackets">)</span><span class="hl-code"> . </span><span class="hl-quotes">'</span><span class="hl-string"> GMT</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;</span></pre></div>
+  
+</p></div>
+
+<p>Another drawback of bundling is that the resulting bundle becomes a
+monolithic piece of code. This can harm cacheability because even the tiniest
+change in one of the pieces will result in a new bundle, which the users will
+have to download because they don't have it cached. But on the other hand you
+saw that the cache is not as important as most people think and optimizing for
+the empty cache experience is critical. A solution to that may be to have two
+bundles: one that contains library-type of code, which rarely changes and an
+additional one that is likely to change often.
+
+<p>Despite the inconveniences of the bundles, they are highly recommended way to
+speed up a page and their benefits greatly outweigh the drawbacks.
+
+<h2>Combining Images</h2>
+
+<p>Now that you know how combining scripts and styles into bundles helps improve
+performance, let's see what we can do about reducing the number of image
+components. When talking about images in web pages, we can divide them into two
+categories:
+
+<ul>
+  <li><strong>Background images</strong> that you link to from your stylesheets
+  using properties such as <code>background-image</code> and
+  <code>list-style-image</code>. These are <em>decoration images</em> that make
+  the pages look and feel nicer, but are not essential to the way the page
+  works. With CSS disabled, the page should do its function even without the
+  decoration images.</li> <li><strong>Content images</strong> that you include
+  using <code>&lt;img /&gt;</code> tags. We can call them content images because
+  they contribute to the purpose of the page (e.g. a photo in a news article).
+  They should be visible even if the browser has no CSS support or CSS is turned
+  off.</li>
+</ul>
+
+<p>We'll take a look at two ways to reduce images - combining them into CSS
+sprites and using data URIs. Both of the techniques can address any type of
+image, but the sprites are mostly suitable for background images while the data
+URIs are used for both images types.
+
+<h3>CSS Sprites</h3>
+
+<p>CSS sprites are a way to reduce the number of images by combining several
+images into one. You do that by simply creating one big image and pasting each
+of the little ones next to each other. Then you use the background-position CSS
+property to display only the part of the image you need. This is an excellent
+technique to improve page download speed because you can easily put tens of
+little icons into one image and download them all at once saving a lot of the
+HTTP request overhead. Sprites have a side benefit in that they effectively
+preload images for you. When you have a new image showing up on mouse over, it's
+actually the same image and it's already downloaded, you only change the
+background-position property of the page element.
+
+<p>Let's see an example of a real-life sprite, used on Yahoo!'s search page. In
+<b>Figure 3.7.</b> you see the <em>sprite image</em>, which contains a number of
+smaller icons and other imagery that we'll call <em>sprite elements</em>. At the
+bottom of the image you can see a little globe icon and on <b>Figure 3.8.</b>
+you can see how this icon is used on the search results page next to the "Show
+All" label.
+
+<p>
+  <img src="images/03.07.yahoo sprite.png"> <div class="caption"><em>Figure
+  3.7.</em> The sprite on Yahoo!'s search results page</div>
+</p>
+
+<p>
+  <img src="images/03.08.sprite in action.png"> <div
+  class="caption"><em>Figure 3.8.</em> The globe sprite element used in the
+  page</div>
+</p>
+
+<p>Using the X and Y coordinate system that starts from the top left corner of
+the sprite image, the position of the globe element is x=101 and y = 108
+(<b>Figure 3.9.</b>). In order to show that globe icon on the page you need to
+do the following in your CSS code:
+
+<p>
+  <img src="images/03.09.sprite coordinates.png"> <div
+  class="caption"><em>Figure 3.9.</em> Coordinates of the globe element within
+  the sprite</div>
+</p>
+
+<ul>
+  <li>Set the <code>background-image</code> to point to the image URL e.g.
+  <code>sprite.png</code></li> <li>Set the <code>background-position</code> to
+  the coordinates of the sprite element with a minus sign, in this case
+  <code>-101px -108px</code></li> <li>To prevent other parts of the sprite
+  bleeding into your page element you can fix its width and height creating a
+  box with dimensions foe example 16px by 16px</li>
+</ul>
+
+<p>At the end you'll end up with CSS code that looks like the following:
+
+<div class="hl-main"><pre><span class="hl-identifier">.all-sites-icon</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">background-image:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">sprite</span><span class="hl-code">.</span><span class="hl-code">png</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+  </span><span class="hl-reserved">background-position:</span><span class="hl-code"> -</span><span class="hl-number">101</span><span class="hl-string">px</span><span class="hl-code"> -</span><span class="hl-number">108</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+  </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">16</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+  </span><span class="hl-reserved">height:</span><span class="hl-code"> </span><span class="hl-number">16</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></pre></div>
+
+<h3>Sprite Tools</h3>
+
+<p>Creating and maintaining sprites involves calculating and keeping track of
+all the different dimensions and positions and it could be a pain. Luckily there
+are several tools that can help along the way. One such tool is the free online
+service at <a href="http://csssprites.com">csssprites.com</a> (<b>Figure
+3.10.</b>). It allows you to upload as many separate images as you need and
+generates:
+
+<p>
+  <img src="images/03.10.csssprites.com.png"> <div class="caption"><em>Figure
+  3.10.</em> CSSSprites.com</div>
+</p>
+
+<ul>
+  <li>The image sprite</li> <li>The CSS code needed to show each of the elements
+  of the sprite</li> <li>An example that uses the result sprite and the
+  generated CSS code, so you can see how it will look like in a real working
+  page</li>
+</ul>
+
+<h3>Data URIs</h3>
+
+<p>A technique called <em>data URIs</em> lets you embed the contents of an image
+into an HTML page or a CSS stylesheet.
+
+<p>In this technique instead of setting the URL (or URI) of an image in a page,
+you use the actual <em>contents</em> of the image file (in other words its
+<em>data</em>) as a URI.
+
+<p>Usually you have an image tag like:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">http://example.org/myimage.png</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span></pre></div>
+
+<p>An image that uses a data URI will look like:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">data:image/png;base64,iVBOR...rkJggg==</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-brackets">/&gt;</span></pre></div>
+
+<p>The syntax may be a little scary, but it boils down to:
+
+<ul>
+  <li><code>data:</code> - the protocol instead of <code>http:</code></li>
+  <li><code>image/png</code> - the content type of the image</li>
+  <li><code>base64</code>  - the type of encoding that is used to encode the
+  image data</li> <li>the rest after the comma is the contents of the file</li>
+</ul>
+
+<p>It's necessary to encode the image contents using the base64 encoding because
+otherwise the images are binary files and may have all kinds of weird characters
+in them, characters that are not welcome in an HTML page because they might
+break it. Although you can specify the type of encoding, the base64 is actually
+the only type of encoding currently supported by the browsers. Base64 represents
+any type of data using just a subset of known characters (64 of them).
+
+<p>Most server-side programming languages have built-in functions to do base64
+encoding and decoding. For example in PHP you have the functions
+<code>base64_encode()</code> and <code>base64_decode()</code>. Consider this
+line:
+
+<div class="hl-main"><pre><span class="hl-inlinetags">&lt;?php</span><span class="hl-code"> </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-identifier">base64_encode</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">speed matters</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">; </span><span class="hl-inlinetags">?&gt;</span></pre></div>
+
+<p>This will print <code>c3BlZWQgbWF0dGVycw==</code> and this is the
+base64-encoded version of the words "speed matters".
+
+<p>If you have PHP installed you can simply encode files on the command line,
+like so:
+
+<div class="hl-main"><pre><span class="hl-code">$ </span><span class="hl-identifier">php</span><span class="hl-code"> -</span><span class="hl-identifier">r</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">echo base64_encode(file_get_contents('myimage.png'));</span><span class="hl-quotes">&quot;</span></pre></div>
+
+<p>If you're not comfortable with the command line or a server-side programming
+language, you can always use one of the several available online tools that
+offer base64 encoding.
+
+<p>In addition to using data URIs in <code>&lt;img /&gt;</code> tags for content
+images, you can use them in CSS stylesheets as well, especially if these are
+dynamic styles or the images should not be in a sprite for one reason or
+another.
+
+<p>The syntax to embed the image data into a CSS file will be:
+
+<div class="hl-main"><pre><span class="hl-identifier">.myclass</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">background-image:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(&quot;</span><span class="hl-code">data</span><span class="hl-code">:</span><span class="hl-code">image</span><span class="hl-code">/</span><span class="hl-code">png</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-identifier">base64</span><span class="hl-code">,</span><span class="hl-identifier">iVBOR</span><span class="hl-code">..</span><span class="hl-identifier">.rkJggg</span><span class="hl-code">==&quot;);
+</span><span class="hl-brackets">}</span></pre></div>
+
+<h3>Data URIs in the Wild</h3>
+
+<p>If you're curious whether these data URIs have practical use, let's see a few
+examples "in the wild". Google search and Yahoo! search are two sites that
+really care about performance and they both use data URIs.
+
+<p>Google search results use data URIs for images like video and image
+thumbnails (<b>Figure 3.11.</b>) as a way to reduce the number of requests. The
+drawback is that these embedded images will not be cached by the browser and
+will make the page heavier. But in the case of search results it's not all that
+likely that the user will see the same thumbnail again next month. That's
+because they won't be searching for the same thing and also the images and
+videos will change for newer ones.
+
+<p>
+  <img src="images/03.11.google data uris.png"> <div
+  class="caption"><em>Figure 3.11.</em> Data URIs on Google's search
+  results</div>
+</p>
+
+<p>Yahoo! search uses data URIs in CSS for images such as gradients that repeat
+horizontally (<b>Figure 3.12.</b>). If these images were in a sprite, they would
+need to span the whole width of the sprite image, which could be an inefficient
+use of the image space. Instead, a slice of the gradient image with 1px width is
+embedded in the CSS file.
+
+<p>
+  <img src="images/03.12.yahoo data uris.png"> <div
+  class="caption"><em>Figure 3.12.</em> Data URIs in a stylesheet</div>
+</p>
+
+<h3>MHTML</h3>
+
+<p>Now if you thought the syntax of the data URIs was complex, wait until you
+see this MHTML stuff. MHTML comes into the picture because of everybody's
+"favorite" browser - Internet Explorer 6 and its following release IE7. (You
+didn't think you could read a book about web design without mentioning IE6
+exceptions, right?) While data URIs work fine in all modern browsers including
+IE8, they are not supported by IE6 and IE7. You have two options to work around
+this limitation:
+
+<ul>
+  <li>use data URIs for modern browsers and plain old URLs for IE6 and 7. The
+  users of IE will not get the optimization and same fast experience, but at
+  least the rest of the users will.</li> <li>use data URIs for all and MHTML
+  only for IE before version 8.</li>
+</ul>
+
+<p>MHTML stands for MIME HTML. It's a way to have several files (parts) in the
+same document. MIME (Multipurpose Internet Mail Extensions) is used in email
+systems where several part of a message (text, HTML, attachments) are sent in a
+single email message.
+
+<p>Let's see an example of how to embed files in CSS stylesheets using MHTML.
+
+<p>First, take a look at a single "part" representing a single image:
+
+<div class="hl-main"><pre><span class="hl-identifier">Content</span><span class="hl-code">-</span><span class="hl-identifier">Location</span><span class="hl-code">: </span><span class="hl-identifier">myimage</span><span class="hl-code">
+</span><span class="hl-identifier">Content</span><span class="hl-code">-</span><span class="hl-identifier">Transfer</span><span class="hl-code">-</span><span class="hl-identifier">Encoding</span><span class="hl-code">: </span><span class="hl-identifier">base64</span><span class="hl-code">
+
+</span><span class="hl-identifier">iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAD</span><span class="hl-code">....</span><span class="hl-identifier">U5ErkJggg</span><span class="hl-code">==</span></pre></div>
+
+
+<p>As you can probably guess the long line is an image encoded using base64
+encoding. The first two lines are headers describing the data that comes after
+that: <code>myimage</code> is a unique identifier and <code>base64</code>
+specifies the type of encoding.
+
+<p>Now in order to have several of these parts, you need a way to separate them.
+You do that by using a string you select as a separator, such as  "MYSEPARATOR".
+You also need a header for the whole document, which declares the separator
+string. Overall the document will look like:
+
+<div class="hl-main"><pre><span class="hl-code">Content-Type: </span><span class="hl-identifier">multipart</span><span class="hl-code">/</span><span class="hl-identifier">related</span><span class="hl-code">; </span><span class="hl-identifier">boundary</span><span class="hl-code">=&quot;</span><span class="hl-identifier">MYSEPARATOR</span><span class="hl-code">&quot;
+ 
+--</span><span class="hl-identifier">MYSEPARATOR</span><span class="hl-code">
+</span><span class="hl-brackets">[</span><span class="hl-var">here</span><span class="hl-code"> </span><span class="hl-var">comes</span><span class="hl-code"> </span><span class="hl-var">part</span><span class="hl-code"> </span><span class="hl-var">one</span><span class="hl-brackets">]</span><span class="hl-code">
+--</span><span class="hl-identifier">MYSEPARATOR</span><span class="hl-code">
+</span><span class="hl-brackets">[</span><span class="hl-var">here</span><span class="hl-code"> </span><span class="hl-var">is</span><span class="hl-code"> </span><span class="hl-var">part</span><span class="hl-code"> </span><span class="hl-var">two</span><span class="hl-code">, </span><span class="hl-var">followed</span><span class="hl-code"> </span><span class="hl-var">by</span><span class="hl-code"> </span><span class="hl-var">a</span><span class="hl-code"> </span><span class="hl-var">final</span><span class="hl-code"> </span><span class="hl-var">separator</span><span class="hl-brackets">]</span><span class="hl-code">
+--</span><span class="hl-identifier">MYSEPARATOR--</span></pre></div>
+
+<p>Note the double dashes, they are critical in order to make it all work.
+
+<p>You'll need to wrap this whole document in a comment and put it in the top of
+your CSS file. Then in the actual CSS <code>background-image</code> declarations
+you refer to each part using its identifier, like so:
+
+<div class="hl-main"><pre><span class="hl-identifier">.myclass</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">background-image:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">mhtml</span><span class="hl-code">:</span><span class="hl-code">http</span><span class="hl-code">://</span><span class="hl-code">example</span><span class="hl-code">.</span><span class="hl-code">org</span><span class="hl-code">/</span><span class="hl-code">styles</span><span class="hl-code">.</span><span class="hl-code">css</span><span class="hl-code">!</span><span class="hl-code">myimage</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></pre></div>
+
+<p>The URLs for the MHTML parts use the <code>mhtml:</code> protocol, then the
+absolute URL of the stylesheet and finally an exclamation followed by an
+identifier.
+
+<p>A complete working example of a CSS will look like the following:
+
+<div class="hl-main"><pre><span class="hl-comment">/*</span><span class="hl-comment">
+Content-Type: multipart/related; boundary=&quot;MYSEPARATOR&quot;
+
+--MYSEPARATOR
+Content-Location: myimage
+Content-Transfer-Encoding: base64
+
+iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAD....U5ErkJggg==
+--MYSEPARATOR
+Content-Location: another
+Content-Transfer-Encoding: base64
+
+iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAA....U5ErkJggg==
+--MYSEPARATOR--
+</span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.myclass</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">background-image:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">mhtml</span><span class="hl-code">:</span><span class="hl-code">http</span><span class="hl-code">://</span><span class="hl-code">example</span><span class="hl-code">.</span><span class="hl-code">org</span><span class="hl-code">/</span><span class="hl-code">styles</span><span class="hl-code">.</span><span class="hl-code">css</span><span class="hl-code">!</span><span class="hl-code">myimage</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+
+</span><span class="hl-identifier">.myotherclass</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">background-image:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">mhtml</span><span class="hl-code">:</span><span class="hl-code">http</span><span class="hl-code">://</span><span class="hl-code">example</span><span class="hl-code">.</span><span class="hl-code">org</span><span class="hl-code">/</span><span class="hl-code">styles</span><span class="hl-code">.</span><span class="hl-code">css</span><span class="hl-code">!</span><span class="hl-code">another</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></pre></div>
+
+<h3>MHTML Drawbacks</h3>
+
+<p>Needless to say, MHTML has some drawbacks:
+
+<ul>
+  <li>It is pretty complex. Still you'll probably have a server-side script
+  generate MHTML for you and once you get it right, you don't need to think
+  about it much, so that's not such a big issue.</li> <li>All this work will be
+  only to support legacy IE versions.</li> <li>If you use the same stylesheet
+  for all browsers, it will double the size of the image content because you
+  need to have the image once as a data URI and once using MHTML. Another option
+  is to serve browser-specific stylesheet files.</li>
+</ul>
+
+<p>These are serious drawbacks that make MHTML inapplicable for most sites. But
+if you need ultra high-speed experience across all browsers, MHTML is a working
+option for IE before 8.
+
+<h2>"Never Expire" Policy</h2>
+
+<p>If 50% of your visitors have an empty cache that means that the other 50% do
+have some of the page components stored on their system. Let's not forget about
+them. You can speed up their experience if the browser doesn't have to download
+anything other than the dynamic HTML page and any new content images. To help
+you achieve better repeat visits experience, let's consider the "never expire"
+policy.
+
+<p>But before digging into this, let's quickly look into what an HTTP request
+looks like in terms of syntax and its body and header parts.
+
+<h3>HTTP Headers</h3>
+
+<p>The browser and the server talk to each other using the HTTP protocol. The
+browser makes a request and the browser returns a response. Each request and
+response has headers and optionally a body. The body is the actual data being
+exchanged and the headers contain some information about that data.
+
+<div class="sidebar"><h4>HTTP/TCP/IP - all together</h4>
+
+<p>We talked about packets and how they have headers of metadata and bodies of
+content. Now we talk about HTTP headers. Let's take a moment to see how it all
+fits together.
+
+<p>When a server needs to send a file, e.g. an image, to the browser, it finds
+the image on the disc, adds some meta information in the form of headers and
+creates an HTTP response that needs to reach the browser. This HTTP response is
+given to the TCP subsystem, which is also part of the server software. The TCP
+is responsible for splitting this HTTP response into packets and using the IP
+(Internet Protocol) to send these little packets and make sure they are received
+by the browser.</div>
+
+<p>Think of the HTTP response as a letter you get in the mail. The actual
+content of the letter is the body of the response. The envelope information
+contains headers, instructing you and the mailman what to do with the letter. If
+you're a secret agent you might get instructions to burn the letter after
+reading. If it's a boring tax document, you might get instructions to retain it
+in your records for at least seven years. In HTTP these instructions will come
+in the header of a request.
+
+<p>It's easy to see what the headers look like. In Firefox you just open
+Firebug's Net panel and expand a request line (<b>Figure 3.13.</b>). In the Net
+panel the headers are slightly formatted for prettier printing, but you can see
+the raw contents using the "View Source" option in Net panel (not the "View
+Source" of the browser which only shows you the body of a response)
+
+<p>
+  <img src="images/03.13.http headers net panel.png"> <div
+  class="caption"><em>Figure 3.13.</em> HTTP headers view in Firebug's Net
+  panel</div>
+</p>
+
+<p>A simple HTTP request looks like the following:
+
+<div class="hl-main"><pre><span class="hl-identifier">GET</span><span class="hl-code"> / </span><span class="hl-identifier">HTTP</span><span class="hl-code">/1.1
+Host: </span><span class="hl-identifier">search</span><span class="hl-identifier">.yahoo</span><span class="hl-identifier">.com</span><span class="hl-code">
+User-Agent: </span><span class="hl-identifier">Mozilla</span><span class="hl-code">/5.0 ...</span></pre></div>
+
+
+<p>The first line of the request says "get me the page at /" (where / means the
+root of the domain). Then a number of key-value pairs follow, one pair on each
+line and the keys separated from the values by a colon.
+
+<p>Similarly the HTTP <em>response</em> contains one line with the status of the
+response (e.g. 200 OK or 404 Not Found), followed by a number of key-value pairs
+representing the HTTP headers. At the end of the headers there's an empty line
+and the body of the response (e.g. an HTML page) starts.
+
+<div class="hl-main"><pre><span class="hl-identifier">HTTP</span><span class="hl-code">/</span><span class="hl-number">1.1</span><span class="hl-code"> </span><span class="hl-number">200</span><span class="hl-code"> </span><span class="hl-identifier">OK</span><span class="hl-code">
+</span><span class="hl-identifier">Transfer</span><span class="hl-code">-</span><span class="hl-identifier">Encoding</span><span class="hl-code">: </span><span class="hl-identifier">chunked</span><span class="hl-code">
+</span><span class="hl-identifier">Content</span><span class="hl-code">-</span><span class="hl-identifier">Type</span><span class="hl-code">: </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">html</span><span class="hl-code">; </span><span class="hl-identifier">charset</span><span class="hl-code">=</span><span class="hl-identifier">UTF</span><span class="hl-code">-</span><span class="hl-number">8</span><span class="hl-code">
+</span><span class="hl-identifier">Content</span><span class="hl-code">-</span><span class="hl-identifier">Encoding</span><span class="hl-code">: </span><span class="hl-identifier">gzip</span>
+
+<span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">doctype</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+  </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">...</span></pre></div>
+
+<p>All these headers have their special meanings and some of them are important
+to performance optimization. We'll discuss the important ones throughout the
+book, starting right now with the Expires header.
+
+<h3>Expires Headers</h3>
+
+<p>The Expires header is one of the important HTTP headers when it comes to
+performance. It instructs the browsers how long a page or a page component could
+be stored in the cache (e.g. "burn after reading" or "keep for 7 years").
+
+<div class="hl-main"><pre><span class="hl-identifier">Expires</span><span class="hl-code">: </span><span class="hl-identifier">Mon</span><span class="hl-code">, </span><span class="hl-number">09</span><span class="hl-code"> </span><span class="hl-identifier">Sep</span><span class="hl-code"> </span><span class="hl-number">2019</span><span class="hl-code"> </span><span class="hl-number">07</span><span class="hl-code">:</span><span class="hl-number">04</span><span class="hl-code">:</span><span class="hl-number">49</span><span class="hl-code"> </span><span class="hl-identifier">GMT</span></pre></div>
+
+<p>This example header says that this component could be kept in cache until
+2019. Another header is called Cache-Control: and it can give the expiration
+time not as an exact date but as number of seconds. Both of these headers help
+caching and anything you can do to help caching is a good thing.
+
+<p>If the <code>Expires</code> header is missing, the browser has to guess how
+long the component is good for and could request it (often conditionally) if it
+suspects that the component has expired and probably has a newer version.
+
+<p>The "never expire" policy is to always set an expiration date for static
+components (scripts, styles, images) and make that date way in the future, for
+example ten years in the future. This is simple to do and is just a
+configuration of you web server. Assuming your server is Apache (the most
+popular) and you're editing the special file called <code>.htaccess</code>
+(which most hosting providers allow you to edit), you can write:
+
+<div class="hl-main"><pre><span class="hl-identifier">ExpiresActive</span><span class="hl-code"> </span><span class="hl-reserved">On</span><span class="hl-code">
+</span><span class="hl-identifier">ExpiresByType</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">x</span><span class="hl-code">-</span><span class="hl-identifier">javascript</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">access plus 10 years</span><span class="hl-quotes">&quot;</span><span class="hl-code">
+</span><span class="hl-identifier">ExpiresByType</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">css</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">access plus 10 years</span><span class="hl-quotes">&quot;</span><span class="hl-code">
+</span><span class="hl-identifier">ExpiresByType</span><span class="hl-code"> </span><span class="hl-identifier">image</span><span class="hl-code">/</span><span class="hl-identifier">png</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">access plus 10 years</span><span class="hl-quotes">&quot;</span></pre></div>
+
+
+<p>Now if you access a PNG image on May 3rd, 2010, Apache will add this header
+to the HTTP response:
+
+<div class="hl-main"><pre><span class="hl-identifier">Expires</span><span
+class="hl-code">: </span><span class="hl-identifier">Sun</span><span
+class="hl-code">, </span><span class="hl-number">03</span> <span class="hl-identifier">May</span><span class="hl-code"> </span><span
+class="hl-number">2020</span><span class="hl-code"> </span><span
+class="hl-number">09</span><span class="hl-code">:</span><span
+class="hl-number">09</span><span class="hl-code">:</span><span
+class="hl-number">47</span><span class="hl-code"> </span><span
+class="hl-identifier">GMT</span></pre></div>
+
+<p>The browser should never request this file again till 2020, effectively
+caching it "forever".
+
+<p>The drawback is that you cannot modify this file anymore, since some users
+have already cached it until 2020. If you need to change the file, you have to
+save it under a different name and update all references to it. For the new name
+you can use consecutive numbers, or a timestamp, or even the so-called
+<em>hashes</em> of the content, so that the name reflects the actual body of the
+component.
+
+<p class="sidebar">Note that setting the Expires header is no guarantee that the
+component will remain in the cache, it's just a suggestion. You don't tell
+browsers what to do, you just ask them, very politely.</p>
+  </div>
+  <h1 id="Chapter4" class="chapter-title">Chapter4 - Smaller Components</h1>
+  <div class="text pad">
+    
+<p>After removing as many HTTP requests as possible from your waterfall, it's
+time to take a look at what's left. The next step is to make sure that the
+components you do send over the network are as small as they can be. This not
+only makes your pages load faster, but also lowers your bandwidth bill (as well
+as the user's). The ways to put your components on a file-size diet include:
+
+<ul>
+  <li>Compression and minification of text-based files such as scripts and
+  styles <li>Recompression of certain types of downloadable files <li>Using
+  zero-body components
+</ul>
+
+<p>In this chapter we'll look at reducing sizes of common file types used on the
+web, with the exception of images. Images are discussed in detail in the next
+chapter.
+
+<h2>Compressing Text Components</h2>
+
+<p>The easiest and at the same time quite effective performance optimization is
+to enable compression for all plain text components. It's almost a crime if you
+don't do it. It doesn't cost any development time, because you're not changing
+even a single line of code. It's just a simple flip of a switch in your server
+configuration with surprisingly good results. Let's take a look at how this
+magic works.
+
+<p>Virtually all browsers in use today support compression. Instead of sending
+the HTML code for a page as-is, you can tell the server to compress it first and
+send it in the much smaller compressed form over the network. The browser
+receives the compressed file, decompresses it and renders it on the screen. It
+may look like extra work, but it's well worth it. The time it takes to compress
+on the server and decompress on the client is negligible compared to the time
+saved by having fewer bytes travel across the wire.
+
+<p>On average, compression will save you a staggering 70% of the file size
+across all text-based components.
+
+<h3>Gzipping</h3>
+
+<p>Later in the book as well as in other books and blogs you'll encounter the
+terms gzip or gzipping as synonyms for compression. That's because gzip
+(pronounced gee-zyp) is the most popular compression algorithm used in HTTP file
+transfers.
+
+<h3>What to compress?</h3>
+
+<p>It's best to compress any text-based file, meaning any component that you can
+open in a text editor and read its contents. That includes:
+
+<ul>
+  <li>HTML <li>CSS <li>JavaScript <li>Any XML file including RSS and Atom feeds,
+  SVG graphics, IE's .htc files, DTD (Document Type Definition) and basically
+  anything else that ends in *ML <li>Font files - .ttf, .otf. Some font files in
+  .eot format may be already compressed but that's rare, so enable compression for
+  them too. The only font file exception is .woff; it's a compressed format and
+  there's no need to enable server compression for it.  <li>Icon (.ico) files -
+  you can't read these in a text editor but they do compress well. The .ico
+  (just like .bmp) is an uncompressed image format.  <li>JSON responses from web
+  service or Ajax calls <li>Plain text (.txt) files <li>... and pretty much any
+  file that's not binary
+</ul>
+
+<p>Files that shouldn't be compressed by the server are those that are already
+in compressed formats such as JPEG and PNG images, SWF files, PDF documents, Zip
+file downloads and so on.
+
+<div class="sidebar"><h4>When in doubt</h4>
+
+<p>If you're wondering if a specific file type uses compression, just try to zip
+it locally on your computer using, for example, WinZip or Control+click &gt;
+Compress on Mac. If the resulting zip file is smaller by at least 20-30%, you
+should be using server compression to send files of this type over the
+network.</p>
+
+</div>
+
+<h3>How to turn on compression?</h3>
+
+<p>In order to enable compression you don't have to do anything to the files
+manually. You let your server do it for you. The most popular web server is
+Apache and that's probably what you're using. Even if you don't have full
+control over your server configuration, most hosting providers will offer you
+the ability to tweak configuration via <code>.htaccess</code> files.
+
+<p class="sidebar">The file <code>.htaccess</code> is just a specially named
+file that sits in the directory for which you want to override the Apache
+configuration. In our case the <code>.htaccess</code> will sit in the root web
+directory and therefore apply to all the sub-directories, meaning to the whole
+web site.</p>
+
+<p>In the previous chapter we talked about adding <code>Expires</code> headers
+to an <code>.htaccess</code> file. Now let's add some more instructions. You
+need to list the component types of the files you want Apache to compress for
+you:
+
+<div class="hl-main"><pre><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">html</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">plain</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">xml</span><span class="hl-code">
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">css</span><span class="hl-code"> 
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">javascript</span><span class="hl-code">
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">x</span><span class="hl-code">-</span><span class="hl-identifier">javascript</span><span class="hl-code">
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">javascript</span><span class="hl-code">
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">json</span></pre></div>
+
+
+<p>Another way to specify which files the server should compress is to list file
+extensions, like so:</p>
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">FilesMatch</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">\.(js|css|ttf|eot|otf|svg)$</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+SetOutputFilter DEFLATE
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">FilesMatch</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>And you can mix and match the two ways.
+
+<p>If you're not sure about the content type of an element, you can simply peek
+into the HTTP response headers. For example OTF font files are often served with
+<code>text/plain</code> content type. But on <b>Figure 4.1.</b> you can see a
+screenshot of Firebug's Net panel showing how an .otf file on the popular blog
+snook.ca is served with a not so straightforward content type. If this is your
+server, you can enable compression for .otf files using:
+
+<div class="hl-main"><pre><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">vnd</span><span class="hl-code">.</span><span class="hl-identifier">oasis</span><span class="hl-code">.</span><span class="hl-identifier">opendocument</span><span class="hl-code">.</span><span class="hl-identifier">formula</span><span class="hl-code">-</span><span class="hl-identifier">template</span></pre></div>
+
+<p>
+  <img src="images/04.01.snook.ca.png"> <div class="caption"><em>Figure
+  4.1.</em> Less-than-ordinary content type for OTF font files</div>
+</p>
+
+<p>If your site is running on Apache before version 2 or your unfriendly host
+doesn't allow any access to configuration, not all is lost. You can make PHP (or
+another server-side language) do the gzipping for you. It's not ideal, because
+(architecturally speaking) you'll have your application layer handle the task of
+the server layer, but the gzip benefits are so pronounced that it's worth the
+try.
+
+<h3>Did it work?</h3>
+
+<p>After you setup your server configuration, how can you tell if it worked? The
+easiest way is to simply take note of the file sizes of the HTML, CSS or
+JavaScript. If these components are suddenly much lighter, than it worked. To
+make sure, you can open Firebug's Net panel or load the page in WebPageTest and
+check the HTTP headers.
+
+<p>
+  <img src="images/04.02.gzip.png"> <div class="caption"><em>Figure 4.2.</em>
+  Headers for a compressed component as seen in Firebug's Net Panel</div>
+</p>
+
+<b>Figure 4.2.</b> shows a view of Net panel showing a properly compressed
+stylesheet. You can notice that in the <em>request</em> there is the header:
+
+<div class="hl-main"><pre><span class="hl-code">Accept-Encoding: </span><span class="hl-identifier">gzip</span><span class="hl-code">, </span><span class="hl-identifier">deflate</span></pre></div>
+
+<p>With this header the browser informs the server that it (the browser) can
+handle encoded files that use either deflate or gzip encoding.
+
+<p>Then the server sends the CSS together with the <em>response</em> header:
+
+<div class="hl-main"><pre><span class="hl-code">Content-Encoding: </span><span class="hl-identifier">gzip</span></pre></div>
+
+<p>That's as if the server is saying, "Here's your file and by the way, it's
+compressed with gzip".
+
+<p>If the <code>Content-Encoding</code> is in the response headers coming from
+your server, that means you set it up properly. If you think you did everything
+right and it still doesn't work, the first thing to do is check if the browser
+is indeed sending the <code>Accept-Encoding</code> header. Sometimes, albeit
+rarely, your browser may be at fault.
+
+<p>Another response header to look for is the <code>Vary</code> header. It
+should look like so:
+
+<div class="hl-main"><pre><span class="hl-code">Vary: </span><span class="hl-identifier">Accept-Encoding</span></pre></div>
+
+<p>Its role is to instruct proxy servers that sit between the server and the
+browser (such as the client's ISP) to cache and serve the version of the page
+depending on the <code>Accept-Encoding</code> header. Otherwise a browser that
+doesn't support gzip may receive the cached response from the request made by
+another client of the ISP, which supports gzip. Apache will add the
+<code>Vary</code> header for you automatically, but if it doesn't, you can do it
+yourself using the following line in your <code>.htaccess</code>:
+
+<div class="hl-main"><pre><span class="hl-identifier">Header</span><span class="hl-code"> </span><span class="hl-identifier">append</span><span class="hl-code"> </span><span class="hl-identifier">Vary</span><span class="hl-code"> </span><span class="hl-identifier">Accept-Encoding</span></pre></div>
+
+<p>Keep in mind that very small files will not be compressed. "Small" according
+to Apache's default settings means fewer than 500 bytes. The reason is that the
+overhead of the compression is not worth the benefit. Really tiny files may even
+end up larger after compression. So when debugging your setup make sure you're
+looking at a file that is big enough.
+
+<h3>Drawbacks and browser quirks</h3>
+
+<p>As you can imagine there are certain costs associated with the server
+compressing the response and the browser uncompressing it. But the costs are
+negligible compared to the benefits you get. Sometimes under heavy traffic you
+may see your server stop gzipping for a while although it's properly configured
+to do so. Apache will stop compressing automatically in order to save processor
+time under heavy load.
+
+<p>There are also some browser quirks. IE6 service pack 1 has problems with
+decompression although it claims that it can handle it. This was fixed quickly
+with service pack 2 and you can ignore this edge case. But if you're extra
+paranoid you can disable gzip for this user agent; Apache allows configuration
+based on sniffing the <code>User-Agent</code> request header.
+
+<h2>Rezipping Downloadable Files</h2>
+
+<p>There's also a potential for file size reduction for common downloadable
+files, which are actually zip files with different file extensions. Some
+examples include:
+
+<ul>
+  <li>Newer MS Office documents - DOCX, XLSX, PPTX <li>Open Office documents -
+  ODT, ODP, ODS <li>JARs (Java ARchives) <li>XPI Firefox extensions <li>XAP -
+  Silverlight applications
+</ul>
+
+<p>These ZIP files in disguise are usually not compressed with the maximum
+compression in order to make the file saving operations faster. For example if
+you're writing a document in Word, the constant auto-save will not use a good
+compression level in order to make the auto-saves faster and not interfere with
+your work. But if you allow such downloads from your website, you can consider
+<em>recompressing</em> them with maximum compression.
+
+<p>For example if you take a Word .docx file and unzip it using a command line
+tool (or add a .zip extension to it and unzip with a GUI tool) you'll see that
+it contains a few directories with some XML and other files. Then you can zip
+again all the files you unzipped but this time using the maximum compression.
+
+<p>If you're using the command-line utilities zip and unzip you can do the
+following:
+
+<ol>
+  <li>Unzip the Word document into a new <code>tmp/</code> directory:
+
+<pre>unzip source.docx -d tmp/</pre></li>
+
+<li>Navigate to <code>/tmp</code> and zip all the files in it
+
+<pre>cd tmp/ zip -9 -r ../result.docx tmp/</pre></li> </ol>
+
+
+<p>The results could be anywhere between a 1 and 30% size reduction. It's
+definitely worth the try, especially since it's just a one-time operation you
+perform before the document goes live on your site. You could also automate the
+process, since it can be done by a command-line script.
+
+<p>You can also consider a utility that provides even better compression than
+the popular zip and unzip, such as 7-zip.
+
+<h2>Minification</h2>
+
+<p>In addition to compression you can also <em>minify</em> certain component
+types such as scripts and stylesheets.
+
+<p>Minification means striping extra code from your programs that is not
+essential for the program's execution. The code you can safely strip is mainly
+comments and whitespace. Another part of minification is using the shortest
+possible syntax when there are several options. And, when safe to do so,
+minifiers can rename variables by using shorter names.
+
+<p>Minification is best done by a tool, because it's nearly impossible to do it
+properly by hand. Luckily there are quite a few tools available and most are
+free and open source.
+
+<h3>Minifying JavaScript</h3>
+
+<p>Some of the tools to minify JavaScript include:
+
+<ul>
+  <li>YUICompressor <li>Google's Closure compiler <li>Dojo ShrinkSafe <li>Packer
+  <li>JSMin
+</ul>
+
+<p>All of these tools have web-based UI versions available so you can use the
+tools without installing them.
+
+<p>How much size reduction can you expect from minification? Running the popular
+jQuery library through all the tools mentioned above shows that savings are
+between 40% and 60% depending on the tool.
+
+<p>You should still gzip the minified JavaScript files before sending them to
+the server. Gzipping alone gives you about 70% savings and minification alone
+cuts script sizes with more than half. Both combined (minifying then gzipping)
+can make your scripts 85% leaner.
+
+<p>So the recommendation is: do it. The concrete tool you use doesn't matter all
+that much, pick anything you're comfortable with and it will still give you the
+significant approximate 85% savings of gzipping and minification combined.
+
+<p>The best part is that running the JavaScript code is not affected at all by
+minification, so you don't need to retest everything.
+
+<p class="sidebar">Google Closure compiler in "advanced" minification mode can
+actually break your JavaScript code because it optimizes the code very
+aggressively. A little deeper knowledge of the tool is required in order to
+benefit from the advanced minification. Otherwise you can safely use it in its
+default "simple" mode. </p>
+
+<h3>Minifying CSS</h3>
+
+<p>Another performance optimization you should do is to minify CSS, just like
+JavaScript. In addition to the usual stripping of comments and whitespaces,
+there are some slightly more advanced CSS minifications that could be done by
+your tool of choice.
+
+<p>The minifier can use shorter syntax when applicable, for example stripping
+units of measure (e.g. px) when the value is 0 or using shorthands.</p>
+
+<div class="hl-main"><pre><span class="hl-comment">/*</span><span class="hl-comment"> before </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.test</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+</span><span class="hl-comment">/*</span><span class="hl-comment"> after </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.test</span><span class="hl-brackets">{</span><span class="hl-reserved">padding:</span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-brackets">}</span></pre></div>
+
+<p>Another task for the minifier is to use the shortest color syntax.</p>
+
+<div class="hl-main"><pre><span class="hl-comment">/*</span><span class="hl-comment"> before </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.module</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-reserved">background:</span><span class="hl-code"> </span><span class="hl-var">#ff00ff</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+</span><span class="hl-comment">/*</span><span class="hl-comment"> after </span><span class="hl-comment">*/</span><span class="hl-code">
+</span><span class="hl-identifier">.module</span><span class="hl-brackets">{</span><span class="hl-reserved">background:</span><span class="hl-var">#f0f</span><span class="hl-reserved"></span><span class="hl-brackets">}</span></pre></div>
+
+
+<p>The CSS minifiers are more restricted in what they can do compared to
+JavaScript minifiers. A CSS minifier cannot rename properties for example, so
+there's no way to make <code>text-decoration: underline</code> any shorter.
+
+<p>Some CSS minification tools include:
+
+<ul>
+  <li>YUI compressor - the same tool that does JavaScript minification also has
+  a simple CSS minifier <li>CSSTidy - a parser and an optimizer, it's more
+  advanced because it parses and understands the structure of the stylesheets,
+  allowing it to better use shorthand properties for example
+</ul>
+
+<p>In order to get an average figure of the potential benefits of CSS
+minification, I ran these tools on all stylesheets from csszengarden.com. The
+average savings were a little under 40%, so CSS minification is not as good as
+JavaScript minification. Gzip savings are still around 70% and the combined
+savings of gzipping the minified CSS result in 80% savings on average.
+
+<p>An important note here is that in CSS we deal with a lot of hacks. Since the
+browsers have parsing issues (which is what hacks often exploit), that makes the
+minifier's task even more complicated. Not only does it have to properly handle
+the CSS syntax (better than some browsers) but it must also understand and
+preserve the hacks that resolve browser bugs. Both YUICompressor and CSSTidy
+tolerate a lot of hacks, but probably not all, especially some of the more
+exotic ones, so approach CSS minification with care. Before trusting the
+minifier test it to make sure it supports the hacks you're likely to use.
+
+<div class="sidebar"><h4>Minifying inline code</h4><p>
+
+<p>An optimization that is easy to miss is minifying inline CSS and JavaScript
+code. That's usually not as easy as just running a tool on a static file,
+because the inline code is often generated by a server-side script. Still, if at
+all possible, try to do it, because the benefits are the same as with external
+code. Additionally the inline code is probably never cached because it's a part
+of a dynamic page. That makes it even more important to make sure the size is as
+small as it could be.</p></div>
+
+<h3>Minifying HTML</h3>
+
+<p>Minifying HTML is not as simple as minifying CSS and JavaScript. Whitespace
+sometimes affects display in certain browsers. Comments may have a special
+meaning (e.g. conditional comments). Still there are sites that minify the HTML,
+for example Google search and Yahoo! Search.
+
+<p>Due to the challenges of minifying HTML, it's usually not safe to let a tool
+do it for you automatically. Additionally, most of the pages on the web are not
+static but are dynamically generated by a server-side scripts. One simple way to
+do HTML minification is to just make sure you're not creating white space when
+producing HTML in your server scripts. That, of course, makes HTML harder to
+read, but with modern DOM inspectors such as Firebug, "View Source" is rarely
+used, so unreadable HTML will not often be an issue.
+
+<p>Not creating whitespace and comments is the easiest HTML minification and
+often has the biggest benefit. But if you are really determined to produce the
+lightest HTML possible, there are more options.
+
+<div class="sidebar"><h4>Don't try this at home</h4>
+
+<p>Before we dive into low-level HTML minification, a word of warning: these are
+micro-optimizations, they are high risk and low benefit. Try one of your pages
+in a minification tool to see the potential benefits from optimizing one page.
+Only if you see you have a lot to gain should you heavily invest in minifying
+whole sites.</p></div>
+
+<p>Let's see some options for producing minimal HTML code.
+
+<h4>HTML5 doctype</h4>
+
+<p>The HTML5 doctype is much shorter than previous HTML and XHMTL versions. It's
+simply:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-code">!</span><span class="hl-var">doctype</span><span class="hl-code"> </span><span class="hl-var">html</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<h4>Stripping optional closing tags</h4>
+
+<p>There are a number of HTML tags, which the standard allows to be left
+unclosed. Care needs to be taken, but you can often omit many closing tags such
+as:
+
+<ul>
+  <li>Structure tags:
+    <div class="hl-main"><pre><span class="hl-brackets">&lt;/</span><span
+    class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span
+    class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span
+    class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span
+    class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span
+    class="hl-reserved">head</span><span
+    class="hl-brackets">&gt;</span></pre></div></li>
+  <li>Lists:
+    <div class="hl-main"><pre><span class="hl-brackets">&lt;/</span><span
+    class="hl-reserved">li</span><span class="hl-brackets">&gt;</span><span
+    class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span
+    class="hl-reserved">dd</span><span class="hl-brackets">&gt;</span><span
+    class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span
+    class="hl-reserved">dt</span><span class="hl-brackets">&gt;</span><span
+    class="hl-code">, </span><span class="hl-brackets">&lt;/</span><span
+    class="hl-reserved">option</span><span
+    class="hl-brackets">&gt;</span></pre></div></li>
+  <li>Paragraph:
+    <div class="hl-main"><pre><span class="hl-brackets">&lt;/</span><span
+    class="hl-reserved">p</span><span
+    class="hl-brackets">&gt;</span></pre></div></li>
+  <li>Table tags: <div class="hl-main"><pre><span
+  class="hl-brackets">&lt;/</span><span class="hl-reserved">tr</span><span
+  class="hl-brackets">&gt;</span><span class="hl-code">, </span><span
+  class="hl-brackets">&lt;/</span><span class="hl-reserved">th</span><span
+  class="hl-brackets">&gt;</span><span class="hl-code">, </span><span
+  class="hl-brackets">&lt;/</span><span class="hl-reserved">td</span><span
+  class="hl-brackets">&gt;</span><span class="hl-code">, </span><span
+  class="hl-brackets">&lt;/</span><span class="hl-reserved">tbody</span><span
+  class="hl-brackets">&gt;</span><span class="hl-code">, </span><span
+  class="hl-brackets">&lt;/</span><span class="hl-reserved">thead</span><span
+  class="hl-brackets">&gt;</span></pre></div></li>
+</ul>
+
+<h4>Using relative links</h4>
+
+<p>There's no reason to repeat the domain in all internal links. This tag:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">a</span><span class="hl-code"> </span><span
+class="hl-var">href</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span
+class="hl-string">http://example.org/page.html</span><span
+class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>...is shorter when written as:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">a</span><span class="hl-code"> </span><span
+class="hl-var">href</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span class="hl-string">/page.html</span><span
+class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<h4>Attribute quotes</h4>
+
+<p>Quotes around attributes are optional when there's no white space in the
+attribute values. Therefore this tag:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">p</span><span class="hl-code"> </span><span
+class="hl-var">class</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span class="hl-string">intro body</span><span
+class="hl-quotes">&quot;</span><span class="hl-code"> </span><span
+class="hl-var">id</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span class="hl-string">myp</span><span
+class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>... can be written as:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">p</span><span class="hl-code"> </span><span
+class="hl-var">class</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span class="hl-string">intro body</span><span
+class="hl-quotes">&quot;</span><span class="hl-code"> </span><span
+class="hl-var">id</span><span class="hl-code">=</span><span
+class="hl-var">myp</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>Additionally, when you do have a quote, the space after it is optional:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">p</span><span class="hl-code"> </span><span
+class="hl-var">class</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span class="hl-string">intro body</span><span
+class="hl-quotes">&quot;</span><span class="hl-var">id</span><span
+class="hl-code">=</span><span class="hl-var">myp</span><span
+class="hl-brackets">&gt;</span></pre></div>
+
+<h4>Boolean values</h4>
+
+<p>Boolean values that are required in XHTML can be skipped in HTML, e.g.
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">input</span><span class="hl-code"> </span><span
+class="hl-var">disabled</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span class="hl-string">disabled</span><span
+class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>... could be:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">input</span><span class="hl-code"> </span><span
+class="hl-var">disabled</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>Also
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">option</span><span class="hl-code"> </span><span
+class="hl-var">selected</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span class="hl-string">selected</span><span
+class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>... could be:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">option</span><span class="hl-code"> </span><span
+class="hl-var">selected</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<h4>Default attributes</h4>
+
+<p>Some attributes have default values and don't need to be specified again.
+Examples:</p>
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">form</span><span class="hl-code"> </span><span
+class="hl-var">method</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span class="hl-string">get</span><span
+class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span
+class="hl-code"> </span>
+<span class="hl-brackets">&lt;</span><span
+class="hl-reserved">input</span><span class="hl-code"> </span><span
+class="hl-var">type</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span class="hl-string">text</span><span
+class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span
+class="hl-code"> </span>
+<span class="hl-brackets">&lt;</span><span
+class="hl-reserved">script</span><span class="hl-code"> </span><span
+class="hl-var">language</span><span class="hl-code">=</span><span
+class="hl-quotes">&quot;</span><span class="hl-string">javascript</span><span
+class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>These can simply become:
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span
+class="hl-reserved">form</span><span class="hl-brackets">&gt;</span><span
+class="hl-code"> </span>
+<span class="hl-brackets">&lt;</span><span
+class="hl-reserved">input</span><span class="hl-brackets">&gt;</span><span
+class="hl-code"> </span>
+<span class="hl-brackets">&lt;</span><span
+class="hl-reserved">script</span><span
+class="hl-brackets">&gt;</span></pre></div>
+
+<p>As you can see, most of these HTML minification techniques would require you
+to edit static pages, server-side code or code in templates and are not easy to
+do safely. Combined with the relatively small benefits, these techniques should
+be used carefully, if at all.
+
+<h3>Minifying XML and Feeds</h3>
+
+<p>Minifying RSS feeds and other XML documents is much safer than minifying
+HTML, as it's OK to strip all unneeded white space in XML. Since these documents
+are usually generated by a script and not written by hand, you don't need to use
+a minifier tool. You can simply make sure that there are no white spaces
+produced by your XML-generating scripts.
+
+<h3>15% uncompressed traffic</h3>
+
+<p>If minification only adds a minor benefit compared to the benefits of serving
+compressed content, you may wonder if it's worthwhile. While even small savings
+do add up, a stronger reason is that as many as 15% of all users will never
+receive compressed content.
+
+<p>There are various reasons for the lack of gzip support:
+
+<ul>
+  <li>IE6 behind a proxy switches to HTTP1.0 and doesn't send the
+  <code>Accept-Encoding</code> header at all <li>Other more ancient browsers
+  don't support gzip, although their number is negligible <li>A number of
+  firewalls and anti-virus software choose not to deal with compression when
+  monitoring your network traffic. That's why they hack the outgoing requests
+  from the browser and modify the <code>Accept-Encoding</code> to make it
+  invalid, e.g.
+</ul> 
+<pre>
+Accept-Encoding: <b>xxxx</b>, defl<b>xxx</b> 
+Accept-En<b>X</b>oding: gzip, deflate</pre>
+
+<p>Without a valid indication that the browser supports compression, the server
+sends the response in plain test. That's why a significant number of users never
+get a compressed response, although their browsers are often perfectly capable
+of supporting it.
+
+<p>In conclusion: minification helps. Not only because compressing minified
+responses makes even smaller files, but also because in 15% of all page views
+there is no compression support, despite your best efforts.</p>
+
+<div class="sidebar"><h4>Forcing Compression</h4> If you want to help these
+users that really <em>do</em> support compression but aren't telling you so, you
+can get a bit fancy and <a
+href="http://www.stevesouders.com/blog/2010/07/12/velocity-forcing-gzip-compression/">send
+them compressed content anyway</a>.  If you are careful and you check to make
+sure that the user's browser really <em>can</em> handle compression as described
+in Andy Martone's <a
+href="http://velocityconf.com/velocity2010/public/schedule/detail/14334">talk</a>,
+you can safely give gzipped content back to a number of these people.</div>
+
+<h2>204 No Content</h2>
+
+<p>When talking about reducing the size of components, the smallest component
+you can ever have is the one that has no body, only headers. This is known as a
+<code>204 No Content</code> response and is mainly useful for logging, tracking,
+or any other type of request where you need to send something to the server, but
+don't really need a response.
+
+<p>Often people use 1x1 GIFs for logging and tracking, but that means still
+sending around a hundred bytes for no reason.
+
+<p>The way to send a 204 response from PHP is simply:</p>
+
+<div class="hl-main"><pre><span class="hl-inlinetags">&lt;?php</span>
+<span class="hl-identifier">header</span><span
+class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span
+class="hl-string">HTTP/1.0 204 No Content</span><span
+class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span
+class="hl-code">;</span>
+<span class="hl-comment">//</span><span
+class="hl-comment"> the rest of the logging logic...</span><span
+class="hl-comment"></span><span class="hl-code"> </span>
+<span
+class="hl-inlinetags">?&gt;</span></pre></div>
+
+<p>For an example in the wild, see <b>Figure 4.3</b>, which shows how Google
+search uses 204 responses for logging purposes. Note also the
+<code>Content-Length</code> header, which contains the size of the component's
+body in bytes. In the case of 204 responses it has the value of 0.
+
+<p>
+  <img src="images/04.03.no content.png"> <div class="caption"><em>Figure
+  4.3.</em> Two requests on Google search returning <code>204 No Content</code>
+  responses.</div>
+</p>
+
+<h2>Summary</h2>
+
+<p>In this chapter you learned about:
+
+<ul>
+  <li>Server-side compression - instructing your server to gzip plain text
+  responses before sending them. Enabling compression gives an average of 70%
+  size reduction and should be done for JavaScripts, Stylesheets, HTML, XML and
+  any other file types that are not already compressed <li>Recompression - some
+  downloadable files such as Word DOCX are actually ZIP files with a different
+  extension. They are usually not compressed at the best compression levels, so
+  you can save up to 30% by recompressing them with the highest compression.
+  <li>Code minification - using widely available tools that strip whitespace,
+  comments and choose the shortest syntax possible gives you 50-60% savings with
+  JavaScript code and up to 40% for CSS.  <li><code>204 No Content</code> - the
+  world's smallest component with a body of 0 bytes can be used for logging and
+  other purposes for which developers usually use a 1x1 GIF
+</ul>
+
+<p>While recompression and <code>204 No Content</code> may not be applicable to
+all sites, there's no excuse for not using compression and minification. Turning
+on compression is just a flip of a switch in Apache configuration. Minification
+is a one-off operation done by specialized tools, right before your site goes
+live. Both compression and minification will reduce components size as much as
+85% (JavaScript) or 80% (CSS).
+  </div>
+  <h1 id="Chapter5" class="chapter-title">Chapter5 - Optimizing Images</h1>
+  <div class="text pad">
+    
+<p>In the previous chapter we talked about reducing the file sizes of most
+common file types used on the web except for images. Let's tackle images now.
+
+<p>In this chapter you will learn about lossless image optimizations that you
+can perform on the three common image types used on the web: PNG, JPEG, GIF.
+You'll also learn about the two major types of PNG: palette (PNG8) and truecolor
+(PNG24) and see why PNG8 should always be preferred instead of GIF.
+
+<p>Images are an important part of most web pages. Even though we now see
+increasingly more JavaScript-heavy fat-client web applications, the weight of
+the images still contributes 40-50% of the total page weight on average. This
+means that reducing image file sizes helps significantly towards achieving the
+goal of serving fast pages.
+
+<h2>Lossless Optimization</h2>
+
+<p>Image optimization is usually done by hand by skilled designers who carefully
+choose the image quality settings, crop only the relevant parts of an image and
+so on. These are all subjective optimizations; they require human touch and
+human eye verification. Let's not talk about these types of optimizations and
+focus on the lossless optimizations instead. <em>Lossless optimizations</em> are
+those that take an image and produce another image, which renders exactly the
+same on the screen as the original, pixel by pixel. Only it's smaller in file
+size.
+
+<p>The lossless file size savings come from:
+
+<ul>
+  <li>Using better compression algorithms to store the pixel information
+  <li>Removing unneeded metadata that goes with the image file
+</ul>
+
+<p>In this chapter you'll see that there are a number of free, cross-platform,
+open-source tools that perform lossless optimizations. Almost all of these tools
+can run on the command line, which means that you can create a simple script
+that does all the optimizations for you, picking the right tool for the right
+file format. You can safely automate this process and not worry about the visual
+results. You don't need to look at the optimized images, because they will look
+exactly the same as the originals.
+
+<h2>Image Formats</h2>
+
+<p>On the web we mainly deal with JPEGs, GIFs (some of them animated), and PNGs.
+The PNG format also comes in two main variations - PNG8 (a.k.a. <em>palette</em>
+or <em>indexed</em> PNG) and PNG24 (a.k.a. <em>truecolor</em> or
+<em>PNG32</em>). PNG8 has all of the features of GIF plus more (and minus
+animation) and it almost always yields a smaller file size. There is no reason
+to use GIF anymore; you should convert all non-animated GIFs to PNG8 and benefit
+from the file size savings.
+
+<p>Let's take a look at the tools available for losslessly optimizing each of
+the image formats: GIF, JPEG, and PNG.
+
+<h2>Optimizing GIF</h2>
+
+<p>The best way to optimize a GIF image is to convert it to PNG, more
+specifically PNG8. PNG8 is a palette image format, just like GIF. It can store
+up to 256 colors, just like GIF. In addition, PNG8 supports full alpha
+transparency, which is a little known fact, mainly because of the lack of
+support among image editing software, such as Photoshop. This is actually worth
+repeating.
+
+<p>PNG8 supports alpha transparency, although most image editing programs don't
+give you that option.
+
+<p>When using "Save for Web & Devices", Photoshop offers you to export to, among
+others, PNG8 and GIF. In both cases Photoshop only allows you to select one
+color of the palette and make it fully transparent. All others are fully opaque.
+This is actually what GIF supports, but PNG8 can do better. GIF supports
+<em>binary transparency</em>, meaning that a single pixel is either fully
+transparent or fully opaque. PNG8 supports <em>alpha transparency</em> meaning
+that a pixel can be only partially transparent and whatever is underneath the
+image can shine through.
+
+<p>In any case, even in Photoshop, PNG8 is at least as good as GIF. There's also
+no issue with IE6's support for fully transparent pixels in PNG8.
+
+<p>PNG8 almost always yield smaller file sizes. Exceptions are rare and only
+when an image is really small and contains just a few colors. So in terms of
+performance optimization <strong>all GIFs should be converted to PNG8</strong>.
+
+<p>This may sound like a lot of work, but there are tools to help you automate
+the process. One such tool is OptiPNG. It's a command-line tool that you can run
+on all operating systems like so:
+
+<pre>$ optipng *.gif</pre>
+
+<p>This command will convert all GIFs in the current directory to PNG. If you
+want to be extra careful, you can write a short script that checks whether the
+result is indeed smaller and if not, keep the GIF. But in general converting all
+will be better in nearly all cases.
+
+<div class="sidebar"><h4>PNG is smaller</h4>
+
+<p>A common misconception is that GIF is smaller than PNG. This myth is based on
+observations when exporting a PSD (PhotoShop Document) as a PNG and then GIF.
+The problem is that in most cases people compare a color-rich graphic exported
+as a <strong>truecolor</strong> PNG (with potentially millions of colors) versus
+the greatly reduced 256-color only GIF. Often the human eye cannot distinguish
+when a graphic is missing thousands of colors if they are subtle enough. The
+proper apples-to-apples comparison is PNG8 vs. GIF in which cases PNG8 is pretty
+much always the winner especially after proper optimization (discussed
+below).</p></div>
+
+<h3>Animated GIFs</h3>
+
+<p>You should convert all GIFs to PNG except for the animated GIFs. Although
+there are PNG options for animations, most notably the APNG format, they are not
+yet widely supported. So for simple "loading..." and other animations, you can
+keep the GIFs, but optimize them.
+
+<p>A tool called GIFSicle is a free option. You run it on the command line like:
+
+<pre>$ gifsicle -O2 before.gif &gt; after.gif</pre>
+
+<p>This tool optimizes the images, by not carrying over duplicate pixels from
+one animation frame to another and optimizing the palette used in each frame.
+Note that the option -O2 has a capitalized letter O (for <em>optimize</em>), not
+the number 0.
+
+<h2>Optimizing JPEG</h2>
+
+<p>While PNG and GIF are more suitable for decoration graphics, buttons and CSS
+sprites, JPEG is the right format for photos and other images that contain many
+colors and gradual transitions of color (not sharp lines and text).
+
+<p>JPEG is a <em>lossy</em> format, meaning that every time you open a JPEG and
+save it, you'll lose some image information, even if you use the maximum quality
+setting of 100. But luckily, there are some operations that can be performed
+losslessly, such as:
+
+<ul>
+  <li>Editing image metadata <li>Optimizing compression <li>Switching from
+  progressive to baseline format <li>Cropping <li>Rotation to 90, 180, 270
+  degrees
+</ul>
+
+<p>For performance purposes, we'll be looking only into the first three
+operations. A tool that allows you to perform the lossless operations is called
+JPEGTran.
+
+<p>The image meta data contains information such as the author of the photo,
+copyrights, date, time, geolocation the photo was taken and so on. You can see
+how some of this information may be useful and even required. But for the
+purposes of viewing the image in a browser as part of a web page, much of that
+data is not needed. Additionally there's a lot of extra data that your users
+have no use for, data you didn't even intend to include, such as image software
+internal data, thumbnails of the actual image within the image and even audio.
+Why send all these extra bytes and slow down the user experience, when this
+information will never be used?
+
+<p>With JPEGTran you can strip all the meta information from an image. Other
+software, such as EXIFTool offer fine-grained control over the specific meta
+fields, while JPEGTran takes an all or nothing approach. The option -copy none
+in JPEGTran strips all meta data, the option -copy all keeps it intact.
+
+<h3>Observing the intellectual property</h3>
+
+<p>Before stripping all meta information from an image, make sure you own the
+rights to that image (e.g. you took the photo yourself). Removing photographer
+name and copyright information is illegal.
+
+<p>In addition to stripping meta data, you can optimize the compression used to
+store the pixel information using the -optimize option. This is a good practice
+because many image editors don't write optimized JPEGs. Instead of -optimize,
+you can use -progressive option which creates progressively loading JPEGs
+(discussed below).
+
+<p>So the command you need to run on all JPEGs before publishing them on the web
+looks like so:
+
+<pre>$ jpegtran -copy none -optimize before.jpg &gt; after.jpg</pre>
+
+<p>Again, substitute -copy none with -copy all if you need to retain all meta
+data and substitute -optimize with -progressive when you want a progressive
+JPEG.
+
+<h3>Progressive JPEG</h3>
+
+<p>The so-called <em>baseline JPEGs</em> load from top to bottom as the image
+arrives over the network (<b>Figure 5.1</b>). The <em>progressive JPEGs</em>
+load from low quality to high in several "passes" (<b>Figure 5.2</b>)
+
+<p>
+  <img src="images/05.01.progressive base.png"> <div
+  class="caption"><em>Figure 5.1.</em> Baseline JPEG loads from top to
+  bottom</div>
+</p>
+
+<p>
+  <img src="images/05.02.progressive example.png"> <div
+  class="caption"><em>Figure 5.2.</em> Progressive JPEG loading from low quality
+  to high</div>
+</p>
+
+<p>A common understanding is that progressive formats produce larger files.
+While this seems to be true for GIF and PNG, it doesn't look so clear-cut for
+JPEGs.
+
+<p>In a study of over 10000 JPEGs from all over the web, I found that results
+vary from one image to the next. But plotting a trendline (<b>Figure 5.3.</b>)
+shows that <strong>images of file size 10K and over have a better chance of
+being smaller when using the progressive JPEG format</strong>. The difference
+could be up to 10% (with 3% median) but in extreme cases that translated to 250K
+of savings.
+
+<p>
+  <img src="images/05.03.progressive.png"> <div class="caption"><em>Figure
+  5.3.</em> Trendline showing the difference between progressive and baseline
+  codings. X-axis shows the original image file size, and Y shows the difference
+  when subtracting progressive from baseline sizes</div>
+</p>
+
+<p>Since this is just a trend and not applicable to all images, if you're
+focused on producing the smallest size possible, you can try both formats and
+pick the smaller result. Otherwise you can simply establish a general of thumb:
+baseline for thumbnails, progressive for the actual photos.
+
+<h3>Old School, New School</h3>
+
+<p>It's not common to see photos on the web that render the way progressive
+JPEGs do, because the majority of the JPEGs use baseline coding (the power of
+the defaults in action). This may cause some web professionals to dismiss the
+progressive JPEGs as looking too old school. But on the other hand iPhone always
+renders all photos like progressively coded JPEGs, from low resolution to
+higher. So we can speculate that in the future people may become more and more
+familiar with this visual pattern and even expect it.
+
+<h2>Optimizing PNG</h2>
+
+<p>Most image editing programs don't write properly optimized PNG files.
+Luckily, there are many free tools to remedy the situation. Some of the tools
+strip the so-called PNG chunks and some offer better compression of the pixel
+data. Many do both. Since the different tools provide different results by each
+doing its own thing, for best savings you can run as many tools as you can, one
+on the result of the previous. Naturally, this will slow down the optimization
+process and in fact the benefits diminish with each additional tool. So unless
+you're really motivated to produce the smallest results, running just one the
+tools would be enough and often significantly reduce the size of the file
+produced by the image program.
+
+<h3>Chunks</h3>
+
+<p>PNG is an extensible image format, which allows feature extensions to be
+implemented and stored in "chunks". Image software that doesn't understand a
+certain chunk can simply ignore it and still be able to work with the image. For
+the purposes of displaying images in a web page, most of the chunks can be
+stripped; they are not needed and in fact can be dangerous. For example a gamma
+correction chunk aims to solve the problem of inconsistent display of colors in
+different operating systems, but in fact introduces inconsistency between a
+color value in PNG and the same color in CSS in some browsers. Removing the
+gamma correction chunk solves this problem.
+
+<h3>Tools</h3>
+
+<p>Let's see some of the PNG optimization tools and their options.
+
+<h4>PNGCrush</h4>
+
+<p>PNGCrush removes unneeded chunks and tries different compression methods. It
+can be run like so:
+
+<pre>$ pngcrush -rem alla -reduce before.png after.png</pre>
+
+<p>The option -rem alla removes all chunks except for transparency. If you want
+to retain all chunks, use -rem none. You can also pick and choose individual
+chunks to preserve. An additional option -brute makes more attempts to optimize
+compression resulting in slower but even better optimization.
+
+<h4>OptiPNG</h4>
+
+<p>OptiPNG is also a command-line tool, but it has several GUI versions for both
+PC and Mac. As you saw with the GIF conversion, you can simply be run it like:
+
+<pre>$ opting *.gif</pre>
+
+<p>or
+
+<pre>$ optipng *.png</pre>
+
+<p>OptiPNG has seven levels of optimization, which you can specify using the -o
+option, like so:
+
+<pre>$ optipng -o7 before.png -out after.png</pre>
+
+<p>Option -o7 means best (slowest) compression and two (option -o2) is the
+default.
+
+<h4>PNGOptimizer</h4>
+
+<p>This tool is Windows-only, it has a GUI and command-line versions:
+
+<pre>$ pngoptimizercl -file:"image.png"</pre>
+
+<p>Or to optimize in bulk:
+
+<pre>$ pngoptimizercl -file:"*.png"</pre>
+
+<h4>PNGOut</h4>
+
+<p>PNGOut is closed source, has a paid Windows GUI and free command-line
+binaries for Windows, Mac, Linux. By default PNGOut uses the best (slowest)
+compression:
+
+<pre>$ pngout image.png</pre>
+
+<p>If you want faster optimization you can select a strategy from 0 (best) to 5
+(no compression). You can also specify a different filename for the result if
+needed:
+
+<pre>$ pngout -s2 before.png after.png</pre>
+
+<h4>AdvPNG</h4>
+
+<p>Setting for best compression:
+
+<pre>$ advpng -z4 image.png</pre>
+
+<h4>DelfOpt</h4>
+
+<p>Windows-only binary, closed source, usually the last tool to run when running
+several tools in succession:
+
+<pre>$ deflopt *.png</pre>
+
+<p>One final tool worth mentioning is <strong>PNGSlim</strong>. It's actually a
+Windows .bat file, which runs most of the other tools in the list above with
+different options. It's therefore the slowest (since it runs all others) but
+produces the smallest sizes possible.
+
+<p>The list of available PNG optimizations may look overwhelming, but it's given
+here mostly if you want to invest the time to build your own image optimization
+script with the best results. Otherwise, just running one of the tools will be a
+significant improvement over not optimizing at all. How significant? Let's see.
+
+<h2>Optimizing the Top 1000 Sites</h2>
+
+<p>So far you learned about the ways to reduce file sizes losslessly for each
+type of image. To summarize:
+
+<ol>
+  <li>Convert GIFs to PNG <li>Run all PNGs though any (or all) of the available
+  PNG optimization tools <li>Run JPEGTran on all JPEGs <li>Optimize animations
+  with GIFSicle
+</ol>
+
+<p>Now let's see what will happen if you follow these guidelines and optimize
+all the images found on the top 1000 websites in the world. Have in mind that
+these are the top high-traffic sites, which means that they should probably be
+well optimized or at least better than the average website.
+
+<p>The survey of the top 1000 was provoked by the curiosity as to how widespread
+is the superior PNG format, compared to the old GIF. Turns out that GIFs are
+still predominantly used (<b>Figure 5.4.</b>), despite the fact that PNG specs
+have been released 14 years ago and the modern browsers support the format (the
+transparency issue in IE6 is addressed in the next section of this chapter)
+
+<p>
+  <img src="images/05.04.top1000.png"> <div class="caption"><em>Figure
+  5.4.</em> "Market" share of the image formats found on top 1000 sites (May
+  2010)</div>
+</p>
+
+<h3>Results</h3>
+
+<p>Now that we know the distribution, the question is: are the images optimized
+and can we do better?
+
+<h4>GIF to PNG</h4>
+
+<p>Converting all GIFs to PNG resulted in significant savings -
+<strong>23.79%</strong>. This is obviously a lot of bandwidth to gain. The
+process of converting is quick and painless; it only takes about 1 minute per
+1000 images. For this experiment I ran the tools OptiPNG and PNGOptimizer like
+so:
+
+<pre>$ optipng *.gif</pre>
+
+<pre>$ pngoptimizercl -file:"*.png"</pre>
+
+<h4>Optimizing PNG</h4>
+
+<p>As you can see, converting all GIFs to PNG is a clear win. But what about the
+images that are already PNG, are they optimized?
+
+<p>Turns out that simply running all PNGs through a single tool - PNGOptimizer -
+gives <strong>16.90%</strong> savings. Not bad at all given that all it took was
+running one command:
+
+<pre>$ pngoptimizercl -file:"*.png"</pre>
+
+<p>The results could be even better if you run several tools with different
+options, in addition to PNGOptimizer.
+
+<h4>Optimizing JPEG</h4>
+
+<p>Running all JPEGs through JPEGTran resulted in <strong>13.08%</strong>
+savings, using the command:
+
+<pre>$ jpegtran -copy none -outfile destination.jpg -optimize source.jpg</pre>
+
+<p>Again, you can do better by trying progressive encoding and picking the
+smaller result.
+
+<h4>GIF animations</h4>
+
+<p>Running GIFSicle on all GIF animation was able to shave <strong>4.6%</strong>
+off the file sizes. The savings are not as pronounced as the other image types,
+but every little bit helps, especially if the process is automated and doesn't
+require any manual effort.
+
+<h2>PNG and Alpha Transparency</h2>
+
+<p>A well-known issue exists in the way IE6 handles transparency in
+<em>truecolor</em> PNGs (PNG24). Some of the transparent areas become a flat
+color, usually grey (<b>Figure 5.5.</b>). This is solved using IE's proprietary
+CSS filter called AlphaImageLoader.
+
+<p>
+  <img src="images/05.05.png"> <div class="caption"><em>Figure 5.5.</em>
+  Truecolor PNG transparency in modern browsers (left) versus IE6 (right)</div>
+</p>
+
+<p>If you need an alpha transparent truecolor PNG as a background, you can use
+the underscore CSS hack to target only IE6, unset the background and provide the
+filter declaration:</p>
+
+<div class="hl-main"><pre><span class="hl-identifier">.classname</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">background:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">image</span><span class="hl-code">.</span><span class="hl-code">png</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+  _</span><span class="hl-reserved">background:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-reserved"></span><span class="hl-code">;
+  _</span><span class="hl-reserved">filter:</span><span class="hl-code">progid</span><span class="hl-code">:</span><span class="hl-code">DXImageTransform</span><span class="hl-code">.</span><span class="hl-code">Microsoft</span><span class="hl-code">.</span><span class="hl-code">AlphaImageLoader</span><span class="hl-code">
+                          (</span><span class="hl-code">src</span><span class="hl-code">='</span><span class="hl-code">image</span><span class="hl-code">.</span><span class="hl-code">png</span><span class="hl-code">', </span><span class="hl-code">sizingMethod</span><span class="hl-code">='</span><span class="hl-string">crop</span><span class="hl-code">')</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></pre></div>
+
+<p>Another solution to the problem involves the use of VML (Vector Markup
+Language) and is a little more complicated.
+
+<p>There also exist a number of solutions (usually called "pngfix") that
+automatically solve the problem for you using JavaScript and commonly an .htc
+file. HTC stands for HTML Components and is a non-standard extension by
+Microsoft. The pngfix solutions are convenient since they use JavaScript to
+generate the filter or the VML code without you having to do complex work in CSS
+or HTML.
+
+<p>There are several problems with those solutions:
+
+<ul>
+  <li>The AlphaImageLoader hurts performance. It makes the page slower (27 times
+  slower for a test page with 100 images), consumes a lot more memory (78 times
+  more) and blocks the progressive page display by locking the browser. In cases
+  when the image download gets delayed (it happens, the network is
+  unpredictable), the browser is frozen and doesn't even allow canceling the
+  page load or typing in the address bar. This is a bad user experience (one of
+  the worst actually), so AlphaImageLoader should be avoided if at all possible.
+  <li>Solutions that use .htc files add another HTTP component to the waterfall
+  and therefore make the page slower. An .htc file solution that uses
+  AlphaImageLoader is the worst for performance purposes.  <li>Solutions that
+  use JavaScript which generates the required VML are the least bad, because the
+  JavaScript may be combined with your own scripts (no additional HTTP
+  components) and the VML solution doesn't freeze the browser or eat memory like
+  the AlphaImageLoader does.
+</ul>
+
+<p>To summarize - avoid AlphaImageLoader and transparent truecolor PNGs. Try to
+work with a different design or use a PNG8 alpha transparent image. If all else
+fails, use a PNG fix script that doesn't introduce a new HTTP component to
+download and uses a VML solution to transparency.
+
+<h3>PNG8 and Alpha Transparency</h3>
+
+<p>As already mentioned, despite the lack of image editing software support,
+PNG8 does offer alpha transparency and it's supported across all modern
+browsers. IE6 is again an exception, but not as bad as the PNG24 alpha
+transparency.
+
+<p>In IE6, all partially transparent pixels in a PNG8 image become fully
+transparent. In other words, <strong>in IE6 PNG8 behaves like a GIF</strong>.
+
+<p>Sometimes designers use a truecolor PNG for all browsers, but provide a
+separate GIF for IE6. This is not an ideal solution, because it creates
+maintenance issues (maintaining two images) and you can actually use a single
+PNG8 to support all browsers.
+
+<p>All you need to do is create a <em>progressively enhanced PNG8</em> - one
+that looks OK when viewed in IE6 (looks like a GIF) and gets progressively
+better in the modern browsers (<b>Figure 5.6.</b>)
+
+
+<p>
+  <img src="images/05.06.png"> <div class="caption"><em>Figure 5.6.</em> A
+  progressively enhanced PNG8 which displays as desired in modern browsers
+  (left) and degrades to a GIF-like binary transparency in IE6 (right)</div>
+</p>
+
+<h3>Progressive Enhancement with PNG8</h3>
+
+<p>There are tools that take a truecolor PNG24 image and convert it to a PNG8.
+In this process the tools might reduce the number of colors if the original
+contains more than 256 colors. After this conversion the PNG8 will behave as
+expected in all browsers and degrade to a GIF-like in IE6. However, automatic
+conversion might not always create gracefully degraded GIF-like experience.
+You'll need to edit the image by hand to make sure that after IE6 drops all
+semi-transparent pixels and displays them as fully transparent, the image still
+looks acceptable using solid opaque pixels only.
+
+<p class="sidebar">Fireworks is one notable exception among image editing
+software that does offer you to use alpha transparency in PNG8.</p>
+
+<p>Let's see a recipe of using Photopshop to create a truecolor alpha
+transparent PNG24 in a way that will allow you to convert it to a progressively
+enhanced PNG8 using the command line tool PNGQuant. The end result is the image
+shown on <b>Figure 5.6.</b>
+
+<p>First, you create a button-like rounded corner rectangle using Photoshop's
+rectangle tool. We'll keep this in a layer called "Original" (<b>Figure
+5.7.</b>). This layer will have 99% opacity, which effectively hides it
+completely from IE6.
+
+<p>
+  <img src="images/05.07.png8 1 original.png"> <div
+  class="caption"><em>Figure 5.7.</em> Using rectangle tool gives you a nicely
+  rounded box</div>
+</p>
+
+<p>Since we want to use the same button on top of different colors, we cannot
+use a GIF, because it will contain a few almost white pixels around the edges.
+So we copy the "Original" layer into a new one (named "Solid", <b>Figure
+5.8.</b>) and use the mountain tops technique to make the rounded corners look
+acceptable even when using a single solid color. This is the way IE6 will see
+the end result. It's convenient to keep this as a separate layer, so that in
+Photoshop you can toggle layer visibility and preview the end result in IE6 and
+in all other browsers.
+
+<p>
+  <img src="images/05.08.png8 2 solid.png"> <div class="caption"><em>Figure
+  5.8.</em> Mountain tops technique to make the rounded corner look acceptable
+  using a single solid color</div>
+</p>
+
+<p>Finally, we add another layer with 99% opacity (to hide it from IE6) which
+adds the yellowish glow (<b>Figure 5.9.</b>).
+
+<p>
+  <img src="images/05.09.png8 3 glow.png"> <div class="caption"><em>Figure
+  5.9.</em> Glow around the button in a new layer with 99% opacity</div>
+</p>
+
+<p>Now, using "Save for Web and Devices" you can export this image as a PNG24
+and then convert it to PNG8 using PNGQuant:
+
+<pre>$ pngquant 256 button.png</pre>
+
+<p>This command sets the max number of colors to 256 and produces an alpha
+transparent PNG8 in a file called button-fs.png.
+
+<p>The result PNG8 image will behave the same as the PNG24 original in all
+browsers, and will look like the "Solid" layer with a binary transparency in
+IE6. This is because the other two layers have 99% opacity which IE6 will treat
+as 0% opacity (fully transparent).
+
+<p class="sidebar">In addition to PNGQuant, other tools that can convert
+truecolor PNG24 to indexed PNG8 are PNGNQ and PNGRewrite. PNGNQ, like PNGQuant
+will reduce the number of colors to fit the 256 limit of the indexed image
+format. PNGRewrite will only convert (and optimize) images under 256 colors and
+give up on the others.</p>
+
+<h3>Reusable Images</h3>
+
+<p>As you know, the best way to speed up a page is to have fewer page
+components. One way to get better at this is to use the same image for various
+purposes. Let's see a technique that allows you to put a background image over
+different background colors and have different results.
+
+<p>One example of the technique is shown on <b>Figure 5.10.</b> The background
+color in this example is different for each button (and changed on hover), but
+the background image that creates the glossy effect is the same.
+
+<p>
+  <img src="images/05.10.iphone buttons.png"> <div class="caption"><em>Figure
+  5.10.</em> iPhone-like glossy buttons sharing the same background image and
+  using different background colors</div>
+</p>
+
+<p>The background image is a PNG8, 1px wide by 1000px high (just to be safe) and
+is repeated horizontally in CSS. The upper 500px (half the image) is partially
+transparent, while the bottom 500px is fully transparent.
+
+<p>The HTML:</p>
+
+<div class="hl-main"><pre><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button1</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button button2</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button2</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button button3</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button3</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button button4</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button4</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button button5</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button5</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button button6</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">&gt;</span><span class="hl-code">button6</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></pre></div>
+
+<p>The CSS:</p>
+
+<div class="hl-main"><pre><span class="hl-identifier">.button</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-reserved">background-image:</span><span class="hl-code"> </span><span class="hl-code">url</span><span class="hl-code">(</span><span class="hl-code">mask</span><span class="hl-code">.</span><span class="hl-code">png</span><span class="hl-code">)</span><span class="hl-reserved"></span><span class="hl-code">;
+  </span><span class="hl-reserved">background-position:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-reserved"></span><span class="hl-code">;
+  </span><span class="hl-reserved">color:</span><span class="hl-code"> </span><span class="hl-var">white</span><span class="hl-reserved"></span><span class="hl-code">;
+  -</span><span class="hl-reserved">moz-border-radius:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">; 
+  -</span><span class="hl-reserved">webkit-border-radius:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">; 
+  </span><span class="hl-reserved">border-radius:</span><span class="hl-code"> </span><span class="hl-number">10</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+</span><span class="hl-identifier">.button</span><span class="hl-special">:hover</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#f29222</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.button2</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#a41d1c</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.button3</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#0f6406</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.button4</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">#333f79</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.button5</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">.button6</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-reserved">background-color:</span><span class="hl-code"> </span><span class="hl-code">orange</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-reserved">color:</span><span class="hl-code"> </span><span class="hl-var">black</span><span class="hl-reserved"></span><span class="hl-code">;</span><span class="hl-brackets">}</span></pre></div>
+
+<p>As you can see, you can reuse the same image and create any number of
+colorful buttons. This can be especially useful for themes and social profile
+customizations, which allow the user to pick any color.
+
+<p>In IE6 the whole PNG8 image will appear fully transparent, so the glossy
+effect will degrade to the solid background color.
+
+<p>Additional optimization is to use data URIs (from Chapter 3) to inline the
+image, since 1x1000 image is only about 100 bytes. This way you avoid the HTTP
+request altogether at the price of degrading the IE7 experience to IE6-like,
+since IE7 doesn't support data URIs.
+
+<p>Another example of reusing the same image is shown on <b>Figure 5.11.</b> A
+tiny background image contains diagonal stripes made of semi-transparent and
+fully transparent lines. Using such image on top of different colors, allows you
+to reuse the image (<b>Figure 5.11</b>, <b>Figure 5.12</b>)
+
+<p>
+  <img src="images/05.11.stripes.png"> <div class="caption"><em>Figure
+  5.11.</em> Same background image on top of different solid colors</div>
+</p>
+
+<p>
+  <img src="images/05.12.twitter.png"> <div class="caption"><em>Figure
+  5.12.</em> Same background image, uploaded to Twitter as a profile
+  background</div>
+</p>
+
+<p>Yet another example of reusable images is to create a gradient image, but one
+that changes transparency (not color) gradually. Using this image as a
+background on top of solid color will help you create any gradient with a single
+image. In fact this image will be about the same file size as if you use CSS3,
+-moz, -webkit, and two filter declarations (one for IE8 and one IE &lt; 8) for
+creating cross-browser image-less gradients in CSS.
+
+<h2>Optimizing favicons</h2>
+
+<p>The little favicon.ico files that sit in the root of your website may be a
+source of inefficiencies too. Sometimes you simply forget them because,
+technically, they are not part of the page. When you forget them, the browsers
+will still request them and your server will reply with a 404 Not Found page.
+Sites often have complex 404 pages, which query data and try to guess what the
+person might have had in mind when they came across the dead page. In case of
+missing favicons, all that work to create a 404 page is a waste, since it's
+never displayed or used. So keep in mind to always have a favicon.
+
+<p>
+  <img src="images/05.13.ysearch.png"> <div class="caption"><em>Figure
+  5.13.</em> Yahoo! favicon - 318 bytes, 16 colors</div>
+</p>
+
+<p>Favicons are usually small, around a little over 1K. This is a good file size
+to aim at. If possible, don't go overboard with big icons and animations. As
+discussed in the previous chapter it also makes sense to send the favicon with
+gzip encoding, especially if it's bigger in size.
+
+<p>If you want to have a really tiny favicon (318 bytes) you can keep it under
+16 colors. Converting an existing icon to one that only has 16 colors can be
+done on the command line, using ImageMagick's convert utility:
+
+<pre>$ convert -colors 16 someimage.png favicon.ico</pre>
+
+<p>This is, of course, a lossy operation (since colors are reduced) so the
+result should be checked visually.
+
+<h2>Summary</h2>
+
+<p>The savings from lossless optimizations may vary from one image to the next,
+but these optimizations are easy to do, easy to automate and risk-free.
+Therefore you should never put an image on your web site that comes directly
+from image editing software without running it through an optimization tool.
+
+The four basic steps at image size reduction are:
+
+<ol>
+  <li>Convert all GIFs to PNG <li>Run GIFSicle of animations <li>Run JPEGTran on
+  photos <li>Run any PNG tool on PNGs
+</ol>
+
+<p>Just remembering (or automating) these four steps will have you well on the
+way to a leaner site.
+
+<p>If you can invest more time in image optimization, you should:
+
+<ul>
+  <li>Learn to love alpha transparent PNG8, which will let you move away from
+  AlphaImageLoader and even further away from any GIFs <li>Consider reusable
+  image techniques, which will allow you to create fast-loading and highly
+  customizable pages and profiles without generating new graphics for each color
+  preference <li>And finally, try to come up with a favicon.ico that fits into
+  16 colors
+</ul>
+  </div>
+  <h1 id="Chapter6" class="chapter-title">Chapter6 - [INCOMPLETE] Parallel downloads</h1>
+  <div class="text pad">
+    
+ (or Non-blocking components)
+
+<p>When does JavaScript block other components? When do stylesheets block?
+Parallel
+ download limits in the browsers.</p>
+  </div>
+  <h1 id="Chapter7" class="chapter-title">Chapter7 - [INCOMPLETE] Optimizing JavaScript and Ajax</h1>
+  <div class="text pad">
+    
+<p>Focusing on the things that make a big impact. DOM access. HTML
+Collections.</p>
+  </div>
+  <h1 id="Chapter8" class="chapter-title">Chapter8 - [INCOMPLETE] Optimizing CSS</h1>
+  <div class="text pad">
+    
+
+<p>Small, scalable, reusable CSS stylesheets. Problems with CSS that lead to
+bloated stylesheets. Rethinking CSS. Reusable objects.  Cleaning up
+overqualified selectors. Insight into browser rendering, reflows, repaints.</p>
+  </div>
+  <h1 id="Chapter9" class="chapter-title">Chapter9 - [INCOMPLETE] Psychology of performance</h1>
+  <div class="text pad">
+    
+<p>Perception of speed. Progressive rendering.</p>
+  </div>
+  <h1 id="Chapter9" class="chapter-title">Chapter9 - [INCOMPLETE] Psychology of performance</h1>
+  <div class="text pad">
+    
+<p>Perception of speed. Progressive rendering.</p>
+  </div>
+<div class="footer row">
+  <div class="content">
+    <div class="boat pad"><a href="index.html"><img src="images/deco/cover.png" alt="cover"></a></div>
+    <div class="boat foo">
+      <p>About the book</p>
+      <ul class="footlinks">
+        <li>Public domain license</li>
+        <li><a href="https://github.com/stoyan/Book-of-Speed/">Contribute via GitHub</a></li>
+        <li><a href="http://phpied.com/book-of-speed">About, history, announcement</a></li>
+      </ul>
+    </div>
+    <div class="boat foo">
+      <p>More from Stoyan</p>
+      <ul class="footlinks">
+        <li><a href="http://www.perfplanet.com">Planet "Performance"</a></li>
+        <li><a href="http://www.sultansofspeed.com">Sultans of Speed</a></li>
+        <li><a href="http://givepngachance.com/">Give PNG a Chance</a></li>
+        <li><a href="http://phpied.com">phpied.com blog</a></li>
+        <li><a href="http://jspatterns.com">JavaScript patterns blog</a></li>
+        <li><a href="http://www.amazon.com/Stoyan-Stefanov/e/B002BLXYIG/">Amazon page</a></li>
+      </ul>
+    </div>    
+  </div>
+</div>
+</body>
+</html>
