@@ -1,11 +1,11 @@
 html, body, .title, .bio h3 {margin:0;padding:0;}
 body {
-  color: #433f3e; 
+  color: #433f3e;
   font: 16px Helvetica, Arial, sans-serif;
 }
 a {color: #095A5E;}
 a:hover, .footlinks a:hover{
-  color: #83a1ab; 
+  color: #83a1ab;
   text-decoration: none;
 }
 h1 {
@@ -24,7 +24,7 @@ code {
 pre {
   padding: 10px;
   background: #eef0f0;
-  
+
 }
 img {
   border: 0;
@@ -82,7 +82,7 @@ img {
   padding: 20px 50px;
 }
 .foo {
-  padding-right: 80px; 
+  padding-right: 80px;
   font-weight: bold;
 }
 
@@ -98,7 +98,7 @@ img {
   padding-right: 20px;
 }
 .subtitle, .author {
-  color: #aeaeae; 
+  color: #aeaeae;
   font-weight: bold;
   font-size: 19px;
   padding-left: 7px;
@@ -125,7 +125,7 @@ img {
 }
 a.title:hover {color: #095a5e;}
 a:hover img {
-  opacity: 0.8;  
+  opacity: 0.8;
 }
 a:active img {
   -moz-transform: translate(400px, 0) scale(0);
@@ -134,7 +134,7 @@ a:active img {
   -webkit-transition: all 1s ease-in-out;
   -o-transform: translate(400px, 0) scale(0);
   -o-transition: all 1s ease-in-out;
-  
+
 }
 .gently {
   margin: 20px 50px 40px;
@@ -267,7 +267,7 @@ a:active img {
 .hl-inlinetags {
     color: Blue;
 }
-.hl-main { 
+.hl-main {
     background-color: White;
 }
 .hl-gutter {

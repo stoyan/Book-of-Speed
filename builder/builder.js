@@ -69,11 +69,11 @@ function getTemplate(t, css, num, title, content) {
       replace('"chapter' + numba + '.html" ==CURRENT==', '"chapter' + numba + '.html" class="current"');;
   }
   t = t.replace(/ ==PREVCLASS==| ==NEXTCLASS==| ==CURRENT==/g, '');
-  
+
   // content
   return t.
     replace(
-      /<link rel="stylesheet" href="book.css">/, 
+      /<link rel="stylesheet" href="book.css">/,
       "<style>" + YAHOO.compressor.cssmin(css) + "</style>"
     ).
     replace(

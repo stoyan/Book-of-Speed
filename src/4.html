@@ -95,7 +95,7 @@ need to list the component types of the files you want Apache to compress for
 you:
 
 <div class="hl-main"><pre><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">html</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">plain</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">xml</span><span class="hl-code">
-</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">css</span><span class="hl-code"> 
+</span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">css</span><span class="hl-code">
 </span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">javascript</span><span class="hl-code">
 </span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">application</span><span class="hl-code">/</span><span class="hl-identifier">x</span><span class="hl-code">-</span><span class="hl-identifier">javascript</span><span class="hl-code">
 </span><span class="hl-identifier">AddOutputFilterByType</span><span class="hl-code"> </span><span class="hl-identifier">DEFLATE</span><span class="hl-code"> </span><span class="hl-identifier">text</span><span class="hl-code">/</span><span class="hl-identifier">javascript</span><span class="hl-code">
@@ -310,7 +310,7 @@ units of measure (e.g. px) when the value is 0 or using shorthands.</p>
 </span><span class="hl-identifier">.test</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
   </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-string">px</span><span class="hl-reserved"></span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
- 
+
 </span><span class="hl-comment">/*</span><span class="hl-comment"> after </span><span class="hl-comment">*/</span><span class="hl-code">
 </span><span class="hl-identifier">.test</span><span class="hl-brackets">{</span><span class="hl-reserved">padding:</span><span class="hl-number">0</span><span class="hl-reserved"></span><span class="hl-brackets">}</span></pre></div>
 
@@ -318,7 +318,7 @@ units of measure (e.g. px) when the value is 0 or using shorthands.</p>
 
 <div class="hl-main"><pre><span class="hl-comment">/*</span><span class="hl-comment"> before </span><span class="hl-comment">*/</span><span class="hl-code">
 </span><span class="hl-identifier">.module</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code"> </span><span class="hl-reserved">background:</span><span class="hl-code"> </span><span class="hl-var">#ff00ff</span><span class="hl-reserved"></span><span class="hl-code">; </span><span class="hl-brackets">}</span><span class="hl-code">
- 
+
 </span><span class="hl-comment">/*</span><span class="hl-comment"> after </span><span class="hl-comment">*/</span><span class="hl-code">
 </span><span class="hl-identifier">.module</span><span class="hl-brackets">{</span><span class="hl-reserved">background:</span><span class="hl-var">#f0f</span><span class="hl-reserved"></span><span class="hl-brackets">}</span></pre></div>
 
@@ -587,9 +587,9 @@ receive compressed content.
   monitoring your network traffic. That's why they hack the outgoing requests
   from the browser and modify the <code>Accept-Encoding</code> to make it
   invalid, e.g.
-</ul> 
+</ul>
 <pre>
-Accept-Encoding: <b>xxxx</b>, defl<b>xxx</b> 
+Accept-Encoding: <b>xxxx</b>, defl<b>xxx</b>
 Accept-En<b>X</b>oding: gzip, deflate</pre>
 
 <p>Without a valid indication that the browser supports compression, the server
