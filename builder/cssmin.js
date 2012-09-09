@@ -2,12 +2,12 @@
  * cssmin.js
  * Author: Stoyan Stefanov - http://phpied.com/
  * This is a JavaScript port of the CSS minification tool
- * distributed with YUICompressor, itself a port 
- * of the cssmin utility by Isaac Schlueter - http://foohack.com/ 
+ * distributed with YUICompressor, itself a port
+ * of the cssmin utility by Isaac Schlueter - http://foohack.com/
  * Permission is hereby granted to use the JavaScript version under the same
  * conditions as the YUICompressor (original YUICompressor note below).
  */
- 
+
 /*
 * YUI Compressor
 * Author: Julien Lecomte - http://www.julienlecomte.net/
@@ -19,7 +19,7 @@ var YAHOO = YAHOO || {};
 YAHOO.compressor = YAHOO.compressor || {};
 YAHOO.compressor.cssmin = function (css, linebreakpos){
 
-    var startIndex = 0, 
+    var startIndex = 0,
         endIndex = 0,
         iemac = false,
         preserve = false,
@@ -65,7 +65,7 @@ YAHOO.compressor.cssmin = function (css, linebreakpos){
             }
         }
     }
-    
+
     // Normalize all whitespace strings to single spaces. Easier to work with that way.
     css = css.replace(/\s+/g, " ");
 
@@ -80,19 +80,19 @@ YAHOO.compressor.cssmin = function (css, linebreakpos){
 
     // retain space for special IE6 cases
     css = css.replace(/:first-(line|letter)({|,)/g, ":first-$1 $2");
-        
+
     // no space after the end of a preserved comment
-    css = css.replace(/\*\/ /g, '*/'); 
-    
-     
+    css = css.replace(/\*\/ /g, '*/');
+
+
     // If there is a @charset, then only allow one, and push to the top of the file.
     css = css.replace(/^(.*)(@charset "[^"]*";)/gi, '$2$1');
     css = css.replace(/^(\s*@charset [^;]+;\s*)+/gi, '$1');
-    
+
     // Put the space back in some cases, to support stuff like
     // @media screen and (-webkit-min-device-pixel-ratio:0){
     css = css.replace(/\band\(/gi, "and (");
-    
+
 
     // Remove the spaces after the things that should not have spaces after them.
     css = css.replace(/([!{}:;>+\(\[,])\s+/g, '$1');
@@ -125,7 +125,7 @@ YAHOO.compressor.cssmin = function (css, linebreakpos){
         }
         return '#' + rgbcolors.join('');
     });
-    
+
 
     // Shorten colors from #AABBCC to #ABC. Note that we want to make sure
     // the color is not preceded by either ", " or =. Indeed, the property
@@ -133,7 +133,7 @@ YAHOO.compressor.cssmin = function (css, linebreakpos){
     // would become
     //     filter: chroma(color="#FFF");
     // which makes the filter break in IE.
-    css = css.replace(/([^"'=\s])(\s*)#([0-9a-f])([0-9a-f])([0-9a-f])([0-9a-f])([0-9a-f])([0-9a-f])/gi, function(){ 
+    css = css.replace(/([^"'=\s])(\s*)#([0-9a-f])([0-9a-f])([0-9a-f])([0-9a-f])([0-9a-f])([0-9a-f])/gi, function(){
         var group = arguments;
         if (
             group[3].toLowerCase() === group[4].toLowerCase() &&
@@ -145,7 +145,7 @@ YAHOO.compressor.cssmin = function (css, linebreakpos){
             return group[0].toLowerCase();
         }
     });
-    
+
 
     // Remove empty rules.
     css = css.replace(/[^\};\{\/]+\{\}/g, "");
@@ -154,7 +154,7 @@ YAHOO.compressor.cssmin = function (css, linebreakpos){
         // Some source control tools don't like it when files containing lines longer
         // than, say 8000 characters, are checked in. The linebreak option is used in
         // that case to split long lines after a specific column.
-        startIndex = 0; 
+        startIndex = 0;
         i = 0;
         while (i < css.length) {
             if (css[i++] === '}' && i - startIndex > linebreakpos) {
@@ -172,7 +172,7 @@ YAHOO.compressor.cssmin = function (css, linebreakpos){
     for(i = 0, max = preservedTokens.length; i < max; i++) {
         css = css.replace("___YUICSSMIN_PRESERVED_TOKEN_" + i + "___", preservedTokens[i]);
     }
-    
+
     // Trim the final string (for any leading or trailing white spaces)
     css = css.replace(/^\s+|\s+$/g, "");
 

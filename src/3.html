@@ -375,7 +375,7 @@ you may need. The result is URLs that look like the following:
   PHP:
     <div class="hl-main"><pre><span class="hl-var">$expiration</span><span class="hl-code"> = </span><span class="hl-identifier">mktime</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code"> + </span><span class="hl-number">60</span><span class="hl-code"> * </span><span class="hl-number">60</span><span class="hl-code"> * </span><span class="hl-number">24</span><span class="hl-code"> * </span><span class="hl-number">365</span><span class="hl-code"> * </span><span class="hl-number">10</span><span class="hl-code">; </span><span class="hl-comment">//</span><span class="hl-comment"> now plus 10 years</span><span class="hl-comment"></span><span class="hl-code"></span>
 <span class="hl-identifier">header</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">Expires: </span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">gmdate</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">D, d M Y h:m:s</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-var">$expiration</span><span class="hl-brackets">)</span><span class="hl-code"> . </span><span class="hl-quotes">'</span><span class="hl-string"> GMT</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;</span></pre></div>
-  
+
 </p></div>
 
 <p>Another drawback of bundling is that the resulting bundle becomes a
@@ -633,7 +633,7 @@ You also need a header for the whole document, which declares the separator
 string. Overall the document will look like:
 
 <div class="hl-main"><pre><span class="hl-code">Content-Type: </span><span class="hl-identifier">multipart</span><span class="hl-code">/</span><span class="hl-identifier">related</span><span class="hl-code">; </span><span class="hl-identifier">boundary</span><span class="hl-code">=&quot;</span><span class="hl-identifier">MYSEPARATOR</span><span class="hl-code">&quot;
- 
+
 --</span><span class="hl-identifier">MYSEPARATOR</span><span class="hl-code">
 </span><span class="hl-brackets">[</span><span class="hl-var">here</span><span class="hl-code"> </span><span class="hl-var">comes</span><span class="hl-code"> </span><span class="hl-var">part</span><span class="hl-code"> </span><span class="hl-var">one</span><span class="hl-brackets">]</span><span class="hl-code">
 --</span><span class="hl-identifier">MYSEPARATOR</span><span class="hl-code">
